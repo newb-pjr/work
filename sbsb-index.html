@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>+
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body>
+		<div class="sbConttent">
+			<div class="sbLeft">
+				<img src="img/sbImg.png" />
+			</div>
+			<div class="sbRight">
+				<p class="searchContP">请选择输入识别商标：</p>
+				<a href="javascript:void(0)" class="sbBtn" onclick="handleLayer('选取主图','sbsb-jt.html')">选商标图</a>
+				<p style="font-weight: bold;">提示:</p>
+				<div style="text-indent: 2em;">
+					<p style="font-weight: bold;">为了保证商标的识别质量，请输入的图片应符合如下要求：</p>
+					<p>可接受的格式。jpg,png</p>
+					<p>文件大小：小于2MB。图像像素大小大于80*90像素，小于1500*1500像素</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			var browser=navigator.appName;
+			var b_version=navigator.appVersion;
+			var version=b_version.split(";"); 
+			if(typeof(version[1])!="undefined"){
+				var trim_Version=version[1].replace(/[ ]/g,""); 
+			}
+			if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") 
+			{ 
+				$(".sbBtn").attr("onclick","handleLayer('选取主图','sbsb-jtmt.html')");
+			}
+			else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") 
+			{ 
+				$(".sbBtn").attr("onclick","handleLayer('选取主图','sbsb-jtmt.html')");
+			}
+		</script>
+	</body>
+</html>

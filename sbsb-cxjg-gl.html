@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="filter">
+			<p>对查询结果按如下条件进行过滤：</p>
+			<div class="filterCont">
+				商标状态：<label><input type="radio" name="status" value="0" checked="checked" />有效</label>
+				<label><input type="radio" name="status" value="1" />无效</label>
+				<label><input type="radio" name="status" value="2" />期满待定</label>
+				<label><input type="radio" name="status" value="3" />无效待定</label>
+				<label><input type="radio" name="status" value="4" />全部</label>
+			</div>
+			<div class="filterCont">
+				商品范围：<label><input type="radio" name="product" value="0" checked="checked" />全部</label>
+				<label><input type="radio" name="product" value="1" />指定类似群</label>
+				<input type="text" id="markGroupInput" />注：请使用英文“;”分隔
+			</div>
+		</div>
+		<div class="tabBtn" style="margin: 20px auto;">
+			<a href="javascript:void(0)" style="margin: 0 auto; display: block; float: none;" id="filterBtn">确定</a>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/getTMByFilter.js" ></script>
+	</body>
+</html>

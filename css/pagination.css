@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* paginationResult */
+.paginationResult{font-size:80%; float: right;}    
+.paginationResult a{text-decoration:none;border:solid 1px #AAE;color:#15B;}
+.paginationResult a, .paginationResult span{display:inline-block;float:left;padding:0.3em 0.5em;margin-right:5px;margin-bottom:5px;}
+.paginationResult .current{background:#26B;color:#fff;border:solid 1px #AAE;}
+.paginationResult .current.prev, .paginationResult .current.next{color:#999;border-color:#999;background:#fff;}

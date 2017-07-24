@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>+
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 替换主设备</p>
+			<p class="accountTopSec">替换主设备<span class="accountTopLine" style="width: 91%;margin-left: 36px;"></span></p>
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">当前设备别名：<span id="currentDeviceCode"></span></p>
+				</div>
+				<div class="accountHead" style="padding-top: 15px;">
+					<span class="accountTitle">选择要替换的别名：</span><select class="deviceNum" id="deviceNum"><option value="-1">请选择</option></select>
+				</div>
+				<div class="accountHead" style="padding-top: 15px;">
+					<span class="accountTitle">获取当前注册方式的验证码：</span>
+					<div class="main" style="display: inline-block;" id="phoneCont">
+						<input class="input inputCode" type="text" placeholder="输入验证码" id="codeInput" />
+						<input class="getCode" type="button" value="获取验证码" id="getMainCode" />
+					</div>
+					<div class="tabBtn" style="margin: 30px auto;">
+						<a href="javascript:void(0)" id="subMainDevice">提交</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/updateMainDevice.js" ></script>
+		<script type="text/javascript" src="js/interface/getMainDeviceCode.js" ></script>
+	</body>
+</html>

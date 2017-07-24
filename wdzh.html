@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="accountMain">
+			<p class="accountTop">我的 > 注册信息</p>
+			<p class="accountTopSec">注册信息<span class="accountTopLine" style="width: 91%;margin-left: 36px;"></span></p>
+			<div class="accountCont">
+				<div class="accountHead" id="changeValidWay">
+					<div class="changeWay">
+						<p>登录账号：<span id="myUserName"></span></p>
+						<p style="margin-top: 8px;">更改验证方式：<label><input type="checkbox" id="phone" />手机</label><label><input type="checkbox" id="mail"/>邮箱</label></p>
+						<input type="hidden" id="mobile" />
+						<input type="hidden" id="email" />
+					</div>
+					<!--<p class="accountTitle">个人信息<a href="javascript:void(0)" class="accountHandle" id="modifyInfo">修改</a></p>-->
+				</div>
+				<table border="0" class="accountTable">
+					<tr style="display: none;" id="phoneWay">
+						<td>手机号码：</td>
+						<td><input type="text" value="" class="accountTableText" id="mobileNew" /></td>
+					</tr>
+					<tr style="display: none;" id="emailWay">
+						<td>电子邮箱：</td>
+						<td><input type="text" value="" class="accountTableText" id="emailNew" /></td>
+					</tr>
+					<tr>
+						<td>用户真实姓名：</td>
+						<td><input type="text" value="" class="accountTableText" id="name" /></td>
+					</tr>
+					<tr>
+						<td>用户地址：</td>
+						<td><input type="text" value="" class="accountTableText" id="address" /></td>
+					</tr>
+					<tr>
+						<td>用户国籍：</td>
+						<td><input type="text" value="" class="accountTableText" id="country" /></td>
+					</tr>
+					<tr>
+						<td>所属行政区：</td>
+						<td><input type="text" value="" class="accountTableText" id="area" /></td>
+					</tr>
+					<tr>
+						<td>联系人：</td>
+						<td><input type="text" value="" class="accountTableText" id="contact" /></td>
+					</tr>
+					<tr>
+						<td>联系电话：</td>
+						<td><input type="text" value="" class="accountTableText" id="contactTel" /></td>
+					</tr>
+					<tr>
+						<td>联系手机：</td>
+						<td><input type="text" value="" class="accountTableText" id="contactMobile" /></td>
+					</tr>
+					<tr>
+						<td>E-Mail：</td>
+						<td><input type="text" value="" class="accountTableText" id="contactEmail" /></td>
+					</tr>
+				</table>
+				<div>
+					<a href="javascript:void(0)" class="openDevice" onclick="handleLayer('授权使用的设备','wdzh-sqsb.html')">已授权使用的设备</a>
+					<a href="javascript:void(0)" class="openDevice" id="modifyMainDeviceName">修改主设备别名</a>
+				</div>
+				<input class="accountSub" type="submit" value="确 定" />
+			</div>
+		</div>
+		<!--<div class="accountMain" style="margin-bottom: 50px;">
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">安全信息</p>
+				</div>
+				<div class="accountmodify">
+					<p><span class="bind"></span><span></span><a href="javascript:void(0)" class="accountHandle" id="phoneModify">修改</a></p>
+					<div class="handleInfoDiv" style="display: none;">
+						<input type="text" class="handleInfoText" placeholder="验证码" id="unBindCodeText" />
+						<input class="BindCodeBtn" id="getUnBindCode" value="获取验证码" type="button" />
+						<input type="button" value="下一步" class="handleInfoSub" id="next" />
+					</div>
+				</div>
+				<div class="accountmodify" style="display: none;">
+					<p><span class="bind"></span><span></span></p>
+					<div class="handleInfoDiv">
+						<input type="text" class="handleInfoText" id="newEquipment" />
+						<input class="BindCodeBtn" id="getBindCode" value="获取验证码" type="button" />
+					</div>
+					<div class="handleInfoDiv">
+						<input type="text" class="handleInfoText" placeholder="验证码" id="bindCodeText" />
+						<input type="submit" value="确定" class="handleInfoSub" id="phoneSubBtn" />
+						<input href="javascript:void(0)" type="button" class="handleInfoSub" value="上一步" id="previous" />
+					</div>
+				</div>
+				<div class="accountmodify">
+					绑定邮箱：<a href="javascript:void(0)" class="accountHandle" id="newEmail">新增</a>
+				</div>
+				<div class="accountmodify">
+					<p>登陆密码：********<a href="javascript:void(0)" class="accountHandle" id="passwordModify">修改</a></p>
+					<div style="display: none;">
+						<div class="handleInfoDiv">
+							<input type="text" class="handleInfoText" placeholder="验证码" id="modifyCodeText" />
+							<input class="BindCodeBtn" id="getModifyCode" type="button" value="获取验证码" />
+						</div>
+						<div class="handleInfoDiv">
+							<input type="password" class="accountPassword" placeholder="旧密码" id="oldPsw" />
+						</div>
+						<div class="handleInfoDiv">
+							<input type="password" class="accountPassword" placeholder="新密码" id="newPsw" />
+						</div>
+						<div class="handleInfoDiv">
+							<input type="password" class="accountPassword" placeholder="密码确认" id="confirmPsw" />
+							<input type="submit" class="handleInfoSub" value="确定" id="passwordSubBtn" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<script type="text/javascript" src="js/interface/common.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/md5.js" ></script>
+		<script type="text/javascript" src="js/interface/userInfo.js" ></script>
+		<script type="text/javascript" src="js/interface/updateUserInfo.js" ></script>
+		<script type="text/javascript" src="js/interface/bindValidate.js" ></script>
+		<script type="text/javascript" src="js/interface/getNewPasswordCode.js" ></script>
+		<script type="text/javascript" src="js/interface/updatePassword.js" ></script>
+		<script>
+			$(document).ready(function(){
+//				$("#modifyInfo").click(function(){
+//					$(".accountTableText").removeAttr("disabled");
+//					$(".accountTableText").css({"border-width":"1px","border-style":"solid","border-color":"#C6C4C4"});
+//					$(".accountSub").css({"display":"block"});
+//				})
+//				$(".accountSub").click(function(){
+//					$(".accountTableText").attr("disabled","disabled");
+//					$(".accountTableText").css({"border-width":"0"});
+//				})
+				$("#changeValidWay input").click(function(){
+					$(this).parent().siblings().find('input').removeAttr("checked");
+					if($("#phone").is(":checked")){
+						$("#phoneWay").show();
+					}else{
+						$("#phoneWay").hide();
+						$("#mobileNew").val("");
+					}
+					if($("#mail").is(":checked")){
+						$("#emailWay").show();
+					}else{
+						$("#emailWay").hide();
+						$("#emailNew").val("");
+					}
+				})
+				$("#phoneModify").click(function(){
+					$(this).parent().next().toggle();
+				})
+				
+				$("#next").click(function(){
+					$(this).parents(".accountmodify").hide().next().show()
+				})
+				$("#previous").click(function(){
+					$(this).parents(".accountmodify").hide().prev().show()
+				})
+				$("#passwordModify").click(function(){
+					$(this).parent().next().toggle();
+				})
+				$("#passwordSubBtn").click(function(){
+					$(this).parent().parent().hide();
+				})
+			})
+		</script>
+	</body>
+</html>

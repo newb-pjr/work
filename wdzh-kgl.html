@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 国方卡管理</p>
+			<p class="accountTopSec">国方卡管理<span class="accountTopLine" style="width: 91%;margin-left: 36px;"></span></p>
+			<div class="accountCont">
+				<div class="accountHead">
+					<table border="0" width="100%" class="cardTable">
+						<tr>
+							<td align="right" width="10%">未启用卡号：</td>
+							<td><select id="selectActiveDate"></select></td>
+						</tr>
+						<tr>
+							<td align="right" width="10%">卡类：</td>
+							<td><span id="cardType"></span></td>
+						</tr>
+						<tr>
+							<td align="right" width="10%">有效期限：</td>
+							<td><span id="validDate"></span></td>
+						</tr>
+						<tr>
+							<td align="right" width="10%">启用日期：</td>
+							<td><input type="text" id="activeTime" /></td>
+						</tr>
+					</table>
+					<input type="hidden" id="activeCardId" />
+				</div>
+				<div class="accountHead" style="padding: 10px 0;">
+					<table border="0" width="55%" class="validTable" id="validMethod">
+						<tr>
+							<td>用卡及扣费确认规则：</td>
+							<td><label><input type="radio" name="rule" class="tabCheckbox" checked="checked" value="0" />密码验证</label></td>
+							<td><label><input type="radio" name="rule" class="tabCheckbox" value="1" />验证码验证</label></td>
+							<td><label><input type="radio" name="rule" class="tabCheckbox" value="2" />无需验证</label></td>
+							<td><a href="javascript:void(0)" class="refresh" style="margin-top: 0;float: none;" id="activeCardBtn">启用</a></td>
+							<td><a href="javascript:void(0)" class="refresh" style="margin-top: 0;float: none; width: 80px;" id="updateValidMethod" onclick="handleLayer('修改规则','wdzh-xggz.html','500px','50%')">修改规则</a></td>
+						</tr>
+					</table>
+				</div>
+				<table border="0" class="cardRecord" id="cardRecord">
+					<tr>
+						<td>卡号</td>
+						<td>状态</td>
+						<td>启用日期</td>
+						<td>期满日</td>
+						<td>剩余次数或天</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/interface/common.js" ></script>
+		<script type="text/javascript" src="js/interface/userCardList.js" ></script>
+		<script type="text/javascript" src="js/interface/activeCard.js" ></script>
+		<script>
+			$('#activeTime').dateRangePicker({
+				autoClose: true,
+				singleDate : true,
+				showShortcuts: false,
+				startDate: new Date().toLocaleDateString().replace(/\//g,'-'),
+			})
+			$(document).ready(function(){
+				$("input[name='nvalidate']").click(function(){
+					//alert($("input[name='nvalidate']:checked").val())
+					if($("#npsw").is(":checked")){
+						$(".rechargeTable tr").last().show();
+					}else{
+						$(".rechargeTable tr").last().hide();
+					}
+				})
+				
+			})
+		</script>
+	</body>
+</html>

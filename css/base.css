@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+*{ padding:0; margin:0}
+html,div,ul,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,img,form,embed,label,body{margin:0;padding:0;border:0; font-size:14px; font-weight:normal;outline:none;}
+html{background-color: #fff;}
+ol,ul,ul li{ list-style:none;}
+table{ border-collapse:separate; border-spacing:0;}
+a{ text-decoration: none; color:#2e2e2e; outline:none;}
+a:hover { cursor:pointer; text-decoration:none; color:#098bea }
+a:active {color:#0b94d4;}
+
+select,input{ vertical-align:middle;font-size:14px;} 
+/*---------初始化---------*/
+
+body{ font-size:14px; font-family:"\5B8B\4F53", Arial, Helvetica, sans-serif; height:100%; background:#f9f9f9 }
+.cls{clear:both; line-height:0px!important; height:0px!important;font-size:0px!important;} 
+.hidden{ display:none}
+
+
+

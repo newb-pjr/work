@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			body{
+				background-color: #fff;
+			}
+			.mainBottom{
+			position: fixed;
+			bottom: 0;
+			height: 30px;
+			background-color: #0272cf;
+			width: 100%;
+		}
+		.mainBottom span{
+			color: #fff;
+			line-height: 30px;
+			margin-left: 15px;
+		}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="img/index_bg.jpg" style="max-width: 100%;" id="img"/>
+		</div>
+		<div class="mainBottom" style="display: none;">
+			<span>佛山市国方商标软件有限公司 佛山市国方商标服务有限公司   服务热线：0757-66880100， 66880082</span>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script>
+			window.onload = function(){
+				var img = $("#img");
+				var height = img.height();
+				img.attr("height",height);
+				$(".mainBottom").show();
+			}
+		</script>
+	</body>
+</html>

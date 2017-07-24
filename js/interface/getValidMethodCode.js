@@ -1,0 +1,19 @@
+$(document).ready(function(){
+	$("#getMethodCode").click(function(){
+		$.ajax({
+			type:"post",
+			url:"Handler/getValidMethodCode.ashx",
+			async:true,
+			data:{platformType:1,isWeb:1},
+			success:function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status==1){
+					alert("获取验证码成功，请注意查收！");
+					countDown("#getMethodCode");
+				}else{
+					dataStatus(dataObj);
+				}
+			}
+		});
+	})
+})

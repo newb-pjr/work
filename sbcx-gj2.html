@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="indexOption">
+			<a href="javascript:void(0);" class="btn searchIcon">查询算法</a>
+			<a href="javascript:void(0);" class="btn sortIcon" style="width: 108px;">商标图形要素表</a>
+		</div>
+		<div class="spacing"></div>
+		<div class="searchCont">
+			<p class="searchContP">商品类型：</p>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+				<li>12</li>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>
+				<li>16</li>
+				<li>17</li>
+				<li>18</li>
+				<li>19</li>
+				<li>20</li>
+				<li>21</li>
+				<li>22</li>
+				<li>23</li>
+				<li>24</li>
+				<li>25</li>
+				<li>26</li>
+				<li>27</li>
+				<li>28</li>
+				<li>29</li>
+				<li>30</li>
+				<li>31</li>
+				<li>32</li>
+				<li>33</li>
+				<li>34</li>
+				<li>35</li>
+				<li>36</li>
+				<li>37</li>
+				<li>38</li>
+				<li>39</li>
+				<li>40</li>
+				<li>41</li>
+				<li>42</li>
+				<li>43</li>
+				<li>44</li>
+				<li>45</li>
+			</ul>
+			<div class="showSearchCont">
+				<div class="showSearchDet">
+					<p>内容种类：商标中文名称</p>
+					<p>查询内容：商标中文名称商标中文名称商标中文名称</p>
+					<p>逻辑关系：与</p>
+				</div>
+				<div class="showSearchDet">
+					<p>内容种类：商标中文名称</p>
+					<p>查询内容：商标中文名称商标中文名称商标中文名称</p>
+					<p>逻辑关系：与</p>
+				</div>
+				<input type="hidden" id="searchType" value="" />
+				<input type="hidden" id="content" value="" />
+				<input type="hidden" id="searchType" value="" />
+				<input type="hidden" id="searchType" value="" />
+				<input type="hidden" id="searchType" value="" />
+			</div>
+			<table border="0" width="100%" align="center" class="highSearchContTabel">
+				<tr>
+					<th>内容种类</th>
+					<th>查询内容</th>
+					<th>逻辑关系</th>
+				</tr>
+				<tr>
+					<td>
+						<select id="contentSelect" style="width: 150px;height: 35px;">
+							<option value="0">商标名称中文</option>
+							<option value="1">商标名称西文</option>
+							<option value="2">商标图形要素</option>
+							<option value="3">注册号</option>
+							<option value="4">注册人名称中文</option>
+							<option value="5">注册人名称英文</option>
+							<option value="6">注册人地址中文</option>
+							<option value="7">注册人地址英文</option>
+							<option value="8">代理机构中文</option>
+							<option value="9">代理机构英文</option>
+							<option value="10">商品服务中文</option>
+							<option value="11">商品服务英文</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" class="searchContText" onblur="validateChinese(this)" />
+						<a href="javascript:void(0)" class="searchContBtn" id="txys" onclick="handleLayer('商标图形要素表','sbsb-txys.html')">商标图形要素表</a>
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<!--<tr>
+					<th colspan="2">查询内容</th>
+					<th>逻辑关系</th>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标的中文文字：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" onblur="validateChinese(this)" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标的西文文字：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" onblur="validateEnglish(this)" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标图形要素：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+						<a href="javascript:void(0)" class="searchContBtn" style="border-left: 1px solid #C6C4C4; margin-left: 10px;" onclick="handleLayer('商标图形要素表','sbsb-txys.html')">商标图形要素表</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标的注册号：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标注册人名称：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标注册人地址：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">商标代理机构：</span>
+					</td>
+					<td>
+						<input type="text" placeholder="输入查询内容" />
+					</td>
+					<td>
+						<select class="selectValue">
+							<option value="0">与</option>
+							<option value="1">或</option>
+							<option value="2">非</option>
+							<option value="3">或非</option>
+						</select>
+					</td>
+				</tr>-->
+			</table>
+			<table border="0" class="searchContTable">
+				<tr>
+					<td>
+						<span class="searchContP">查询算法：</span>
+					</td>
+					<td>
+						<input type="radio" checked="checked" id="same" class="tabCheckbox" name="group2" value="0" />
+						<label for="same">相同</label>
+					</td>
+					<td>
+						<input type="radio" id="like" class="tabCheckbox" name="group2" value="1" />
+						<label for="like">近似</label>
+					</td>
+					<td>
+						<input type="radio" id="self" class="tabCheckbox" name="group2" value="2" />
+						<label for="self">自定义</label>
+					</td>
+					<td>
+						<a href="javascript:void(0)" class="searchContBtn" style="margin-left: 0;border-left: 1px solid #C6C4C4;">自定义查询算法</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">状态过滤：</span>
+					</td>
+					<td>
+						<input type="radio" checked="checked" id="all" class="tabCheckbox" name="group3" value="0" />
+						<label for="all">全部</label>
+					</td>
+					<td>
+						<input type="radio" id="enabled" class="tabCheckbox" name="group3" value="1" />
+						<label for="enabled">有效</label>
+					</td>
+					<td>
+						<input type="radio" id="disabled" class="tabCheckbox" name="group3" value="2" />
+						<label for="disabled">无效</label>
+					</td>
+					<td>
+						<input type="radio" id="wait" class="tabCheckbox" name="group3" value="2" />
+						<label for="wait">待定</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="searchContP">日起种类：</span>
+					</td>
+					<td>
+						<select id="dateClassSelect">
+							<option value="-1">请选择</option>
+							<option value="0">不过滤</option>
+							<option value="1">申请日期</option>
+							<option value="2">初审公告日</option>
+							<option value="3">注册公告日</option>
+						</select>
+					</td>
+					<td colspan="3">
+						日期范围：
+						<input type="text" id="dateSelectHigh" class="searchContInput" />
+					</td>
+				</tr>
+			</table>
+			<hr />
+			<div class="searchContBtnGroup">
+				<a href="javascript:void(0)" id="search">查询</a>
+				<a href="javascript:void(0)">重置</a>
+				<a href="javascript:void(0)" onclick="handleTab('sbcx.html','商标查询','商标查询-高级查询')">普通查询</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/moment.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.daterangepicker.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/searchTradeMarkInfoHigh.js" ></script>
+		<script>
+			$("#dateSelectHigh").dateRangePicker();
+			$(document).ready(function(){
+				$(".searchCont ul li").click(function(){
+					$(this).addClass("selected").siblings().removeClass("selected")
+				})
+			})
+		</script>		
+	</body>
+	
+</html>

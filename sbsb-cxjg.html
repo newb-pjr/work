@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+
+
+	</head>
+	<body style="background-color: #fff;">
+			<div class="indexOption">
+				<a href="javascript:void(0);" class="btn fileIcon" onclick="searchResult('sbsb-cxjg-da.html','商标档案')">商标档案</a>
+				<a href="javascript:void(0);" class="btn noticeIcon" onclick="searchResult('sbsb-cxjg-gg.html','商标公告')">商标公告</a>
+				<a href="javascript:void(0);" class="btn serviceIcon" onclick="searchResult('sbsb-cxjg-spfw.html','商品服务')">商品服务</a>
+				<a href="javascript:void(0);" class="btn processIcon" onclick="searchResult('sbsb-cxjg-sclc.html','审查流程')">审查流程</a>
+				<a href="javascript:void(0);" class="btn printIcon">打印本表</a>
+				<a href="javascript:void(0);" class="btn exportIcon">导出word</a>
+				<a href="javascript:void(0);" class="btn switchIcon" onclick="handleTab('sbsb-cxjg-img.html','查询结果-图像显示')">切换显示</a>
+				<a href="javascript:void(0);" class="btn sortIcon" onclick="handleLayer('排序设置','sbsb-cxjg-px.html','500px','300px')">排序设置</a>
+				<a href="javascript:void(0);" class="btn filterIcon" onclick="filter()">过滤</a>
+			</div>
+			<div class="searchResult">
+				<table border="1" bordercolor="#C6C4C4" align="center" width="100%">
+					<tr>
+						<th>选择 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>类别 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>注册号 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>商标 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>注册/申请人 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>申请日期<img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>初审日期<img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>注册日期 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+						<th>商标状态 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
+					</tr>
+				</table>
+				<!--<table border="1" bordercolor="#C6C4C4" align="center" width="100%" id="mainResult"></table>-->
+				<div class="result">
+					<div id="searchPagination" class="paginationResult"></div>
+					<br style="clear:both;" />
+				</div>
+			</div>
+			<input type="hidden" id="searchResult" />
+			<div class="showDet">
+				<!--<div class="showDet"></div>-->
+				<table border="0" id="handleImg" height="100%">
+					<tr>
+						<td>
+							<span class="rightIcon"></span>
+						</td>
+					</tr>
+				</table>
+				<table border="0" id="loadCont">
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="closeDet">
+				<table border="0" id="handleImg" height="100%">
+					<tr>
+						<td>
+							<span class="leftIcon"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<script type="text/javascript" src="js/common.js" ></script>
+			<script type="text/javascript" src="js/interface/common.js" ></script>
+			<script type="text/javascript" src="js/jquery.pagination.js" ></script>
+			<script type="text/javascript" src="js/interface/getSearchResultByTaskID.js" ></script>
+			<script>
+				$(document).ready(function(){
+					$(".closeDet").height($(".searchResult table").height());
+					
+					$(".searchResult table input[type=checkbox]").click(function(){
+						if($(this).is(":checked")){
+//							$(this).parents('tr').siblings().find('.tabCheckbox').removeAttr('checked');
+							var num = $(this).siblings().val();
+							var markClass = $(this).parent().next().html();
+							document.cookie="MarkNo="+num;
+							document.cookie="MarkClass="+markClass;
+							$("#loadCont tr td").load('sbsb-cxjg-dayl.html');
+						}
+					})
+					$(".leftIcon").click(function(){
+						if($(".searchResult table input[type=checkbox]").is(":checked")){
+							$(".showDet").show();
+							$("#loadCont tr td").load('sbsb-cxjg-dayl.html');
+						}else{
+							alert("请勾选其中一项商标进行信息查看！");
+						}
+					})
+					$(".rightIcon").click(function(){
+						$(".showDet").hide();
+					})
+				})
+				function filter(){
+					var MarkKeyStr = [];
+					$(".searchResult table input[type=checkbox]").each(function(){
+						if($(this).is(":checked")){
+							MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
+						}
+					})
+					document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
+					handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
+				}
+			</script>
+	</body>
+</html>

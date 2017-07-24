@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://open.web.meitu.com/sources/xiuxiu.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+			  var index = parent.layer.getFrameIndex(window.name);
+			  xiuxiu.setLaunchVars("uploadBtnLabel","确定上传");	
+			  /*第1个参数是加载编辑器div容器，第2个参数是编辑器类型，第3个参数是div容器宽，第4个参数是div容器高*/
+			  xiuxiu.embedSWF("altContent",1,"100%","100%");
+			  //修改为您自己的图片上传接口
+			  xiuxiu.setUploadURL("http://219.130.222.42:8020/Handler/imgPartition.ashx");
+			  xiuxiu.setUploadType(2);
+			  xiuxiu.setUploadDataFieldName("upload_file");
+			  xiuxiu.setUploadArgs ({platformType:1,isWeb:1,SrcImgID:"",needCut:""});
+			  xiuxiu.onBeforeUpload = function (data)
+			  {
+				var size = data.size;
+				if(size > 2 * 1024 * 1024)
+				{ 
+				  alert("图片不能超过2M"); 
+				  return false; 
+				}
+				return true; 
+		      }
+			  xiuxiu.onInit = function ()
+			  {
+			    xiuxiu.loadPhoto("");//修改为要处理的图片url
+			  }
+			  xiuxiu.onUploadResponse = function (data)
+			  {
+			    var dataObj = JSON.parse(data);
+			    console.log(dataObj.url);
+				if(dataObj.status != 1){
+					switch(dataObj.status){
+						case 0:
+							alert(dataObj.err);
+							break;
+						case -1:
+							alert("用户不存在");
+							break;
+						case -2:
+							alert("登录信息不存在");
+							break;
+						case -3:
+							alert("用户 ID 与登录信息不匹配");
+							break;
+						case -4:
+							alert("登录已过期 ");
+							break;
+						case -5:
+							alert("验证码不正确");
+							break;
+					}
+				}else{
+					document.cookie = "imgUrl="+dataObj.data.url;
+	//				document.cookie = "cutImgUrl="+dataObj.url;
+					document.cookie = "imgCount="+dataObj.data.count;
+					document.cookie = "SrcImgID="+dataObj.SrcImgID;
+					document.cookie = "color="+JSON.stringify(dataObj.data.color);
+					document.cookie = "defimage="+JSON.stringify(dataObj.data.defimage);
+					document.cookie = "chooseImg=";
+					parent.$(".imgframe img").attr("src",dataObj.url);
+					parent.layer.close(index);
+				}
+			  }
+			  xiuxiu.onClose = function() {
+				parent.layer.close(index);
+			  }
+			}
+		</script>
+		<style type="text/css">
+			html, body { height:100%; overflow:hidden; }
+			body { margin:0; }
+		</style>
+	</head>
+	<body>
+		<div id="altContent">
+			<h1>请稍候</h1>
+		</div>
+	</body>
+</html>

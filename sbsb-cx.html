@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="algorithmCont">
+			<ul class="algorithmSet">
+			</ul>
+			<ul class="setMainCont">
+			</ul>
+			<div class="quickSetCont">
+				<table border="0" class="quickTable">
+					<tr>
+						<td style="height: 100px;">
+							<p style="line-height: 35px;">快速设置:</p>
+							<ul class="quickSet">
+								<li><input type="checkbox" class="tabCheckbox" id="save" name="quickChoose" /><label for="save">相同</label></li>
+								<li><input type="checkbox" class="tabCheckbox" id="like" name="quickChoose" /><label for="like">近似</label></li>
+								<li><input type="checkbox" class="tabCheckbox" id="back" name="quickChoose" /><label for="back">恢复默认选项</label></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				<div class="tabBtn" style="margin-top: 30px;margin-bottom: 15px;">
+					<a href="" id="sureBtn" style="width: 190px;">确定</a>
+					<a href="" style="width: 190px;" onclick="goBack()">取消</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+			function goBack(){
+				window.parent.mainGoBack();
+			}
+			$(document).ready(function(){
+					if($(".qureySelect",window.parent.document).val() != 1){
+						if($(".qureySelect",window.parent.document).val() != 2){
+							$(".algorithmSet").append('<li id="pic">图形特征</li>');
+						}
+						if($("#searchAllChinese",window.parent.document).val() != ""){
+							$(".algorithmSet").append('<li id="cn">中文名称</li>');
+						}
+						if($("#searchAllEnglish",window.parent.document).val() != ""){
+							$(".algorithmSet").append('<li id="en">西文名称</li>');
+						}
+						if($("#searchContTextS",window.parent.document).val() != ""){
+							$(".algorithmSet").append('<li id="imgElement">图形要素</li>');
+						}
+					}
+					if($(".qureySelect",window.parent.document).val() == 1){
+						$(".algorithmSet").append('<li id="pic">图行特征</li>');
+					}
+				$(".algorithmSet li:first-child").addClass("currentSet");
+
+				var getDefaultId = $(".algorithmSet li").eq(0).attr("id");
+				var cnArr = [];
+				var enArr = [];
+				var imgArr = [];
+				var picArr = [];
+				var id = "";
+				var cnQueryMode = "";
+				var enQueryMode = "";
+				var imgQueryMode = "";
+				var picQueryMode = "";
+				switch (getDefaultId){
+					case "cn":
+						$(".setMainCont").load('sbsb-cx-cn.html',function(){
+							cnArr = parent.$("#cnAlgorithm").val().split(";");
+//							cnQueryMode = parent.$("#cnQueryMode").val();
+							$(".identifyTable tr").each(function(){
+								for(var i=0; i<cnArr.length; i++){
+									if($(this).find('input').val() == cnArr[i]){
+										$(this).find('input').attr("checked","checked");
+									}
+								}
+							})
+							$(".identifyTable input[name='cItem']").click(function(){
+								$(".quickSet li input").removeAttr("checked");
+							})
+							
+							$("#like").click(function(){
+								$(".identifyTable input[name='cItem']").attr("checked","checked");
+							})
+							
+//							$(".quickSet li").each(function(){
+//								if($(this).find('input').val() == cnQueryMode){
+//									$(this).find('input').attr("checked","checked");
+//									$(this).siblings().find('input').removeAttr("checked");
+//								}
+//							})
+							$(".identifyTable").on('click','input',function(){
+								cnArr = [];
+								$(".identifyTable tr").each(function(){
+									if($(this).find('input').is(":checked")){
+										cnArr.push($(this).find('input').val())
+									}
+								})
+//								quickSet();
+//								$(".quickSet input").each(function(){
+//									if($(this).is(":checked")){
+//										cnQueryMode = $(this).val();
+//									}
+//								})
+							})
+						});
+						break;
+					case "en":
+						$(".setMainCont").load('sbsb-cx-en.html',function(){
+							enArr = parent.$("#enAlgorithm").val().split(";");
+//							enQueryMode = parent.$("#enQueryMode").val();
+							$(".identifyTable tr").each(function(){
+								for(var i=0; i<enArr.length; i++){
+									if($(this).find('input').val() == enArr[i]){
+										$(this).find('input').attr("checked","checked");
+									}
+								}
+							})
+							$(".identifyTable input[name='eItem']").click(function(){
+								$(".quickSet li input").removeAttr("checked");
+							})
+							
+							$("#like").click(function(){
+								$(".identifyTable input[name='eItem']").attr("checked","checked");
+							})
+							
+//							$(".quickSet li").each(function(){
+//								if($(this).find('input').val() == enQueryMode){
+//									$(this).find('input').attr("checked","checked");
+//									$(this).siblings().find('input').removeAttr("checked");
+//								}
+//							})
+							$(".identifyTable").on('click','input',function(){
+								enArr = [];
+								$(".identifyTable tr").each(function(){
+									if($(this).find('input').is(":checked")){
+										enArr.push($(this).find('input').val())
+									}
+								})
+//								quickSet();
+//								$(".quickSet input").each(function(){
+//									if($(this).is(":checked")){
+//										enQueryMode = $(this).val();
+//									}
+//								})
+							})
+						});
+						break;
+					case "imgElement":
+						$(".setMainCont").load('sbsb-cx-txys.html',function(){
+							imgArr = parent.$("#codeAlgorithm").val().split(";");
+//							imgQueryMode = parent.$("#codeQueryMode").val();
+							$(".identifyTable tr").each(function(){
+								for(var i=0; i<imgArr.length; i++){
+									if($(this).find('input').val() == imgArr[i]){
+										$(this).find('input').attr("checked","checked");
+									}
+								}
+							})
+							$(".identifyTable input[name='pItem']").click(function(){
+								$(".quickSet li input").removeAttr("checked");
+							})
+							
+							$("#like").click(function(){
+								$(".identifyTable input[name='pItem']").attr("checked","checked");
+							})
+//							$(".quickSet li").each(function(){
+//								if($(this).find('input').val() == imgQueryMode){
+//									$(this).find('input').attr("checked","checked");
+//									$(this).siblings().find('input').removeAttr("checked");
+//								}
+//							})
+							$(".identifyTable").on('click','input',function(){
+								imgArr = [];
+								$(".identifyTable tr").each(function(){
+									if($(this).find('input').is(":checked")){
+										imgArr.push($(this).find('input').val())
+									}
+								})
+//								quickSet();
+//								$(".quickSet input").each(function(){
+//									if($(this).is(":checked")){
+//										imgQueryMode = $(this).val();
+//									}
+//								})
+							})
+						});
+						break;
+					case "pic":
+						$(".setMainCont").load('sbsb-cx-txtz.html',function(){
+							picArr = parent.$("#imageAlgorithm").val().split(";");
+//							picQueryMode = parent.$("#imageQueryMode").val();
+							$(".identifyTable tr").each(function(){
+								for(var i=0; i<picArr.length; i++){
+									if($(this).find('input').val() == picArr[i]){
+										$(this).find('input').attr("checked","checked");
+									}
+								}
+							})
+							$(".identifyTable input[name='aItem']").click(function(){
+								$(".quickSet li input").removeAttr("checked");
+							})
+							
+							$("#like").click(function(){
+								$(".identifyTable input[name='aItem']").attr("checked","checked");
+							})
+							$("#save").click(function(){
+								$(".identifyTable input[name='aItem']").attr("checked","checked");
+							})
+							$("#back").click(function(){
+								$(".identifyTable input[name='aItem']").attr("checked","checked");
+							})
+//							$(".quickSet li").each(function(){
+//								if($(this).find('input').val() == picQueryMode){
+//									$(this).find('input').attr("checked","checked");
+//									$(this).siblings().find('input').removeAttr("checked");
+//								}
+//							})
+							$(".identifyTable").on('click','input',function(){
+								picArr = [];
+								$(".identifyTable tr").each(function(){
+									if($(this).find('input').is(":checked")){
+										picArr.push($(this).find('input').val())
+									}
+								})
+//								quickSet();
+//								$(".quickSet input").each(function(){
+//									if($(this).is(":checked")){
+//										picQueryMode = $(this).val();
+//									}
+//								})
+							})
+						});
+						break;
+					default:
+						break;
+				}
+				
+//				$(".setMainCont li input:checked").each(function(){
+//					switch (id){
+//						case value:
+//							break;
+//						default:
+//							break;
+//					}	
+//				})
+				$(".algorithmSet").on("click","li",function(){
+					$(this).addClass("currentSet").siblings().removeClass("currentSet");
+					$(".quickSet li input").removeAttr("checked");
+					var getId = $(this).attr("id");
+ 					switch (getId){
+						case "cn":
+							$(".setMainCont").load('sbsb-cx-cn.html',function(){
+//								if(cnQueryMode == ""){
+//									cnArr = parent.$("#cnAlgorithm").val().split(";");
+//									cnQueryMode = parent.$("#cnQueryMode").val();
+//									$(".quickSet input#save").attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//								}else{
+//									$(".quickSet input").each(function(){
+//										if(cnQueryMode == $(this).val()){
+//											$(this).attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//										}
+//									})
+//								}
+//								cnArr = parent.$("#cnAlgorithm").val().split(";");
+	//							cnQueryMode = parent.$("#cnQueryMode").val();
+								$(".identifyTable tr").each(function(){
+									for(var i=0; i<cnArr.length; i++){
+										if($(this).find('input').val() == cnArr[i]){
+											$(this).find('input').attr("checked","checked");
+										}
+									}
+								})
+								$(".identifyTable input[name='cItem']").click(function(){
+									$(".quickSet li input").removeAttr("checked");
+								})
+								
+								$("#like").click(function(){
+									$(".identifyTable input[name='cItem']").attr("checked","checked");
+								})
+								
+	//							$(".quickSet li").each(function(){
+	//								if($(this).find('input').val() == cnQueryMode){
+	//									$(this).find('input').attr("checked","checked");
+	//									$(this).siblings().find('input').removeAttr("checked");
+	//								}
+	//							})
+								$(".identifyTable").on('click','input',function(){
+									cnArr = [];
+									$(".identifyTable tr").each(function(){
+										if($(this).find('input').is(":checked")){
+											cnArr.push($(this).find('input').val())
+										}
+									})
+	//								quickSet();
+	//								$(".quickSet input").each(function(){
+	//									if($(this).is(":checked")){
+	//										cnQueryMode = $(this).val();
+	//									}
+	//								})
+								})
+							});
+							break;
+						case "en":
+							$(".setMainCont").load('sbsb-cx-en.html',function(){
+//								if(enQueryMode == ""){
+//									enArr = parent.$("#enAlgorithm").val().split(";");
+//									enQueryMode = parent.$("#enQueryMode").val();
+//									$(".quickSet input#save").attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//								}else{
+//									$(".quickSet input").each(function(){
+//										if(enQueryMode == $(this).val()){
+//											$(this).attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//										}
+//									})
+//								}
+//								enArr = parent.$("#enAlgorithm").val().split(";");
+	//							enQueryMode = parent.$("#enQueryMode").val();
+								$(".identifyTable tr").each(function(){
+									for(var i=0; i<enArr.length; i++){
+										if($(this).find('input').val() == enArr[i]){
+											$(this).find('input').attr("checked","checked");
+										}
+									}
+								})
+								$(".identifyTable input[name='eItem']").click(function(){
+									$(".quickSet li input").removeAttr("checked");
+								})
+								
+								$("#like").click(function(){
+									$(".identifyTable input[name='eItem']").attr("checked","checked");
+								})
+								
+	//							$(".quickSet li").each(function(){
+	//								if($(this).find('input').val() == enQueryMode){
+	//									$(this).find('input').attr("checked","checked");
+	//									$(this).siblings().find('input').removeAttr("checked");
+	//								}
+	//							})
+								$(".identifyTable").on('click','input',function(){
+									enArr = [];
+									$(".identifyTable tr").each(function(){
+										if($(this).find('input').is(":checked")){
+											enArr.push($(this).find('input').val())
+										}
+									})
+	//								quickSet();
+	//								$(".quickSet input").each(function(){
+	//									if($(this).is(":checked")){
+	//										enQueryMode = $(this).val();
+	//									}
+	//								})
+								})
+							});
+							break;
+						case "imgElement":
+							$(".setMainCont").load('sbsb-cx-txys.html',function(){
+//								if(imgQueryMode == ""){
+//									imgArr = parent.$("#codeAlgorithm").val().split(";");
+//									imgQueryMode = parent.$("#codeQueryMode").val();
+//								}
+								$(".identifyTable tr").each(function(){
+									for(var i=0; i<imgArr.length; i++){
+										if($(this).find('input').val() == imgArr[i]){
+											$(this).find('input').attr("checked","checked");
+										}
+									}
+								})
+								$(".identifyTable input[name='pItem']").click(function(){
+									$(".quickSet li input").removeAttr("checked");
+								})
+								
+								$("#like").click(function(){
+									$(".identifyTable input[name='pItem']").attr("checked","checked");
+								})
+//								if(imgQueryMode != ""){
+//									$(".quickSet input").each(function(){
+//										if(imgQueryMode == $(this).val()){
+//											$(this).attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//										}
+//									})
+//								}else{
+//									$(".quickSet input#save").attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//								}
+								$(".identifyTable").on('click','input',function(){
+									imgArr = [];
+									$(".identifyTable tr").each(function(){
+										if($(this).find('input').is(":checked")){
+											imgArr.push($(this).find('input').val())
+										}
+									})
+//									quickSet();
+//									$(".quickSet input").each(function(){
+//										if($(this).is(":checked")){
+//											imgQueryMode = $(this).val();
+//										}
+//									})
+								})
+							});
+							break;
+						case "pic":
+							$(".setMainCont").load('sbsb-cx-txtz.html',function(){
+//								if(picQueryMode == ""){
+//									picArr = parent.$("#imageAlgorithm").val().split(";");
+//									picQueryMode = parent.$("#imageQueryMode").val();
+//								}
+								$(".identifyTable tr").each(function(){
+									for(var i=0; i<picArr.length; i++){
+										if($(this).find('input').val() == picArr[i]){
+											$(this).find('input').attr("checked","checked");
+										}
+									}
+								})
+								$("#like").click(function(){
+									$(".identifyTable input[name='aItem']").attr("checked","checked");
+								})
+								$("#save").click(function(){
+									$(".identifyTable input[name='aItem']").attr("checked","checked");
+								})
+								$("#back").click(function(){
+									$(".identifyTable input[name='aItem']").attr("checked","checked");
+								})
+//								if(picQueryMode != ""){
+//									$(".quickSet input").each(function(){
+//										if(picQueryMode == $(this).val()){
+//											$(this).attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//										}
+//									})
+//								}else{
+//									$(".quickSet input#save").attr("checked","checked").parent().siblings().find('input').removeAttr("checked");
+//								}
+								$(".identifyTable").on('click','input',function(){
+									picArr = [];
+									$(".identifyTable tr").each(function(){
+										if($(this).find('input').is(":checked")){
+											picArr.push($(this).find('input').val())
+										}
+									})
+//									quickSet();
+//									$(".quickSet input").each(function(){
+//										if($(this).is(":checked")){
+//											picQueryMode = $(this).val();
+//										}
+//									})
+								})
+							});
+							break;
+						default:
+							break;
+					}
+				})
+				
+				$(".quickSet li input").click(function(){
+					if($(this).is(":checked")){
+						$(this).parent().siblings().children('input').removeAttr('checked');
+					}
+				})
+				
+				var compare = [];
+				$("#save").click(function(){
+					if($("#cn").hasClass('currentSet')){
+						compare = ['a1','a2','a3','a4','a5','a6','a9','g4'];
+						cnArr = [];
+						$(".identifyTable input[name='cItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='cItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									cnArr.push(compare[i]);
+								}
+							}
+						})
+					}
+					if($("#en").hasClass('currentSet')){
+						compare = ['b1','b2','b3','b4','b5','b6','b7','b8','h1','h4','h6','h7'];
+						enArr = [];
+						$(".identifyTable input[name='eItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='eItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									enArr.push(compare[i]);
+								}
+							}
+						})
+					}
+					if($("#imgElement").hasClass('currentSet')){
+						compare = ['c1'];
+						imgArr = [];
+						$(".identifyTable input[name='pItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='pItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									imgArr.push(compare[i]);
+								}
+							}
+						})
+					}
+				})
+				
+				$("#back").click(function(){
+					if($("#cn").hasClass('currentSet')){
+						console.log(123131)
+						compare = ['a1','a2','a3','a4','a5','a6','a9','g4'];
+						cnArr = [];
+						$(".identifyTable input[name='cItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='cItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									cnArr.push(compare[i]);
+								}
+							}
+						})
+					}
+					if($("#en").hasClass('currentSet')){
+						compare = ['b1','b2','b3','b4','b5','b6','b7','b8','h1','h4','h6','h7'];
+						enArr = [];
+						$(".identifyTable input[name='eItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='eItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									enArr.push(compare[i]);
+								}
+							}
+						})
+					}
+					if($("#imgElement").hasClass('currentSet')){
+						compare = ['c1'];
+						imgArr = [];
+						$(".identifyTable input[name='pItem']").removeAttr("checked");
+						$(".identifyTable tr").find("input[name='pItem']").each(function(){
+							for(var i=0; i<compare.length; i++){
+								if($(this).val() == compare[i]){
+									$(this).attr("checked","checked");
+									imgArr.push(compare[i]);
+								}
+							}
+						})
+					}
+				})
+//				$(".quickSet li input").click(function(){
+//					if($(".algorithmSet li#cn").hasClass('currentSet')){
+//						cnQueryMode = $(this).val();
+//						if(cnQueryMode != 2){
+//							cnArr = [];
+//						}
+//					}
+//					if($(".algorithmSet li#en").hasClass('currentSet')){
+//						enQueryMode = $(this).val();
+//						if(enQueryMode != 2){
+//							enArr = [];
+//						}
+//					}
+//					if($(".algorithmSet li#imgElement").hasClass('currentSet')){
+//						imgQueryMode = $(this).val();
+//						if(imgQueryMode != 2){
+//							imgArr = [];
+//						}
+//					}
+//					if($(".algorithmSet li#pic").hasClass('currentSet')){
+//						picQueryMode = $(this).val();
+//						if(picQueryMode != 2){
+//							picArr = [];
+//						}
+//					}
+//				})
+				
+				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+				$("#sureBtn").on('click', function(){
+					if(cnQueryMode == 2 && cnArr == ""){
+						alert("已选择自定义，中文名称具体算法不能为空！");
+						return false;
+					}
+					if(enQueryMode == 2 && enArr == ""){
+						alert("已选择自定义，英文名称具体算法不能为空！");
+						return false;
+					}
+					if(imgQueryMode == 2 && imgArr == ""){
+						alert("已选择自定义，图形要素具体算法不能为空！");
+						return false;
+					}
+					if(picQueryMode == 2 && picArr == ""){
+						alert("已选择自定义，图像特征具体算法不能为空！");
+						return false;
+					}
+					cnQueryMode = cnQueryMode || 0;
+					enQueryMode = enQueryMode || 0;
+					imgQueryMode = imgQueryMode || 0;
+					picQueryMode = picQueryMode || 0;
+					parent.$("#cnAlgorithm").val(cnArr.join(";"))
+					parent.$("#enAlgorithm").val(enArr.join(";"))
+					parent.$("#codeAlgorithm").val(imgArr.join(";"))
+					parent.$("#imageAlgorithm").val(picArr.join(";"))
+					parent.$("#cnQueryMode").val(cnQueryMode);
+					parent.$("#enQueryMode").val(enQueryMode);
+					parent.$("#codeQueryMode").val(imgQueryMode);
+					parent.$("#imageQueryMode").val(picQueryMode);
+					parent.$("#set").attr("checked","checked");
+					parent.layer.close(index);
+				})
+				
+//				$(".quickSet li input").click(function(){
+//					if($(this).is(":checked")){
+//						$(this).parent().siblings().children('input').removeAttr('checked');
+//					}
+//					if($(this).parent().siblings().children('input').attr("checked",false)){
+//						$(this).attr("checked",true);
+//					}
+//				})
+				
+//				$("#like").click(function(){
+//					if($(this).is(":checked")){
+//						$(".identifyTable input[name='cItem']").removeAttr("checked")
+//						$("#cItem1").attr("checked","checked");
+//						$("#cItem2").attr("checked","checked");
+//					}else{
+//						$("#cItem1").removeAttr("checked");
+//						$("#cItem2").removeAttr("checked");
+//					}
+//				})
+//				
+//				$("#save").click(function(){
+//					if($(this).is(":checked")){
+//						$(".identifyTable input[name='cItem']").removeAttr("checked")
+//						$("#cItem3").attr("checked","checked");
+//					}else{
+//						$("#cItem3").removeAttr("checked");
+//					}
+//				})
+//				
+//				$(".identifyTable input[name='cItem']").click(function(){
+//					if($("#cItem1").is(":checked") && $("#cItem2").is(":checked") && $(".identifyTable input[name='cItem']:checked").length == 2){
+//						$("#like").attr("checked","checked");
+//						$("#back").removeAttr("checked");
+//						$("#save").removeAttr("checked");
+//					}else if($("#cItem3").is(":checked") && $(".identifyTable input[name='cItem']:checked").length == 1){
+//						$("#save").attr("checked","checked");
+//						$("#back").removeAttr("checked");
+//						$("#like").removeAttr("checked");
+//					}else{
+//						$("#back").attr("checked","checked");
+//						$("#like").removeAttr("checked");
+//						$("#save").removeAttr("checked");
+//					}
+//				})
+
+//				$(".setMainCont li input").click(function(){
+//					$("#back").attr("checked","checked");
+//					$("#like").removeAttr("checked");
+//					$("#save").removeAttr("checked");
+//				})
+
+				
+		})
+		</script>
+		
+	</body>
+</html>

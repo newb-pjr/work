@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="indexOption">
+				<a href="javasrcript:void(0)" class="btn chooseIconSec">选取</a>
+				<a href="javasrcript:void(0);" class="btn cutIcon">裁剪</a>
+				<a href="javasrcript:void(0);" class="btn groupIcon">分拆组合</a>
+				<a href="javasrcript:void(0);" class="btn searchIcon">查询算法</a>
+			</div>
+			<div class="spacing"></div>
+			<div class="mainCont">
+				<div class="leftCont">
+					<span>要识标的商标图样</span>
+					<div class="imgframe">
+						<img src="img/logodemo2.jpg" />
+					</div>
+					<a class="identifyBtn sureBtn" href="" style="margin-right: 13px;">确认</a>
+					<a class="identifyBtn cancelBtn" href="">取消</a>
+				</div>
+				<div class="midSpacing"></div>
+				<div class="rightCont">
+					<ul class="rightContTab">
+						<li><a href="sbsb-fczh.html">分拆组合</a></li>
+						<li class="rigContCurrent"><a href="javascript:void(0)">追加或替换</a></li>
+						<li><a href="">添加查询内容</a></li>
+						<li><a href="">商品服务类别</a></li>
+						<li><a href="">查询条件设置</a></li>
+					</ul>
+					<div class="addTo">
+						<ul class="addToTab">
+							<li class="addToClassCurrent"><a href="">类别</a></li>
+							<li><span>|</span></li>
+							<li><a href="">类似群</a></li>
+							<li><span>|</span></li>
+							<li><a href="">商品查询</a></li>
+						</ul>
+					</div>
+					<div class="tabCont">
+						<ul class="tabContClass">
+							<li><a href="">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href="">4</a></li>
+							<li><a href="">5</a></li>
+							<li><a href="">6</a></li>
+							<li><a href="">7</a></li>
+							<li><a href="">8</a></li>
+							<li><a href="">9</a></li>
+							<li><a href="">10</a></li>
+							<li><a href="">11</a></li>
+							<li><a href="">12</a></li>
+							<li><a href="">13</a></li>
+							<li><a href="">14</a></li>
+							<li><a href="">15</a></li>
+							<li><a href="">16</a></li>
+							<li><a href="">17</a></li>
+							<li><a href="">18</a></li>
+							<li><a href="">19</a></li>
+							<li><a href="">20</a></li>
+							<li><a href="">21</a></li>
+							<li><a href="">22</a></li>
+							<li><a href="">23</a></li>
+							<li><a href="">24</a></li>
+							<li><a href="">25</a></li>
+							<li><a href="">26</a></li>
+							<li><a href="">27</a></li>
+							<li><a href="">28</a></li>
+							<li><a href="">29</a></li>
+							<li><a href="">30</a></li>
+							<li><a href="">31</a></li>
+							<li><a href="">32</a></li>
+							<li><a href="">33</a></li>
+							<li><a href="">34</a></li>
+							<li><a href="">35</a></li>
+							<li><a href="">36</a></li>
+							<li><a href="">37</a></li>
+							<li><a href="">38</a></li>
+							<li><a href="">39</a></li>
+							<li><a href="">40</a></li>
+							<li><a href="">41</a></li>
+							<li><a href="">42</a></li>
+							<li><a href="">43</a></li>
+							<li><a href="">44</a></li>
+							<li><a href="">45</a></li>
+						</ul>
+						<span style="font-size: 14px;">查询的商品服务范围：</span>
+						<input type="text" class="tabClassInput" />
+					</div>
+					<div class="tabBtn">
+						<a href="" style="margin-right: 10px;">保存 </a>
+						<a href="">取消 </a>
+					</div>
+				</div>
+			</div>
+			
+	
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="layer/layer.js" ></script>
+		<script>
+		$(document).ready(function(){
+			$(".groupIcon").click(function(){
+				layer.open({
+				  type: 2,
+				  title: '商标拆分组合',
+				  shadeClose: true,
+				  shade: 0.8,
+				  area: ['880px', '80%'],
+				  content: 'sbsb-cfzh.html' //iframe的url
+				});
+			})
+			$(".searchIcon").click(function(){
+				layer.open({
+				  type: 2,
+				  title: '算法查询设置',
+				  shadeClose: true,
+				  shade: 0.8,
+				  area: ['887px', '80%'],
+				  content: 'sbsb-sfsz.html' //iframe的url
+				});
+			})
+		})
+//		var index = 0;
+//			function addTab(obj){
+//			var href = obj.getAttribute("_href");
+//			//alert(href);
+//			index++;
+//			$('#tt').tabs('add',{
+//				title:'New Tab ' + index,
+//				content:'Tab Body ' + index,
+//				href:href,
+//				iconCls:'icon-save',
+//				closable:true,
+//				height:'500',
+//				width:'100%'
+//			});
+//		}
+		</script>
+	</body>
+</html>

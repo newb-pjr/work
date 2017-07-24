@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="groupCont">
+			<div class="uploadMain">
+				<form enctype="multipart/form-data" id="onlineUpfileForm">
+					<table border="1" bordercolor="#c0c0c0" class="orderpaymentTable">
+						<tr>
+							<!--<th>选择</th>-->
+							<th>序号</th>
+							<th>文件类型</th>
+							<th>文件名称</th>
+							<th>选择文件</th>
+							<th>查看</th>
+						</tr>
+						<tr>
+							<!--<td><input type="radio" checked="checked" name="choose" /></td>-->
+							<td>1</td>
+							<td>商标注册申请书扫描件</td>
+							<td>商标注册申请书</td>
+							<td><input type="file" name="apply" accept="image/png,image/jpg" /></td>
+							<td><a href="javascript:void(0)" class="openFile" id="apply">打开</a></td>
+						</tr>
+						<tr>
+							<!--<td><input type="radio" name="choose" /></td>-->
+							<td>2</td>
+							<td>申请人身份证明文件扫描件</td>
+							<td>营业执照</td>
+							<td><input type="file" name="licence" accept="image/png,image/jpg" /></td>
+							<td><a href="javascript:void(0)" class="openFile" id="licence">打开</a></td>
+						</tr>
+						<tr>
+							<!--<td><input type="radio" name="choose" /></td>-->
+							<td>3</td>
+							<td>商标代理委托书扫描件</td>
+							<td>商标代理委托书</td>
+							<td><input type="file" name="agent" accept="image/png,image/jpg" /></td>
+							<td><a href="javascript:void(0)" class="openFile" id="agent">打开</a></td>
+						</tr>
+						<tr>
+							<!--<td><input type="radio" name="choose" /></td>-->
+							<td>4</td>
+							<td>其他</td>
+							<td>其他</td>
+							<td><input type="file" name="other" accept="image/png,image/jpg" /></td>
+							<td><a href="javascript:void(0)" class="openFile" id="other">打开</a></td>
+						</tr>
+					</table>
+				</form>
+				<table border="1" bordercolor="#0272cf" class="handleFile">
+					<tr>
+						<!--<td><a href="">增加新附件</a></td>-->
+						<td><a href="javascript:void(0)" id="up">上移</a></td>
+						<td><a href="javascript:void(0)" id="down">下移</a></td>
+						<td><a href="">删除</a></td>
+						<td><a href="javascript:void(0)" id="saveFile">保存</a></td>
+						<td><a href="">上传</a></td>
+						<td><a href="">关闭</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/interface/onlineApplyUpfile.js" ></script>
+		<script>
+			$(document).ready(function(){
+				$("#up").click(function(){
+					$.each($("table input:checked"),function(){  
+				       var onthis=$(this).parent().parent();  
+				       var getUp=onthis.prev();  
+				         
+				       if ($(getUp).has("input").size()==0)  
+					       {  
+					          return;  
+					       }  
+				       $(onthis).after(getUp);  
+				 });  
+				})
+				
+				$("#down").click(function(){
+					 $.each($("table input:checked"),function(){  
+				       var onthis=$(this).parent().parent();  
+				       var getdown=onthis.next();  
+				       $(getdown).after(onthis);  
+				  	});  
+				})
+			})
+		</script>
+	</body>
+</html>

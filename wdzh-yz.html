@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="validTitle">
+			为保障你的账号，系统需要对你绑定的信息进行验证，以确保后续操作的安全
+		</div>
+		<div class="validCont">
+			<p>输入发送至你原有绑定手机或邮箱的验证码：</p>
+			<input type="text" class="handleInfoText" placeholder="验证码" id="unBindCodeText">
+			<input class="BindCodeBtn" id="getUnBindCode" value="获取验证码" type="button" style="background-color: #098BEA;color: #fff;">
+			<p>输入发送至你新绑定手机或邮箱的验证码：</p>
+			<input type="text" class="handleInfoText" placeholder="验证码" id="BindCodeText">
+			<input class="BindCodeBtn" id="getBindCode" value="获取验证码" type="button" style="background-color: #098BEA;color: #fff;">
+			<input class="accountSub" type="submit" value="修 改" id="accountSub" />
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/getUnBindCode.js" ></script>
+		<script type="text/javascript" src="js/interface/getBindCode.js" ></script>
+		<script type="text/javascript" src="js/interface/updateUserInfoS.js" ></script>
+	</body>
+</html>

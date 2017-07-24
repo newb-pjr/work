@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="sort" id="sort">
+			<label><input type="radio" name="sort" value="0" checked="checked" />商标图像</label>
+			<label><input type="radio" name="sort" value="1" />中文名称</label>
+			<label><input type="radio" name="sort" value="2" />西文名称</label>
+			<label><input type="radio" name="sort" value="3" />商标类别</label>
+			<label><input type="radio" name="sort" value="4" />注册人名称</label>
+			<label><input type="radio" name="sort" value="5" />注册号或申请号</label>
+			<label><input type="radio" name="sort" value="6" />申请日期</label>
+			<label><input type="radio" name="sort" value="7" />初审日期</label>
+			<label><input type="radio" name="sort" value="8" />注册日期</label>
+		</div>
+		<div class="tabBtn" style="margin: 20px auto">
+			<a href="javascript:void(0)" style="margin: 0 auto; display: block; float: none;" id="sortBtn">确定</a>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+			$(document).ready(function(){
+				$("#sortBtn").click(function(){
+					var TaskID = getCookie("TaskID");
+					var SortType;
+					$("#sort input").each(function(){
+						if($(this).is(":checked")){
+							SortType = $(this).val();
+							document.cookie = "SortType="+SortType;
+						}
+					})
+					$.ajax({
+						type:"post",
+						url:"Handler/getSearchResultByTaskID.ashx",
+						async:true,
+						data:{platformType:1,isWeb:1,TaskID:TaskID,SortType:SortType,BeginRow:1,EndRow:16},
+						success:function(data){
+							var dataObj = eval("("+data+")");
+							if(dataObj.status==1){
+								window.data = dataObj.data;
+								window.parent.mainGoBack();
+								closeTab('查询结果-图像显示');
+								handleTab('sbsb-cxjg-img.html','查询结果-图像显示');
+							}else{
+								dataStatus(dataObj);
+							}
+						}
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="groupCont">
+				<div class="applyTips">
+					提示：你可以点击右侧按钮，实现如下信息的快速录入
+					<a href="javascript:void(0)" id="importInfo">从已申请注册的注册号导入</a>
+				</div>
+				<p class="applyTitle">请按下表指引填写申请书，如果你需要的帮助，我们的商标服务专员可以为你提供贴身的商标专业服务</p>
+				<table border="0" class="applyTable">
+					<tr>
+						<td>申请人名称（中文）：</td>
+						<td><input class="applyText" type="text" id="chineseName" /><strong style="color: red;">*</strong></td>
+					</tr>
+					<tr>
+						<td>申请人名称（英文）：</td>
+						<td><input class="applyText" type="text" id="englishName" /></td>
+					</tr>
+					<tr>
+						<td>申请人国籍/地区：</td>
+						<td><input class="applyText" type="text" id="applyArea" /><strong style="color: red;">*</strong></td>
+					</tr>
+					<tr>
+						<td>申请人地址（中文）：</td>
+						<td><input class="applyText" type="text" id="chineseAddress" /><strong style="color: red;">*</strong></td>
+					</tr>
+					<tr>
+						<td>申请人地址（英文）：</td>
+						<td><input class="applyText" type="text" id="englishAddress" /></td>
+					</tr>
+					<tr>
+						<td>邮政编码：</td>
+						<td><input class="applyText" type="text" id="zipcode" /></td>
+					</tr>
+					<tr>
+						<td>联系人：</td>
+						<td><input class="applyText" type="text" id="contact" /></td>
+					</tr>
+					<tr>
+						<td>外国申请人的国内接收人：</td>
+						<td><input class="applyText" type="text" id="foreignContact" /></td>
+					</tr>
+					<tr>
+						<td>外国申请人的国内接收地址：</td>
+						<td><input class="applyText" type="text" id="foreignAddress" /></td>
+					</tr>
+					<tr>
+						<td>邮政编码：</td>
+						<td><input class="applyText" type="text" id="foreignZipcode" /></td>
+					</tr>
+					<tr>
+						<td>代理机构名称：</td>
+						<td><input class="applyText" type="text" id="storeName" value="佛山市国方商标服务有限公司" /></td>
+					</tr>
+					<tr style="background-color: #F7F7F7;">
+						<td>商标申请声明：</td>
+						<td>
+							<ul class="applyCheckbox">
+								<li><input class="tabCheckbox" type="checkbox" id="team" name="declaraction" /><label for="team">集体商标</label><input class="tabCheckbox" type="checkbox" id="prove" name="declaraction" /><label for="prove">证明商标</label></li>
+								<li><input class="tabCheckbox" type="checkbox" id="threeD" /><label for="threeD">以三维标志申请商标注册</label></li>
+								<li><input class="tabCheckbox" type="checkbox" id="color" /><label for="color">以颜色组合申请商标注册</label></li>
+								<li><input class="tabCheckbox" type="checkbox" id="sound" /><label for="sound">以声音标志申请商标注册</label></li>
+								<li><input class="tabCheckbox" type="checkbox" id="common" /><label for="common">两个以上申请人共同申请注册同一商标</label></li>
+							</ul>
+					</tr>
+					<tr style="background-color: #F7F7F7;">
+						<td>要求优先权声明：</td>
+						<td>
+							<input class="tabCheckbox" type="checkbox" id="first" style="margin-left: 10px;" name="priority" /><label for="first">基于第一次申请的优先权</label>
+							<input class="tabCheckbox" type="checkbox" id="exhibition" name="priority" /><label for="exhibition">基于展会的优先权</label>
+							<input class="tabCheckbox" type="checkbox" id="waiting" /><label for="waiting">优先权证明文件后补</label>
+						</td>
+					</tr>
+					<tr>
+						<td>申请/展出国家/地区：</td>
+						<td><input class="applyText" type="text" id="area" /></td>
+					</tr>
+					<tr>
+						<td>申请/展出日期：</td>
+						<td><input class="applyText" type="text" id="applyDate" /></td>
+					</tr>
+					<tr>
+						<td>申请号：</td>
+						<td><input class="applyText" type="text" id="applyCode" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><a href="javascript:void(0)" onclick="handleLayer('添加共同申请人','wsfw-sqs-gtsqr.html')" class="applyAdd">再添加其他共同申请人<img src="img/applyAdd.png" /></a></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: center; margin-top: 25px; height: 95px;">申请商标标识图样：<a href="javascript:void(0)" class="applyUpload">浏览</a><a href="javascript:void(0)" class="applyUpload">上传</a><strong style="color: red;">*</strong><form id="applyImgForm" enctype="multipart/form-data" style="position: relative;"><input type="file" class="applyFileUpload" name="applyFileUpload" accept="image/png,image/jpg" /></form></td>
+					</tr>
+				</table>
+				<hr />
+				<div class="applyDesign">
+					<div class="left">
+						图样应当不大于10*10cm，不小于5*5cm。以颜色组合或者着色样申请商标注册的，应当提交着色图
+						样并提交黑白稿1份。不指定颜色的，应当提交黑白图样。以三维标志申请商标注册的，应当提交能够确
+						定三维形状的图样，提交的商标图样应当至少包含三面视图。以声音标志申请商标注册的，应当以五线
+						谱或者简谱对申请用作商标的声音加以描述并附加文字说明；无法以五线谱或者简谱描述的，应当使用
+						文字进行描述，商标描述与声音样本应当一致。
+					</div>
+					<div class="right">
+						<img id="applyImg" src="img/demopic.jpg" width="126" height="158" />
+					</div>
+				</div>
+				<div class="cls"></div>
+				<table border="0" class="applyTable">
+					<tr>
+						<td width="180">商标说明：</td>
+						<td><input class="applyText" type="text" id="describe" /></td>
+					</tr>
+					<tr>
+						<td>使用商品：</td>
+						<td>
+							<a href="javascript:void(0)" class="selectList" onclick="handleLayer('从商品分类表中选择商品及类别','wsfw-sqs-flb.html','1100px')">从商品分类表中选 </a><strong style="color: red;">*</strong>
+							<!--<a href="javascript:void(0)" class="selectList" onclick="handleLayer('已选商品服务列表','wsfw-sqs-yxsplb.html')">查看已选商品列表 </a>-->
+						</td>
+					</tr>
+					<!--<tr>
+						<td>类别：</td>
+						<td><input class="applyText" type="text" /><strong style="color: red;">*</strong></td>
+					</tr>
+					<tr>
+						<td>商品/服务项目：</td>
+						<td><textarea class="applyTextarea"></textarea><strong style="color: red;">*</strong></td>
+					</tr>
+					<tr>
+						<td colspan="2"><a href="" class="applyAdd">再添加类别和商品/服务项目<img src="img/applyAdd.png" /></a></td>
+					</tr>-->
+					<tr>
+						<td colspan="2" style="text-align: left; padding-left: 20px;">
+							<a href="javascript:void(0)" class="applyCheck" onclick="handleLayer('是否有在先相同商标的检查报告','wsfw-sqs-jcbg.html')">检查是否有在先申请/注册商标</a>
+							商标中含有的文字：<input type="text" class="includeChinese" />
+						</td>
+					</tr>
+					<tr style="height: 100px;">
+						<td>留言：</td>
+						<td><textarea class="applyTextarea" id="feedback"></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><a href="javascript:void(0)" class="supply" onclick="handleLayer('商标注册申请书补充页','wsfw-sqs-bc.html')">填写补充页</a></td>
+					</tr>
+				</table>
+				<hr />
+				<div class="tabBtn" style="margin-top: 30px;margin-bottom: 30px;">
+					<a href="" style="margin-right: 10px;">修改</a>
+					<a href="javascript:void(0)" id="saveApply">保存</a>
+				</div>
+			</div>
+			<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+			<script type="text/javascript" src="js/common.js" ></script>
+			<script type="text/javascript" src="js/interface/applyUpfile.js" ></script>
+			<script type="text/javascript" src="js/interface/editTradeMarkApply.js" ></script>
+			<!--<script type="text/javascript" src="js/interface/getTradeMarkApply.js" ></script>-->
+			<script>
+				$(document).ready(function(){
+					$(".applyCheckbox li input[name='declaraction']").click(function(){
+						if($(this).is(":checked")){
+							$(this).siblings("input[name='declaraction']").removeAttr("checked");
+						}
+					})
+					
+					$(".applyTable input[name='priority']").click(function(){
+						if($(this).is(":checked")){
+							$(this).siblings("input[name='priority']").removeAttr("checked");
+						}
+					})
+				})
+			</script>
+	</body>
+</html>

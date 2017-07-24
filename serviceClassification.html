@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+
+	<body>
+		<div class="productType">
+			<div class="addTo" style="width: 1280px;">
+				<ul class="addToTab" id="addToTab">
+					<li class="addToClassCurrent">
+						<a href="javascript:void(0)">类别</a>
+					</li>
+					<li><span>|</span></li>
+					<li>
+						<a href="javascript:void(0)">类似群</a>
+					</li>
+					<li><span>|</span></li>
+					<li>
+						<a href="javascript:void(0)">商品查询</a>
+					</li>
+				</ul>
+			</div>
+			<ul id="searchTabCont">
+				<li>
+					<div class="tabCont" style="height: 100%;padding-bottom: 15px;width: 1280px;">
+						<ul class="tabContClass" id="tabContClass" style="height: 100%;">
+							<li>
+								<a href="javascript:void(0)">1</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">2</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">3</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">4</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">5</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">6</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">7</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">8</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">9</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">10</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">11</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">12</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">13</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">14</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">15</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">16</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">17</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">18</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">19</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">20</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">21</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">22</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">23</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">24</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">25</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">26</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">27</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">28</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">29</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">30</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">31</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">32</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">33</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">34</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">35</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">36</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">37</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">38</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">39</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">40</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">41</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">42</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">43</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">44</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">45</a>
+							</li>
+						</ul>
+					</div>
+					<label>
+						<input type="checkbox" class="tabCheckbox" id="allClassA" checked="checked" name="allClass" /> 全选
+					</label>
+					<!--<span style="font-size: 14px;">查询的商品服务范围：</span>
+					<input type="text" class="tabClassInput" id="serviceClass" disabled="disabled" value="全类" />
+					<a href="javascript:void(0)" class="allClass" id="allClass">全类</a>-->
+					<!--<div class="tabBtn" style="height: 90px\9;margin-top: 25px;">
+						<a href="javascript:void(0)" onclick="saveSearchValue(this,0)">保存</a>
+					</div>-->
+				</li>
+				<li>
+					<div class="tabCont" style="width: 1280px;">
+						<table border="0" class="tabClassTable">
+							<tr>
+								<td>类别：
+									<select class="tabClassSelect" id="classSelect" onchange="productGroupList(this.value)">
+										<option value="0">未选择</option>
+									</select>
+								</td>
+								<td>类似群：
+									<select class="tabClassSelect" id="groupSelect" onchange="productGroupListSec(this.value)">
+										<option value="0">未选择</option>
+									</select>
+								</td>
+								<!--<td><a href="javascript:void(0)" class="refresh" style="float: left; margin-top: 0; margin-left: 10px;">查找</a></td>-->
+							</tr>
+						</table>
+						<div class="tabClassCont" style="font-size: 14px;">
+							<div id="classNum"></div>
+							<ul class="tabClassUl" id="groupNameResult">
+								<!--<li><input type="checkbox" class="tabImgCheckbox" id="0901" /> <label>0901 电子计算机及其外部设备</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0902" /> <label>0902 记录、记数检测器</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0903" /> <label>0903 其他办公机械（不包括打字机、誉定机、油印机）</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0904" /> <label>0904衡器</label></li>-->
+							</ul>
+						</div>
+						<label>
+							<input type="checkbox" class="tabCheckbox" id="allClassB" checked="checked"  name="allClass" /> 全选
+						</label>
+						<!--<span style="font-size: 14px;">查询的商品服务范围：</span>
+						<input type="text" class="tabClassInput" id="groupNameText" disabled="disabled" value="全类" />
+						<a href="javascript:void(0)" class="allClass" id="allClass">全类</a>-->
+						<!--<div class="tabBtn" style="margin-top: 50px;">
+							<a href="javascript:void(0);" onclick="saveSearchValue(this)">保存 </a>
+						</div>-->
+					</div>
+				</li>
+				<li>
+					<div class="tabCont" style="width: 1280px;">
+						<table border="0" class="tabClassTable">
+							<tr>
+								<!--<td>类别：<select class="tabClassSelect"><option>09</option><option>10</option></select></td>
+												<td>类似群：<select class="tabClassSelect"><option>全部</option><option>10</option></select></td>-->
+								<td style="width: 310px;">商品名称：<input type="text" id="productName" />
+									<a href="javascript:void(0)" id="proNameService" class="refresh" style="float: none; margin-top: 0px; margin-left: 10px; display: inline-block; vertical-align: middle;">查找</a>
+								</td>
+							</tr>
+						</table>
+						<div class="tabClassCont">
+							<ul class="tabClassUl" id="proNameResult">
+								<!--<li><input type="checkbox" class="tabImgCheckbox" id="1101" /> <label for="1101">1101  灯泡</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 1101  电灯泡</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 1101  运载工具转向信号装置用灯泡</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 0720  制灯泡机械</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 0909  闪光灯泡（摄影）</li>-->
+							</ul>
+						</div>
+						<label>
+							<input type="checkbox" class="tabCheckbox" id="allClassC" checked="checked" name="allClass" /> 全选
+						</label>
+						<!--<span style="font-size: 14px;">查询的商品服务范围：</span>
+						<input type="text" class="tabClassInput" id="proNameText" disabled="disabled" value="全类" />
+						<a href="javascript:void(0)" class="allClass" id="allClass">全类</a>-->
+						<!--<div class="tabBtn" style="margin-top: 50px;">
+							<a href="javascript:void(0)" style="margin-right: 10px;" onclick="saveSearchValue(this)">保存 </a>
+						</div>-->
+					</div>
+				</li>
+			</ul>
+			<input type="hidden" id="markClass" />
+			<input type="hidden" id="markGroup" />
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/interface/listProductType.js"></script>
+		<script type="text/javascript" src="js/interface/productServiceList.js"></script>
+		<script type="text/javascript" src="js/interface/productGroupList.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".rightContTab li").click(function() {
+					var index = $(this).index();
+					$(this).addClass("rigContCurrent").siblings().removeClass("rigContCurrent");
+					$("#mainTabCont>li").eq(index).show().siblings().hide();
+				})
+				var tabVal;
+				$("#addToTab>li").click(function() {
+					tabVal = [];
+					$("#markGroup").val("");
+					$("#markClass").val("");
+					var index = $(this).index();
+					$(this).addClass("addToClassCurrent").siblings().removeClass("addToClassCurrent");
+					switch(index) {
+						case 0:
+							$("#searchTabCont>li").eq(0).show().siblings().hide();
+							$("#tabContClass li").each(function(){
+								if($(this).hasClass('on')){
+									tabVal.push($(this).find('a').text());
+								}
+							})
+							$("#markClass").val(tabVal);
+							break;
+						case 2:
+							$("#searchTabCont>li").eq(1).show().siblings().hide();
+							$("#groupNameResult li").each(function(){
+								if($(this).find('input').is(":checked")){
+									tabVal.push($(this).find('input').attr('id'));
+								}
+							})
+							$("#markGroup").val(tabVal);
+							break;
+						case 4:
+							$("#searchTabCont>li").eq(2).show().siblings().hide();
+							$("#proNameResult li").each(function(){
+								if($(this).find('input').is(":checked")){
+									tabVal.push($(this).find('input').attr("data-code"))
+								}
+							})
+							$("#markGroup").val(removeDuplicateArr(tabVal));
+							break;
+					}
+				})
+				
+				$("#tabContClass li").addClass('on');
+				$("#allClassA").click(function(){
+					$("#markClass").val("");
+					if($(this).is(":checked")){
+						$("#tabContClass li").addClass('on');
+					}else{
+						$("#tabContClass li").removeClass('on');
+					}
+				})
+				
+				$("#allClassB").click(function(){
+					$("#markGroup").val("");
+					if($(this).is(":checked")){
+						$("#groupNameResult li input").attr("checked","checked");
+					}else{
+						$("#groupNameResult li input").removeAttr("checked");
+					}
+				})
+				
+				$("#allClassC").click(function(){
+					$("#markGroup").val("");
+					if($(this).is(":checked")){
+						$("#proNameResult li input").attr("checked","checked");
+					}else{
+						$("#proNameResult li input").removeAttr("checked");
+					}
+				})
+				
+				var val;
+				var check;
+				$("#tabContClass li").click(function() {
+					$(this).toggleClass('on');
+					val = [];
+					check = true;
+					$("#tabContClass li").each(function() {
+						if($(this).hasClass('on')) {
+							val.push($(this).find('a').text());
+						}else{
+							check = false;
+						}
+					})
+					$("#markClass").val(removeDuplicateArr(val).join());
+					if(!check){
+						$("#allClassA").removeAttr("checked");
+					}else{
+						$("#allClassA").attr("checked","checked");
+						$("#markClass").val("");
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

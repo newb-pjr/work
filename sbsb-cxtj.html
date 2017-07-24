@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="indexOption">
+				<a href="javasrcript:void(0)" class="btn chooseIconSec">选取</a>
+				<a href="javasrcript:void(0);" class="btn cutIcon">裁剪</a>
+				<a href="javasrcript:void(0);" class="btn groupIcon">分拆组合</a>
+				<a href="javasrcript:void(0);" class="btn searchIcon">查询算法</a>
+			</div>
+			<div class="spacing"></div>
+			<div class="mainCont">
+				<div class="leftCont">
+					<span>要识标的商标图样</span>
+					<div class="imgframe">
+						<img src="img/logodemo2.jpg" />
+					</div>
+					<a class="identifyBtn sureBtn" href="" style="margin-right: 13px;">确认</a>
+					<a class="identifyBtn cancelBtn" href="">取消</a>
+				</div>
+				<div class="midSpacing"></div>
+				<div class="rightCont">
+					<ul class="rightContTab">
+						<li><a href="sbsb-fczh.html">分拆组合</a></li>
+						<li><a href="javascript:void(0)">追加或替换</a></li>
+						<li><a href="">添加查询内容</a></li>
+						<li><a href="">商品服务类别</a></li>
+						<li class="rigContCurrent"><a href="">查询条件设置</a></li>
+					</ul>
+					<div class="tabCont">
+						<table border="0" class="tabSearch">
+							<tr>
+								<td>查询方式：</td>
+								<td><input type="checkbox" class="tabCheckbox" id="mix" checked="checked" /><label for="mix">混合</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="img" /><label for="img">图像特征</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="cont" /><label for="cont">文字内容</label></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>查询算法：</td>
+								<td><input type="checkbox" class="tabCheckbox" id="same" checked="checked" /><label for="same">相同</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="like" /><label for="like">近似</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="set" /><label for="set">自定义</label></td>
+								<td><a href="javascript:void(0)">自定义算法查询</a></td>
+							</tr>
+							<tr>
+								<td>状态过滤：</td>
+								<td><input type="checkbox" class="tabCheckbox" id="all" checked="checked" /><label for="all">全部</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="yes" /><label for="yes">有效</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="no" /><label for="no">无效</label></td>
+								<td><input type="checkbox" class="tabCheckbox" id="wait" /><label for="wait">待定</label></td>
+							</tr>
+						</table>
+						<div class="tabSearchDate">
+							<table border="0">
+								<tr>
+									<td>日期各类：</td>
+									<td><select><option>不过滤</option></select></td>
+									<td>日期范围：</td>
+									<td><select><option>1980-01-01</option></select>至<select><option>2020-12-31</option></select></td>
+								</tr>
+							</table>
+						</div>
+						<div class="tabBtn" style="margin-top: 50px;">
+						<a href="" style="margin-right: 10px;">保存 </a>
+						<a href="">取消 </a>
+					</div>
+					</div>
+					
+				</div>
+			</div>
+			
+	
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		
+		<script>
+//		var index = 0;
+//			function addTab(obj){
+//			var href = obj.getAttribute("_href");
+//			//alert(href);
+//			index++;
+//			$('#tt').tabs('add',{
+//				title:'New Tab ' + index,
+//				content:'Tab Body ' + index,
+//				href:href,
+//				iconCls:'icon-save',
+//				closable:true,
+//				height:'500',
+//				width:'100%'
+//			});
+//		}
+		</script>
+	</body>
+</html>

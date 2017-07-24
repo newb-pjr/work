@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="indexOption">
+				<a href="javascript:void(0)" class="btn chooseIconSec">选取</a>
+				<a href="javascript:void(0);" class="btn cutIcon">裁剪</a>
+				<a href="javascript:void(0);" class="btn groupIcon" onclick="layerOut('商标拆分组合','sbsb-cfzh.html')">分拆组合</a>
+				<a href="javascript:void(0);" class="btn searchIcon">查询算法</a>
+			</div>
+			<div class="spacing"></div>
+			<div class="mainCont">
+				<div class="leftCont">
+					<span>要识标的商标图样</span>
+					<div class="imgframe">
+						<img src="img/logodemo2.jpg" />
+					</div>
+					<a class="identifyBtn sureBtn" href="javascript:void(0)" style="margin-right: 13px;" onclick="sureBtn('sbsb-cxjg.html','查询结果','商标识别确认')">确认</a>
+					<a class="identifyBtn cancelBtn" href="">取消</a>
+				</div>
+				<div class="midSpacing"></div>
+				<div class="rightCont">
+					<ul class="rightContTab">
+						<li class="rigContCurrent"><a href="javascript:void(0)">分拆组合</a></li>
+						<li><a href="javascript:void(0)" id="addImages">追加或替换</a></li>
+						<li><a href="javascript:void(0)">添加查询内容</a></li>
+						<li><a href="javascript:void(0)">商品服务类别</a></li>
+						<li><a href="javascript:void(0)" id="setServiceItem">查询条件设置</a></li>
+					</ul>
+					<div class="cls"></div>
+					<ul id="mainTabCont">
+						<li>
+							<div class="tabCont">
+								<ul class="tabImg" id="assemble">
+									<!--<li>
+										<input type="checkbox" class="tabImgCheckbox" />
+										<img src="img/logodemo3.jpg" />
+									</li>
+									<li>
+										<input type="checkbox" class="tabImgCheckbox" />
+										<img src="img/logodemo4.jpg" />
+									</li>
+									<li>
+										<input type="checkbox" class="tabImgCheckbox" />
+										<img src="img/logodemo5.jpg" />
+									</li>
+									<li>
+										<input type="checkbox" class="tabImgCheckbox" />
+										<img src="img/logodemo6.jpg" />
+									</li>-->
+								</ul>
+							</div>
+							<div class="tabBtn" style="margin-bottom: 50px;">
+								<a href="javascript:void(0)" style="margin-right: 10px;" id="delGroup">删除选中组合 </a>
+								<a href="javascript:void(0)" onclick="reassemble()">重新分拆组合 </a>
+							</div>
+						</li>
+						<li>
+							<div class="addTo">
+								<span class="addToSpan">系统识别出如下近似图样</span>
+								<a href="" class="refresh">刷新</a>
+								<div class="addToSelect">
+									前 <select id="selectNum"><option value="12">12</option><option value="60">60</option><option value="120">120</option><option value="240">240</option><option value="480">480</option><option value="960">960</option></select> 件
+								</div>
+							</div>
+							<div class="tabCont">
+								<ul class="tabImg" id="addImgCont">
+									<!--<li>
+										<input type="radio" class="tabImgCheckbox" name="imgCheckbox" />
+										<img src="img/logodemo3.jpg" />
+									</li>
+									<li>
+										<input type="radio" class="tabImgCheckbox" name="imgCheckbox" />
+										<img src="img/logodemo4.jpg" />
+									</li>
+									<li>
+										<input type="radio" class="tabImgCheckbox" name="imgCheckbox" />
+										<img src="img/logodemo5.jpg" />
+									</li>
+									<li>
+										<input type="radio" class="tabImgCheckbox" name="imgCheckbox" />
+										<img src="img/logodemo6.jpg" />
+									</li>-->
+								</ul>
+							</div>
+							<div class="tabBtn" style="margin-bottom: 50px;">
+								<a href="javascript:void(0)" id="addSameImg">追加为识别图样 </a>
+								<a href="javascript:void(0)" style="margin-left: 8px;" id="replaceImg">替换为识别图样</a>
+							</div>
+						</li>
+						<li>
+							<div class="tabCont" style="height: auto;">
+								<div class="addSearch">
+									<table border="0">
+										<tr>
+											<td><label>商标的中文文字:</label></td>
+											<td><input type="text" class="addSearchInput" id="searchChineseInput" onblur="validateChinese(this)" /></td>
+										</tr>
+										<tr>
+											<td><label>商标的西文文字:</label></td>
+											<td><input type="text" class="addSearchInput" id="searchEnglishInput" onblur="validateEnglish(this)" /></td>
+										</tr>
+										<tr>
+											<td><label>商标图形要素:</label></td>
+											<td><input type="text" class="addSearchInput" id="searchContText" style="width: 255px;" /><a href="javascript:void(0)" onclick="handleLayer('商标图形要素表','sbsb-txys.html')">商标图形要素表</a></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="tabBtn">
+								<a href="javascript:void(0)" >保存 </a>
+								<a href="javascript:void(0)" onclick="clearBtn()" style="margin-left: 8px;">取消 </a>
+							</div>
+						</li>
+						<li>
+							<div class="addTo">
+								<ul class="addToTab">
+									<li class="addToClassCurrent"><a href="javascript:void(0)">类别</a></li>
+									<li><span>|</span></li>
+									<li><a href="javascript:void(0)">类似群</a></li>
+									<li><span>|</span></li>
+									<li><a href="javascript:void(0)">商品查询</a></li>
+								</ul>
+							</div>
+							<ul id="searchTabCont">
+								<li>
+									<div class="tabCont" style="height: 100%;padding-bottom: 15px;">
+										<ul class="tabContClass">
+											<li><a href="javascript:void(0)">1</a></li>
+											<li><a href="javascript:void(0)">2</a></li>
+											<li><a href="javascript:void(0)">3</a></li>
+											<li><a href="javascript:void(0)">4</a></li>
+											<li><a href="javascript:void(0)">5</a></li>
+											<li><a href="javascript:void(0)">6</a></li>
+											<li><a href="javascript:void(0)">7</a></li>
+											<li><a href="javascript:void(0)">8</a></li>
+											<li><a href="javascript:void(0)">9</a></li>
+											<li><a href="javascript:void(0)">10</a></li>
+											<li><a href="javascript:void(0)">11</a></li>
+											<li><a href="javascript:void(0)">12</a></li>
+											<li><a href="javascript:void(0)">13</a></li>
+											<li><a href="javascript:void(0)">14</a></li>
+											<li><a href="javascript:void(0)">15</a></li>
+											<li><a href="javascript:void(0)">16</a></li>
+											<li><a href="javascript:void(0)">17</a></li>
+											<li><a href="javascript:void(0)">18</a></li>
+											<li><a href="javascript:void(0)">19</a></li>
+											<li><a href="javascript:void(0)">20</a></li>
+											<li><a href="javascript:void(0)">21</a></li>
+											<li><a href="javascript:void(0)">22</a></li>
+											<li><a href="javascript:void(0)">23</a></li>
+											<li><a href="javascript:void(0)">24</a></li>
+											<li><a href="javascript:void(0)">25</a></li>
+											<li><a href="javascript:void(0)">26</a></li>
+											<li><a href="javascript:void(0)">27</a></li>
+											<li><a href="javascript:void(0)">28</a></li>
+											<li><a href="javascript:void(0)">29</a></li>
+											<li><a href="javascript:void(0)">30</a></li>
+											<li><a href="javascript:void(0)">31</a></li>
+											<li><a href="javascript:void(0)">32</a></li>
+											<li><a href="javascript:void(0)">33</a></li>
+											<li><a href="javascript:void(0)">34</a></li>
+											<li><a href="javascript:void(0)">35</a></li>
+											<li><a href="javascript:void(0)">36</a></li>
+											<li><a href="javascript:void(0)">37</a></li>
+											<li><a href="javascript:void(0)">38</a></li>
+											<li><a href="javascript:void(0)">39</a></li>
+											<li><a href="javascript:void(0)">40</a></li>
+											<li><a href="javascript:void(0)">41</a></li>
+											<li><a href="javascript:void(0)">42</a></li>
+											<li><a href="javascript:void(0)">43</a></li>
+											<li><a href="javascript:void(0)">44</a></li>
+											<li><a href="javascript:void(0)">45</a></li>
+										</ul>
+										<span style="font-size: 14px;">查询的商品服务范围：</span>
+										<input type="text" class="tabClassInput" id="serviceClass" />
+									</div>
+									<div class="tabBtn" style="margin-bottom: 50px;height: 90px\9;">
+										<a href="javascript:void(0)" onclick="" style="margin-right: 10px;">保存</a>
+										<a href="javascript:void(0)" onclick="clearBtn()">取消 </a>
+									</div>
+								</li>
+								<li>
+									<div class="tabCont">
+										<table border="0" class="tabClassTable">
+											<tr>
+												<td>类别：<select class="tabClassSelect" id="classSelect" onchange="productGroupList(this.value)"><option value="0">未选择</option></select></td>
+												<td>类似群：<select class="tabClassSelect" id="groupSelect" onchange="productGroupListSec(this.value)"><option value="0">未选择</option></select></td>
+												<!--<td><a href="javascript:void(0)" class="refresh" style="float: left; margin-top: 0; margin-left: 10px;">查找</a></td>-->
+											</tr>
+										</table>
+										<div class="tabClassCont" style="font-size: 14px;">
+											<div id="classNum"></div>
+											<ul class="tabClassUl" id="groupNameResult">
+												<!--<li><input type="checkbox" class="tabImgCheckbox" id="0901" /> <label>0901 电子计算机及其外部设备</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0902" /> <label>0902 记录、记数检测器</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0903" /> <label>0903 其他办公机械（不包括打字机、誉定机、油印机）</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" id="0904" /> <label>0904衡器</label></li>-->
+											</ul>
+										</div>
+										<span style="font-size: 14px;">查询的商品服务范围：</span>
+										<input type="text" class="tabClassInput" id="groupNameText" />
+										<div class="tabBtn" style="margin-top: 50px;">
+											<a href="">保存 </a>
+											<a href="" style="margin-left: 8px;">取消 </a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="tabCont">
+										<table border="0" class="tabClassTable">
+											<tr>
+												<!--<td>类别：<select class="tabClassSelect"><option>09</option><option>10</option></select></td>
+												<td>类似群：<select class="tabClassSelect"><option>全部</option><option>10</option></select></td>-->
+												<td style="width: 310px;">商品名称：<input type="text" id="productName"/><a href="javascript:void(0)" id="proNameService" class="refresh" style="float: none; margin-top: 0px; margin-left: 10px; display: inline-block; vertical-align: middle;">查找</a></td>
+											</tr>
+										</table>
+										<div class="tabClassCont">
+											<ul class="tabClassUl" id="proNameResult">
+												<!--<li><input type="checkbox" class="tabImgCheckbox" id="1101" /> <label for="1101">1101  灯泡</label></li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 1101  电灯泡</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 1101  运载工具转向信号装置用灯泡</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 0720  制灯泡机械</li>
+												<li><input type="checkbox" class="tabImgCheckbox" /> 0909  闪光灯泡（摄影）</li>-->
+											</ul>
+										</div>
+										<span style="font-size: 14px;">查询的商品服务范围：</span>
+										<input type="text" class="tabClassInput" id="proNameText" />
+										<div class="tabBtn" style="margin-top: 50px;">
+											<a href="" style="margin-right: 10px;">保存 </a>
+											<a href="">取消 </a>
+										</div>
+									</div>
+								</li>
+							</ul>
+							
+						</li>
+						<li>
+							<div class="tabCont">
+								<table border="0" class="tabSearch">
+									<!--<tr>
+										<td>查询方式：</td>
+										<td><input type="radio" class="tabCheckbox" id="mix" checked="checked" name="way" /><label for="mix">混合</label></td>
+										<td><input type="radio" class="tabCheckbox" id="picture" name="way" /><label for="picture">图像特征</label></td>
+										<td><input type="radio" class="tabCheckbox" id="cont" name="way" /><label for="cont">文字内容</label></td>
+										<td></td>
+									</tr>-->
+									<tr>
+										<td>查询算法：</td>
+										<td><input type="radio" class="tabCheckbox" id="same" checked="checked" name="algorithm" value="0" /><label for="same">相同</label></td>
+										<td><input type="radio" class="tabCheckbox" id="like" name="algorithm" value="1" /><label for="like">近似</label></td>
+										<td><input type="radio" class="tabCheckbox" id="set" name="algorithm" value="2" /><label for="set">自定义</label></td>
+										<td><a href="javascript:void(0)" id="algorithmBtn" onclick="">自定义算法查询</a><input type="hidden" id="imageAlgorithm" /></td>
+									</tr>
+									<tr>
+										<td>状态过滤：</td>
+										<td><input type="radio" class="tabCheckbox" id="all" checked="checked" name="status" value="0" /><label for="all">全部</label></td>
+										<td><input type="radio" class="tabCheckbox" id="yes" name="status" value="1" /><label for="yes">有效</label></td>
+										<td><input type="radio" class="tabCheckbox" id="no" name="status" value="2" /><label for="no">无效</label></td>
+										<td><input type="radio" class="tabCheckbox" id="wait" name="status" value="3" /><label for="wait">待定</label></td>
+									</tr>
+								</table>
+								<div class="tabSearchDate">
+									<table border="0" width="65%">
+										<tr>
+											<td>日期各类：</td>
+											<td><select><option value="0">不过滤</option><option value="1">申请日期</option><option value="2">初审公告日</option><option value="3">注册公告日</option></select></td>
+											<td>日期范围：</td>
+											<td><input id="dateInput" type="text" /></td>
+										</tr>
+									</table>
+								</div>
+									<div class="tabBtn" style="margin-top: 50px;margin-top: 50px/0;">
+									<a href="" style="margin-right: 10px;">保存 </a>
+									<a href="">取消 </a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+			
+		
+		
+		<script type="text/javascript" src="js/moment.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.daterangepicker.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/searchTradeMarkByImage.js" ></script>
+		<script type="text/javascript" src="js/interface/productServiceList.js" ></script>
+		<script type="text/javascript" src="js/interface/productGroupList.js" ></script>
+		<script type="text/javascript" src="js/interface/listProductType.js" ></script>
+		<script type="text/javascript" src="js/interface/replaceImageSplit.js" ></script>
+		<script>
+			$("#dateInput").dateRangePicker();
+			function layerOut(title,url){
+				window.parent.mainLayer(title,url);
+			}
+			function clearBtn(){
+				$(".addSearchInput").val("");
+			}
+			function sureBtn(href,title,closeTitle){
+				window.parent.addTab(href,title,closeTitle);
+			}
+			function reassemble(){
+				$("#assemble").html("");
+				handleLayer('商标拆分组合','sbsb-cfzh.html');
+			}
+		</script>
+		<script>
+			$(document).ready(function(){
+				$(".rightContTab li").click(function(){
+					var index = $(this).index();
+					$(this).addClass("rigContCurrent").siblings().removeClass("rigContCurrent");
+					$("#mainTabCont>li").eq(index).show().siblings().hide();
+				})
+				$(".addToTab>li").click(function(){
+					var index = $(this).index();
+					$(this).addClass("addToClassCurrent").siblings().removeClass("addToClassCurrent");
+					switch(index){
+						case 0:
+							$("#searchTabCont>li").eq(0).show().siblings().hide();
+							$("#searchTabCont>li").eq(0).siblings().find(".tabClassInput").val("");
+							break;
+						case 2:
+							$("#searchTabCont>li").eq(1).show().siblings().hide();
+							$("#searchTabCont>li").eq(1).siblings().find(".tabClassInput").val("");
+							break;
+						case 4:
+							$("#searchTabCont>li").eq(2).show().siblings().hide();
+							$("#searchTabCont>li").eq(2).siblings().find(".tabClassInput").val("");
+							break;
+					}
+				})
+				$(".tabContClass li").click(function(){
+					$(this).addClass("on").siblings().removeClass("on");
+					$("#serviceClass").val($(this).text());
+				})
+				
+				$(".imgframe img").attr("src",getCookie("cutImgUrl"));
+				
+				$(".addSearch input").focus(function(){
+					if($(this).val() != ""){
+						var textVal = $(this).val();
+						$(".addSearch input").val("");
+						$(this).val(textVal);
+					}else{
+						$(".addSearch input").val("");
+					}
+				})
+				
+				$("#setServiceItem").click(function(){
+					if($("#searchChineseInput").val() != ""){
+						$("#algorithmBtn").attr("onclick","handleLayer('查询算法设置','sbsb-sfsz-cn-img.html')");
+					}
+					if($("#searchEnglishInput").val() != ""){
+						$("#algorithmBtn").attr("onclick","handleLayer('查询算法设置','sbsb-sfsz-en-img.html')");
+					}
+				})
+				
+				$("#delGroup").click(function(){
+					$("#assemble li input:checked").each(function(){
+						$(this).parent().remove();
+					})
+				})
+				
+				$("#addSameImg").click(function(){
+					var imgUrls = "";
+					$("#addImgCont li input:checked").each(function(){
+						imgUrls += $(this).next().attr("src")+";";
+					})
+					document.cookie = "sameImg="+imgUrls;
+				})
+			})
+		</script>
+	</body>
+</html>

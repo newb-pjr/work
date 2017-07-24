@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="layer/layer.js" ></script>
+	</head>
+	<body>
+		<a href="javascript:void(0)" onclick="abc()">aaa</a>
+		<script>
+			var beginDate='2017年06月03日';  
+ var endDate='2017年05月02日';  
+ var d1 = new Date(beginDate.replace(/[\u4e00-\u9fa5]/g, "\/")).getTime()/1000;  
+ var d2 = new Date(endDate.replace(/[\u4e00-\u9fa5]/g, "\/")).getTime()/1000;  
+console.log(d1)
+console.log(d2)
+//if(d1 >=d2)  
+// {  
+//alert("开始时间不能大于结束时间！");  
+// }else{
+// 	alert('ok')
+// }
+var a = 123
+		function abc(){
+			console.log(a)
+		}
+		abc()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Tabs - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" href="css/easyui.css" />
+	<link rel="stylesheet" href="css/icon.css" />
+	<link rel="stylesheet" href="css/daterangepicker.css" />
+	<script type="text/javascript" src="js/jquery.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js" ></script>
+	<script type="text/javascript" src="layer/layer.js" ></script>
+	<script type="text/javascript" src="js/moment.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.daterangepicker.js" ></script>
+</head>
+<body>
+	<h2>Basic Tabs</h2>
+	<p>Click tab strip to swap tab panel content.</p>
+	<div style="margin:20px 0 10px 0;"></div>
+	<div class="easyui-tabs" style="width:700px;height:250px" id="tt">
+		<div title="About" style="padding:10px">
+			<a href="javascript:void(0)" onclick="addTab('456.html','aaa')">aaaaaaa</a>
+		</div>
+		<div title="My Documents" style="padding:10px">
+			<ul class="easyui-tree" data-options="url:'tree_data1.json',method:'get',animate:true"></ul>
+		</div>
+		<div title="Help" data-options="iconCls:'icon-help',closable:true" style="padding:10px">
+			<input type="text" id="date1" />
+		</div>
+	</div>
+	<script>
+		function addTab(href,title){
+				var exists = $('#tt').tabs('exists', title)
+				if (exists){
+					$('#tt').tabs('select', title);
+				}else{
+					$('#tt').tabs('add',{
+						title:title,
+						content:'',
+						href:href,
+						closable:true,
+						height:'500',
+						width:'100%'
+					});
+				}
+			}
+	</script>
+	<script>
+	function abb(){
+				alert(11111111)
+				layer.open({
+  type: 2,
+  title: 'layer mobile页',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['380px', '90%'],
+  content: '789.html' //iframe的url
+
+			})
+	}
+	function bcc(){
+		$("#date").dateRangePicker();
+	}
+	$("#date1").dateRangePicker();
+	</script>
+</body>
+</html>

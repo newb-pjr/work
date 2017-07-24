@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/pagination.css" />
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 使用日志</p>
+			<p class="accountTopSec">使用日志<span class="accountTopLine"></span></p>
+			<div class="accountCont">
+				<table border="0" class="tradeRecord">
+					<tr>
+						<td colspan="4" align="left">
+							<strong>&nbsp;在账户的登录使用日志</strong>
+							<div class="chooseLogDate">
+								日期：<input type="text" id="chooseLogDate" />
+								<a href="javascript:void(0)" id="searchLogList" class="refresh" style="float: none; display: inline-block;height: 33px;">查询</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="20%">序号</td>
+						<td width="40%">日期</td>
+						<td width="20%">登录设备</td>
+						<td width="20%">动作描述</td>
+					</tr>
+				</table>
+				<table border="0" class="tradeRecord" id="log">
+				</table>
+			</div>
+			<div id="PaginationLog" class="paginationResult" style="margin: 20px 0;"></div>
+		</div>
+		<script type="text/javascript" src="js/jquery.pagination.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/userLogList.js" ></script>
+		<script>
+			$('#chooseLogDate').dateRangePicker();
+		</script>
+	</body>
+</html>

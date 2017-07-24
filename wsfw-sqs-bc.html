@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="groupCont">
+			<div class="applyTips" style="font-size: 14px;">请按下表指引填写申请书，如果你需要的帮助，我们的商标服务专员可以为你提供贴身的商标专业服务</div>
+			<div class="supplyCont">
+				<p>申请人类型：<select class="applicantsType"><option value="1">企业单位</option><option value="2">自然人</option></select></p>
+				<p>申请书的中文填写项目是否委托本站翻译并补充填写：<input type="radio" name="choose" value="1" />是<input type="radio" name="choose" value="0" checked="checked" style="margin-left: 20px;" />否</p>
+				<p>翻译费计价币种：<select class="currency"><option value="1">人民币</option><option value="2">美元</option></select>金额：<input type="text" class="money" /><strong style="color: red; margin-left: 5px;">*</strong></p>
+			</div>
+			<div class="declaractionBg">
+				<div class="declaraction">
+					<p class="declaractionTitle">商标声明</p>
+					<p>
+						<!--是否集体/证明商标：
+						<input type="radio" name="select" checked="checked" class="selectRadio" />否
+						<input type="radio" name="select" class="selectRadio" />是
+						<input type="radio" name="select" class="selectRadio" />证明-->
+						<input type="checkbox" class="tabCheckbox" id="geography" />
+						<label for="geography">以地理标志作为/证明商标注册</label>
+					</p>
+					<p>集成员名单：</p>
+					<textarea class="declaractionTextarea" id="memberList"></textarea>
+					<strong style="color: red; vertical-align: middle; margin-top: -125px; display: inline-block;">*</strong>
+					<p>集体/证明商标使用管理规则：</p>
+					<textarea class="declaractionTextarea" id="memberRule"></textarea>
+					<strong style="color: red; vertical-align: middle; margin-top: -125px; display: inline-block;">*</strong>
+					<p>集体/证明商标相关文件：</p>
+					<input type="text" class="declaractionUploadText" id="memberFileText" disabled="disabled" />
+					<a href="javascript:void(0)" class="declaractionUploadBtn">浏览</a>
+					<a href="javascript:void(0)" class="declaractionUploadBtn" id="upload" onclick="supplementUpfile('memberForm','memberFile')">上传</a>
+					<!--<input type="file" id="file" />-->
+					<strong style="color: red;">*</strong>
+					<form enctype="multipart/form-data" id="memberForm" style="position: relative;"><input type="file" id="uploadMemberFile" name="uploadMemberFile" accept="image/png,image/jpg" /></form>
+					<!--<p style="margin-top: 10px;">
+						是否三维标志：<input type="radio" checked="checked" name="threeD" />否<input type="radio" name="threeD" style="margin-left: 10px;" />是
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						颜色组合：<input type="radio" checked="checked" name="color" />无<input type="radio" name="color" style="margin-left: 10px;" />颜色组合
+					</p>
+					<p>
+						是否声音标志：<input type="radio" checked="checked" name="sound" />否<input type="radio" name="sound" style="margin-left: 10px;" />是
+					</p>
+					<p>商标说明：</p>
+					<textarea class="declaractionTextareaSmall"></textarea>-->
+				</div>
+				<hr />
+				<div class="declaraction">
+					<p class="declaractionTitle">优先权</p>
+					<table border="0" class="declaractionTable">
+						<!--<tr>
+							<td>优先权声明：</td>
+							<td>
+								<input type="radio" checked="checked" name="priority" />无
+								<input type="radio" name="priority" style="margin-left: 15px;" />在先优先权
+								<input type="radio" name="priority" style="margin-left: 15px;" />展会优先权
+							</td>
+						</tr>-->
+						<tr>
+							<td>优先权证明文件：</td>
+							<td>
+								<input type="text" class="priorityText declaractionFileText" id="priorityFileText" disabled="disabled" />
+								<a href="javascript:void(0)" class="declaractionUploadBtn">浏览</a>
+								<a href="javascript:void(0)" onclick="supplementUpfile('priorityForm','priorityFile')" class="declaractionUploadBtn">上传</a>
+								<!--<input type="file"  class="file" />-->
+								<strong style="color: red;">*</strong>
+								<form enctype="multipart/form-data" id="priorityForm" style="position: relative;"><input type="file" id="uploadPriorityFile" name="uploadPriorityFile" accept="image/png,image/jpg" /></form>
+							</td>
+						</tr>
+						<!--<tr>
+							<td>申请展出畋家/地区：</td>
+							<td>
+								<input type="text" class="priorityText" />
+								<strong style="color: red;">*</strong>
+							</td>
+						</tr>
+						<tr>
+							<td>申请展出日期：</td>
+							<td>
+								<input type="text" class="priorityText" />
+								<strong style="color: red;">*</strong>
+							</td>
+						</tr>
+						<tr>
+							<td>申请号：</td>
+							<td>
+								<input type="text" class="priorityText" />
+								<strong style="color: red;">*</strong>
+							</td>
+						</tr>-->
+					</table>
+				</div>
+			</div>
+			<div class="tabBtn" style="margin-top: 30px;margin-bottom: 30px;width: 216px;">
+				<a href="javascript:void(0)" id="saveSupplement">保存</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/interface/supplementUpfile.js" ></script>
+		<script type="text/javascript" src="js/interface/supplementApply.js" ></script>
+		<!--<script type="text/javascript" src="js/interface/getTradeMarkApply.js" ></script>-->
+		<script>
+			$(document).ready(function(){
+				$("#uploadMemberFile").change(function(){
+					var values = $(this).val();
+					$("#memberFileText").val(values);
+				})
+				$("#uploadPriorityFile").change(function(){
+					var values = $(this).val();
+					$("#priorityFileText").val(values);
+				})
+			})
+		</script>
+	</body>
+</html>

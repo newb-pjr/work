@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="groupCont">
+			<table border="1" class="orderTable" bordercolor="#c0c0c0">
+				<tr>
+					<th>序号</th>
+					<th>订单号</th>
+					<th>订单提交日期</th>
+					<th>订单申请人</th>
+					<th>申请状态</th>
+					<th width="255">操作</th>
+				</tr>
+				<!--<tr>
+					<td>1</td>
+					<td>00000</td>
+					<td>2017-03-21</td>
+					<td>guofang</td>
+					<td>填写申请书</td>
+					<td>
+						<ul>
+							<li><img src="img/write.png" /><a href="">继续填写</a></li>
+							<li><img src="img/up.png" /><a href="">提交</a></li>
+							<li><img src="img/close.png" /><a href="">删除</a></li>
+							<div class="cls"></div>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>00000</td>
+					<td>2017-03-21</td>
+					<td>guofang</td>
+					<td>填写申请书</td>
+					<td>
+						<ul>
+							<li><img src="img/write.png" /><a href="">继续填写</a></li>
+							<li><img src="img/up.png" /><a href="">提交</a></li>
+							<li><img src="img/close.png" /><a href="">删除</a></li>
+							<div class="cls"></div>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>00000</td>
+					<td>2017-03-21</td>
+					<td>guofang</td>
+					<td>填写申请书</td>
+					<td>
+						<ul>
+							<li><img src="img/write.png" /><a href="">继续填写</a></li>
+							<li><img src="img/up.png" /><a href="">提交</a></li>
+							<li><img src="img/close.png" /><a href="">删除</a></li>
+							<div class="cls"></div>
+						</ul>
+					</td>
+				</tr>-->
+			</table>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="layer/layer.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/listTradeMarkApply.js" ></script>
+		<script type="text/javascript" src="js/interface/deleteTradeMarkApply.js" ></script>
+		<script>
+			function modifyApply(id){
+				document.cookie = "modifyApplyId="+id;
+				handleLayer("修改商标注册申请书","wsfw-sqs-xg.html");
+			}
+		</script>
+	</body>
+</html>

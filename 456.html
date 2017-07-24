@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/daterangepicker.css" />
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	<script type="text/javascript" src="layer/layer.js" ></script>
+	<script type="text/javascript" src="js/moment.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.daterangepicker.js" ></script>
+	</head>
+	<body>
+		<a href="javascript:void(0)" class="a" onclick="aaa()">aaaaaaaaa</a>
+		<input id="date" type="text" />
+	
+	<script>
+		//document.getElementById("date").dateRangePicker();
+		$("#date").dateRangePicker();
+		function aaa(){
+			window.parent.abb();
+		}
+		function bbb(){
+			//alert(111)
+			window.parent.bcc();
+		}
+	</script>
+	</body>
+</html>

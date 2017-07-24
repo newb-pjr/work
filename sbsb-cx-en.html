@@ -1,0 +1,30 @@
+<li>
+	<table border="0" class="identifyTable">
+		<!--<tr>
+			<td>
+				<input type="checkbox" class="tabCheckbox" id="eItem1" name="eItem" value="b1" />
+				<label for="eItem1">商标文字与图形要素整体按顺序排列相同</label>
+			</td>
+		</tr>-->
+	</table>
+</li>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type:"post",
+			url:"Handler/algorism.ashx",
+			async:false,
+			data: {platformType:1,isWeb:1,typeCode:2},
+			success: function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status!=1){
+					dataStatus(dataObj);
+				}else{
+					for(var i=0; i<dataObj.type.length; i++){
+						$(".identifyTable").append('<tr><td><input type="checkbox" class="tabCheckbox" id="eItem'+i+'" name="eItem" value="'+dataObj.type[i].code+'" /><label for="eItem'+i+'">'+dataObj.type[i].name+'</label></td></tr>');
+					}
+				}
+			}
+		});
+	})
+</script>

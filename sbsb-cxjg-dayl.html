@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+
+	<body>
+		<div class="fileContLeft">
+			<table border="0" width="100%" height="475" align="center">
+				<tr>
+					<td>注册号</td>
+					<td id="registerNumD"></td>
+					<td rowspan="6" colspan="2"><img src="" width="165" height="111" id="markImgD" /></td>
+				</tr>
+				<tr>
+					<td>商标名称</td>
+					<td id="markNameD"></td>
+				</tr>
+				<tr>
+					<td>商标类型</td>
+					<td id="markTypeD"></td>
+				</tr>
+				<tr>
+					<td>类别</td>
+					<td id="markClassD"></td>
+				</tr>
+				<tr>
+					<td>申请日期</td>
+					<td id="registerDateD"></td>
+				</tr>
+				<tr>
+					<td>公告期号</td>
+					<td id="publishIssueD"></td>
+				</tr>
+				<tr>
+					<td>注册人</td>
+					<td colspan="3" id="companyD"></td>
+				</tr>
+				<tr>
+					<td>注册人地址</td>
+					<td colspan="3" id="addressD"></td>
+				</tr>
+				<tr>
+					<td>专用期限</td>
+					<td colspan="3" id="dateD"></td>
+				</tr>
+				<tr>
+					<td>代理机构</td>
+					<td colspan="3" id="institutionD"></td>
+				</tr>
+				<tr>
+					<td rowspan="2">商标状态</td>
+					<td rowspan="2" id="markStatusD"></td>
+					<td>最后公告</td>
+					<td id="lastPublishD"></td>
+				</tr>
+				<tr>
+					<td>最后流程</td>
+					<td id="lastProcessD"></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			$(document).ready(function() {
+				var MarkNo = getCookie("MarkNo");
+				var MarkClass = getCookie("MarkClass");
+				$.post(url + 'Handler/getTmInfbyMarkNo.ashx', {
+					platformType: 1,
+					isWeb: 1,
+					MarkNo: MarkNo,
+					MarkClass: MarkClass
+				}, function(data) {
+					var dataObj = eval("(" + data + ")");
+					var getId = getCookie('MarkNo');
+					$("#registerNumD").html(dataObj.data.MarkInfo[0].MarkNo);
+					$("#markImgD").attr("src", dataObj.data.MarkInfo[0].MarkImagePath);
+					$("#markNameD").html(dataObj.data.MarkInfo[0].MarkShowName);
+					$("#markTypeD").html(dataObj.data.MarkInfo[0].MarkType);
+					$("#markClassD").html(dataObj.data.MarkInfo[0].MarkClass);
+					$("#registerDateD").html(dataObj.data.MarkInfo[0].ApplicationDate);
+					$("#publishIssueD").html("初审  " + dataObj.data.MarkInfo[0].PreliminaryPublishIssue + " 期/注册  " + dataObj.data.MarkInfo[0].RegisterPublishIssue + " 期");
+					$("#companyD").html(dataObj.data.MarkInfo[0].HolderNameCn);
+					$("#addressD").html(dataObj.data.MarkInfo[0].HolderAddrCn);
+					$("#dateD").html("自   " + dataObj.data.MarkInfo[0].StartDate + "  起  至   " + dataObj.data.MarkInfo[0].EndDate + "  止");
+					$("#institutionD").html(dataObj.data.MarkInfo[0].AgentName);
+					$("#markStatusD").html(dataObj.data.MarkInfo[0].MarkState);
+					$("#lastPublishD").html(dataObj.data.MarkInfo[0].LastPublishName);
+					$("#lastProcessD").html(dataObj.data.MarkInfo[0].LastProcessName);
+					var goods = dataObj.data.MarkInfo[0].Goods;
+					var goodsArr = goods.split(';');
+					for(var i = 0; i < goodsArr.length; i++) {
+						$(".fileContright table").append('<tr><td>' + goodsArr[i] + '</td><td>' + dataObj.data.MarkInfo[0].MarkGroup + '</td><td>' + dataObj.data.MarkInfo[0].MarkClass + '</td></tr>');
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

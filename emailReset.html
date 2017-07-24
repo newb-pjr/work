@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>重置密码-邮箱</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="loginConthead">
+			<div class="headerbg"></div>
+		</div>
+		<div class="choose">
+			<ul class="chooseCont">
+				<li><a href="moblieReset.html">手机找回</a><span style="float: right;color: #555;">|</span></li>
+				<li class="current">邮箱找回</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div style="position: relative;">
+				<input class="input" type="text" placeholder="邮箱" id="email" />
+				<input class="input inputCode" type="text" placeholder="邮箱验证码" id="code" />
+				<input class="getCode" type="button" value="获取验证码" />
+				<input class="input" type="password" placeholder="新登录密码" id="password" />
+				<input class="input" type="password" placeholder="密码确认" id="confirm" />
+				<!--<input class="input" type="text" placeholder="验证码" style="width: 210px;margin-right: 126px;" id="checkCode" />
+				<img src="captchaSection.aspx" style="position: absolute;top: 50%;left: 50%;margin-left: 70px;margin-top: 54px;" onclick="javascript:this.src='captchaSection.aspx/'+Math.random()" />-->
+				<input class="input submit" type="submit" value="重 置" style="margin-top: 10px;" />
+				<input type="checkbox" checked="checked" id="checkbox"/><label for="checkbox">我已阅读并同意<a href="" style="color: #098BEA;">《服务条款》</a></label>
+			</div>
+			<a href="login.html" class="input goLogin">已有帐户？登录</a>
+			<a href="login.html" class="input goLogin regoLogin">我想起密码了。立即登录</a>
+			<div class="cls"></div>
+		</div>
+		<div class="footer">
+			<div class="footerCont">
+				<ul>
+					<li><a href="">网站地图</a></li>
+					<li><a href="">友情链接</a></li>
+					<li><a href="">联系我们</a></li>
+				</ul>
+				<div class="cls"></div>
+				<p style="line-height: 30px;">佛山市国方商标服务有限公司版权所有 Copyright © 2004-2010</p>
+				<p>粤ICP备05047761号</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/placeholderfriend.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/md5.js" ></script>
+		<script type="text/javascript" src="js/interface/getResetCode.js" ></script>
+		<script type="text/javascript" src="js/interface/reset.js" ></script>
+		<script>
+			$(document).ready(function(){
+				$(".getCode").click(function(){
+					//验证方法（1：手机短信，2：电子邮箱）;手机号码或电子邮箱的选择器id;
+					getResetCode('2','#email');
+				})
+				$(".submit").click(function(){
+					//验证方法（1：手机短信，2：电子邮箱）;手机号码或电子邮箱的选择器id;
+					reset('2','#email');
+				})
+				//兼容低版本IE浏览器的placeholder
+				$('input, textarea').placeholder();
+			})
+		</script>
+	</body>
+</html>

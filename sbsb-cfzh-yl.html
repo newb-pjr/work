@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="groupCont">
+				<div class="groupContLeft">
+					<span>商标主图：</span>
+					<div class="groupImgCont">
+						<img id="img" />
+						<img src="" style="max-width: 100%; max-height: 160px;" />
+					</div>
+				</div>
+				<div class="groupContRight">
+					<span>商标分拆组合子图：</span>
+					<ul class="imgGroup">
+						<!--<li>
+							<label>
+								<input type="checkbox" />
+								<img src="img/logodemo.jpg" height="120" width="120" />
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" />
+								<img src="img/logodemo.jpg" height="120" width="120" />
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" />
+								<img src="img/logodemo.jpg" height="120" width="120" />
+							</label>
+						</li>-->
+					</ul>
+				</div>
+				<div class="cls"></div>
+				<div class="groupContBtn">
+					<a href="javascript:void(0)" onclick="deleteGroup()">删除选中组合</a>
+					<a href="javascript:void(0)" id="continue">恢复组合子图</a>
+					<a href="javascript:void(0)"onclick="finish()">完成</a>
+				</div>
+			</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+		$(document).ready(function(){
+			var url = getCookie("cutImgUrl");
+			var imgResult = JSON.parse(getCookie('imgResult'));
+			var defimage = JSON.parse(getCookie('defimage'));
+			$(".groupImgCont img").last().attr("src",url);
+			for(var i=0; i<imgResult.length; i++){
+				$(".imgGroup").append('<li><label><input type="checkbox" /><img src="'+imgResult[i].ImgUrl+'" height="120" width="120" /></label></li>');
+			}
+			for(var i=0; i<defimage.length; i++){
+				$(".imgGroup").append('<li><label><input type="checkbox" /><img src="'+defimage[i].DefImageUrl+'" height="120" width="120" /></label></li>');
+			}
+			$("#continue").click(function(){
+				$(".imgGroup").html("");
+				for(var i=0; i<imgResult.length; i++){
+					$(".imgGroup").append('<li><label><input type="checkbox" /><img src="'+imgResult[i].ImgUrl+'" height="120" width="120" /></label></li>');
+				}
+				for(var i=0; i<defimage.length; i++){
+					$(".imgGroup").append('<li><label><input type="checkbox" /><img src="'+defimage[i].DefImageUrl+'" height="120" width="120" /></label></li>');
+				}
+			})
+		})
+		var imgResult = JSON.parse(getCookie('imgResult'));
+		function goBack(){
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			parent.layer.close(index);
+		}
+		function deleteGroup(){
+			var num = 0;
+			$(".imgGroup li").each(function(){
+				if($(this).find('input').is(":checked")){
+					$(this).remove();
+					imgResult.splice(num,1);
+				}
+				num++;
+			})
+			document.cookie = "imgResult="+JSON.stringify(imgResult);
+		}
+		function finish(){
+			parent.$("#assemble").html("");
+			parent.$(".childImg ul").html("");
+			parent.$(".tipsImg").hide();
+			var finishImg = [];
+			$(".imgGroup li").each(function(){
+				if($(this).find('input').is(":checked")){
+					parent.$(".childImg ul").append('<li><img src="'+$(this).find("img").attr("src")+'" /></li>');
+					parent.$('#assemble').append('<li><img src="'+$(this).find("img").attr("src")+'" width="165" height="111" /></li>');
+					finishImg.push($(this).find("img").attr("src"));
+				}
+			})
+			document.cookie = "finishImg="+finishImg.join();
+			document.cookie = "chooseImg=";
+			window.parent.mainGoBack();
+		}
+		</script>
+	</body>
+</html>

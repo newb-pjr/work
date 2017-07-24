@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/tableSorter.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="groupClass">
+			<div class="applyTips" style="font-size: 14px;">
+				类别<select class="classSelect" id="applyClassSelect"><option value="0">未选择</option></select>
+				组群<select class="classSelect" id="applyGroupSelect"><option value="0">未选择</option></select>
+				商品和服务关键字<input type="text" class="classText" />
+				<a href="javascript:void(0)" class="classBtn" id="searchService">查找</a>
+				<a href="" class="classBtn" style="margin-right: 35px;">清空</a>
+				<a href="" class="classBtn" style="margin-right: 10px;">查看已选择</a>
+				<a href="" class="classBtn">确定</a>
+			</div>
+			<table border="1" class="tablesorter" id="myTable" bordercolor="#c1c1c1">
+				<thead>
+					<tr>
+						<th>选择 </th>
+						<th>类别</th>
+						<th>群组</th>
+						<th>商品编号</th>
+						<th>中文名称</th>
+						<th>英文名称</th>
+						<th>注释</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!--<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060002</td>
+						<td>铁砂</td>
+						<td>irongrit</td>
+						<td>没有备注</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060147</td>
+						<td>锗</td>
+						<td>Germarium</td>
+						<td>没有备注</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060154</td>
+						<td>甸</td>
+						<td>Indium</td>
+						<td>没有备注</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060157</td>
+						<td>未加工或半加工黄铜</td>
+						<td>Rrass,unwrought or semi-wro</td>
+						<td>没有备注</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060161</td>
+						<td>金属锉屑</td>
+						<td>Filings of metal</td>
+						<td>没有备注</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" class="tabCheckbox"/></td>
+						<td>06</td>
+						<td>0601</td>
+						<td>C060164</td>
+						<td>普通金属锭</td>
+						<td>Ingots of common metal</td>
+						<td>没有备注</td>
+					</tr>-->
+				</tbody>
+			</table>
+			<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+			<script type="text/javascript" src="js/common.js" ></script>
+			<script type="text/javascript" src="js/jquery.tablesorter.min.js" ></script>
+			<script type="text/javascript" src="js/interface/applyListProductType.js" ></script>
+			<script type="text/javascript" src="js/interface/applyproductServiceList.js" ></script>
+			<script>
+				$(document).ready(function(){ 
+					//第一列不进行排序(索引从0开始) 
+					$.tablesorter.defaults.headers = {0: {sorter: false},6:{sorter:false}}; 
+					$(".tablesorter").tablesorter(); 
+				}); 
+			</script>
+		</div>
+	</body>
+</html>

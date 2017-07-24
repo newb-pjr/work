@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 订单列表</p>
+			<p class="accountTopSec">订单列表<span class="accountTopLine" style="width: 91%;margin-left: 36px;"></span></p>
+			<div class="accountCont" style="padding: 0;">
+				<div class="chooseDate">
+					查询时间：<input type="text" id="startTime" /> 至 <input type="text" id="endTime" />
+					<a href="javascript:void" id="searchOrderList" onclick="orderList()">查询</a>
+				</div>
+				<ul class="isPaid">
+					<li class="selected">待付款</li>
+					<li>已付款</li>
+					<div class="cls"></div>
+				</ul>
+				<table border="1" width="100%" class="payTitle">
+					<tr>
+						<td width="40%">商品名称</td>
+						<td width="20%">交易时间</td>
+						<td width="10%">币种</td>
+						<td width="20%">金额</td>
+						<td width="10%">状态</td>
+					</tr>
+				</table>
+				<table border="0" width="100%" class="payDet myPayDet" id="orderList">
+					<tr>
+						<td colspan="6" align="center">没有订单</td>
+					</tr>
+					<!--<tr>
+						<td width="15%">
+							<img src="img/gf_card/gfk.jpg" class="payCardName"/>
+						</td>
+						<td width="25%" class="payCardNameTd">
+							<span class="payCardName">国方年卡A国方年卡A国方年卡A国方年卡A国方年卡A国方年卡A国方年卡A</span>
+						</td>
+						<td width="20%" align="center">2016-01-01 12:00:00</td>
+						<td width="10%" align="center">人民币</td>
+						<td width="20%" align="center" style="color: #f00;">￥3000元</td>
+						<td width="10%" align="center">已付款</td>
+					</tr>-->
+				</table>
+				<div id="Pagination-orderList" class="paginationResult" style="margin: 20px 0;"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/jquery.pagination.js" ></script>
+		<script type="text/javascript" src="js/interface/orderList.js" ></script>
+		<script>
+			$('#startTime').dateRangePicker({
+				separator : ' 至 ',
+				getValue: function()
+				{
+					if ($('#startTime').val() && $('#endTime').val() )
+						return $('#startTime').val() + ' 至 ' + $('#endTime').val();
+					else
+						return '';
+				},
+				setValue: function(s,s1,s2)
+				{
+					$('#startTime').val(s1);
+					$('#endTime').val(s2);
+				}
+			});
+		</script>
+	</body>
+</html>

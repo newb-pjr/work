@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+			<div class="indexOption">
+				<a href="javasrcript:void(0)" class="btn fileIcon" onclick="searchResult('sbsb-cxjg-da.html','商标档案')">商标档案</a>
+				<a href="javasrcript:void(0);" class="btn noticeIcon" onclick="searchResult('sbsb-cxjg-gg.html','商标公告')">商标公告</a>
+				<a href="javasrcript:void(0);" class="btn serviceIcon" onclick="searchResult('sbsb-cxjg-spfw.html','商品服务')">商品服务</a>
+				<a href="javasrcript:void(0);" class="btn processIcon" onclick="searchResult('sbsb-cxjg-sclc.html','审查流程')">审查流程</a>
+				<a href="javasrcript:void(0);" class="btn printIcon">打印本表</a>
+				<a href="javasrcript:void(0);" class="btn exportIcon">导出word</a>
+				<a href="javasrcript:void(0);" class="btn switchIcon" onclick="handleTab('sbsb-cxjg.html','查询结果')">切换显示</a>
+				<a href="javasrcript:void(0);" class="btn sortIcon" onclick="handleLayer('排序设置','sbsb-cxjg-px-img.html','500px','300px')">排序设置</a>
+				<a href="javascript:void(0);" class="btn filterIcon" onclick="filter()">过滤</a>
+			</div>
+			<div style="width: 100%;height: 10px;background-color: #F7F7F7;"></div>
+			<div class="searchResultImg">
+				<div class="result">
+					<div id="searchImgPagination" class="paginationResult"></div>
+					<br style="clear:both;" />
+				</div>
+			</div>
+			<script type="text/javascript" src="js/common.js" ></script>
+			<script type="text/javascript" src="js/interface/common.js" ></script>
+			<script type="text/javascript" src="js/jquery.pagination.js" ></script>
+			<script>
+				$(document).ready(function(){
+//					var TaskID = getCookie("taskId");
+//					$.post(url+'Handler/getSearchResultByTaskID.ashx',{platformType:1,isWeb:1,TaskID:TaskID,SortType:"",BeginRow:1,EndRow:10},function(data){
+//						var dataObj = eval("("+data+")");
+//						var s = Math.floor(dataObj.data.Result.length/6);
+//						str = '';
+//						str += '<table border="1" bordercolor="#C6C4C4" align="center" width="100%">';
+//						d = 0;
+//						for(var i=0;i<s;i++){
+//							str += '<tr>';
+//							for(var j=0;j<6;j++){
+//								std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p>'+dataObj.data.Result[d].MarkClass+'类 '+dataObj.data.Result[d].MarkNo+'</p><input type="checkbox" /></lable></td>' 
+//								d++;
+//								str += std;
+//							}
+//							str += '</tr>';
+//						}
+//						if(dataObj.data.Result.length%6 > 0){
+//							str += '<tr>';
+//							for(var k=0;k<dataObj.data.Result.length%6;k++){
+//								std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p>'+dataObj.data.Result[d].MarkClass+'类 '+dataObj.data.Result[d].MarkNo+'</p><input type="checkbox" /></lable></td>' 
+//								d++;
+//								str += std;
+//							}
+//							switch (dataObj.data.Result.length%6){
+//								case 1:
+//									str += '<td></td><td></td><td></td>';
+//									break;
+//								case 2:
+//									str += '<td></td><td></td>';
+//									break;
+//								case 3:
+//									str += '<td></td>';
+//									break;
+//								default:
+//									break;
+//							}
+//							str += '</tr>';
+//						}
+//						str += '</table>';
+//						console.log(d);
+//						$(".searchResultImg").prepend(str);
+//						
+//
+//					})
+					
+					var s = Math.floor(dataResult.Result.length/6);
+					str = '';
+					str += '<table border="1" bordercolor="#C6C4C4" align="center" width="100%">';
+					d = 0;
+					for(var i=0;i<s;i++){
+						str += '<tr>';
+						for(var j=0;j<6;j++){
+							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+							d++;
+							str += std;
+						}
+						str += '</tr>';
+					}
+					if(dataResult.Result.length%6 > 0){
+						str += '<tr>';
+						for(var k=0;k<dataResult.Result.length%6;k++){
+							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+							d++;
+							str += std;
+						}
+						switch (dataResult.Result.length%6){
+							case 1:
+								str += '<td></td><td></td><td></td><td></td><td></td>';
+								break;
+							case 2:
+								str += '<td></td><td></td><td></td><td></td>';
+								break;
+							case 3:
+								str += '<td></td><td></td><td></td>';
+								break;
+							case 4:
+								str += '<td></td><td></td>';
+								break;
+							case 5:
+								str += '<td></td>';
+								break;
+							default:
+								break;
+						}
+						str += '</tr>';
+					}
+					str += '</table>';
+					$(".searchResultImg").prepend(str);
+					// 创建分页元素
+					$("#searchImgPagination").pagination(dataResult.iCount, {
+						num_edge_entries: 2,
+						num_display_entries: 5,
+						items_per_page: 16,
+						prev_text: "上一页",
+						next_text: "下一页",
+						callback: pageselectCallback
+					});
+				})
+				
+				function pageselectCallback(page_id){
+					var TaskID = getCookie("TaskID");
+					var SortType = getCookie("SortType");
+					var BeginRow = page_id*16+1;
+					var EndRow = page_id*16+16;
+					$(".searchResultImg table").html("");
+					$.ajax({
+						type:"post",
+						url:"Handler/getSearchResultByTaskID.ashx",
+						data:{platformType:1,isWeb:1,TaskID:TaskID,SortType:SortType,BeginRow:BeginRow,EndRow:EndRow},
+						async:true,
+						success:function(data){
+							var dataObj = eval("("+data+")");
+							if(dataObj.status==1){
+								var s = Math.floor(dataObj.data.Result.length/6);
+								str = '';
+								d = 0;
+								for(var i=0;i<s;i++){
+									str += '<tr>';
+									for(var j=0;j<6;j++){
+										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+										d++;
+										str += std;
+									}
+									str += '</tr>';
+								}
+								if(dataObj.data.Result.length%6 > 0){
+									str += '<tr>';
+									for(var k=0;k<dataObj.data.Result.length%6;k++){
+										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+										d++;
+										str += std;
+									}
+									switch (dataObj.data.Result.length%6){
+										case 1:
+											str += '<td></td><td></td><td></td><td></td><td></td>';
+											break;
+										case 2:
+											str += '<td></td><td></td><td></td><td></td>';
+											break;
+										case 3:
+											str += '<td></td><td></td><td></td>';
+											break;
+										case 4:
+											str += '<td></td><td></td>';
+											break;
+										case 5:
+											str += '<td></td>';
+											break;
+										default:
+											break;
+									}
+									str += '</tr>';
+								}
+								$(".searchResultImg table").prepend(str);
+							}else{
+								dataStatus(dataObj);
+							}
+						}
+					});
+				}
+				
+				function filter(){
+					var MarkKeyStr = [];
+					$(".searchResultImg table input[type=checkbox]").each(function(){
+						if($(this).is(":checked")){
+							MarkKeyStr.push($(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html());
+						}
+					})
+					document.cookie = "MarkKeyStr="+MarkKeyStr.join(";");
+					handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
+				}
+			</script>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<style>
+			html{
+				background-color: #0dacff;
+			}
+		</style>
+		<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+DD_belatedPNG.fix('*');
+</script> 
+<![endif]-->
+	</head>
+	<body style="background-color: #0dacff;overflow: hidden;">
+		<div class="loginTop">
+			<div class="loginTopHead"></div>
+			<img src="img/login_bottom.png" class="loginBottom" />
+			<div class="login">
+				<table border="0" width="100%">
+					<tr height="65">
+						<td>用户名：</td>
+						<td colspan="3">
+							<div class="loginText">
+								<input type="text" placeholder="登录名/邮箱/手机号" id="loginName" onkeydown="check()" />
+							</div>
+						</td>
+					</tr>
+					<tr height="65">
+						<td>密码：</td>
+						<td colspan="3">
+							<div class="loginText">
+								<input type="password" placeholder="密码" id="password" onkeydown="check()"/>
+							</div>
+						</td>
+					</tr>
+					<!--<tr height="65">
+						<td>验证码：</td>
+						<td colspan="3">
+							<div class="loginText">
+								<input type="text" placeholder="验证码" id="code" onkeydown="check()" style="width: 136px;"/>
+								<img src="captchaSection.aspx" onclick="javascript:this.src='captchaSection.aspx/'+Math.random()" style="vertical-align: middle;" />
+							</div>
+						</td>
+					</tr>-->
+					<tr height="75">
+						<td></td>
+						<td colspan="3">
+							<div class="loginSub">
+								<input type="submit" class="loginSub" value="登 录" id="login"/>
+							</div>
+						</td>
+					</tr>
+					<tr height="35">
+						<td></td>
+						<td colspan="3">
+							<div class="loginReg">
+								<a href="moblieReg.html">免费注册</a>|
+								<a href="moblieReset.html">忘记密码？</a>
+							</div>
+						</td>
+					</tr>
+					<tr height="55">
+						<td></td>
+						<td colspan="3">
+							<div class="loginReg">
+								<a href="" style="padding: 0;">Switching English>></a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="js/interface/autoLogin.js" ></script>
+	<script type="text/javascript" src="layer/layer.js" ></script>
+	<script type="text/javascript" src="js/placeholderfriend.js" ></script>
+	<script type="text/javascript" src="js/md5.js" ></script>
+	<script type="text/javascript" src="js/interface/login.js" ></script>
+	<script>
+			//兼容低版本IE浏览器的placeholder
+			$('input, textarea').placeholder();
+		
+	</script>
+	</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body>
+		<div class="imageCont"></div>
+		<!--<label class="labelBtn"><input type="checkbox" class="tabCheckbox" />星星</label>-->
+		<!--<div class="nextClass">
+			<input type="checkbox" class="tabCheckbox" />
+			<label>大星星</label><br />
+			<input type="checkbox" class="tabCheckbox" />
+			<label>中星星</label><br />
+			<input type="checkbox" class="tabCheckbox" />
+			<label>小星星</label><br />
+			<div class="nextClass">
+				<input type="checkbox" class="tabCheckbox" />
+				<label>小小星星</label><br />
+				<input type="checkbox" class="tabCheckbox" />
+				<label>小小星星1</label><br />
+				<input type="checkbox" class="tabCheckbox" />
+				<label>小小星星3</label><br />
+			</div>
+		</div>
+		<input type="checkbox" />
+		<label>星星</label>
+		<div class="nextClass">
+			<input type="checkbox" />
+			<label>大星星</label><br />
+			<input type="checkbox" />
+			<label>中星星</label><br />
+			<input type="checkbox" />
+			<label>小星星</label><br />
+			<div class="nextClass">
+				<input type="checkbox" />
+				<label>小小星星</label><br />
+				<input type="checkbox" />
+				<label>小小星星1</label><br />
+				<input type="checkbox" />
+				<label>小小星星3</label><br />
+			</div>
+		</div>-->
+		<div class="tabBtn bottomBtn" style="padding: 15px 0;padding: 15px/0 0;">
+			<a href="javascript:void(0)" style="margin: 0 auto; display: block; float: none;" id="sureBtn">确定 </a>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/imageBasicList.js" ></script>
+		<script>
+			$(document).ready(function(){
+				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+				var inputValue = [];
+				$("#sureBtn").click(function(){
+					$(".imageCont input[type='checkbox']:checked").each(function(){
+						inputValue.push($(this).val());
+					})
+					if(parent.$('#searchContTextS').val()==""){
+						parent.$('#searchContTextS').val(inputValue.join("+"));
+					}else{
+						var valued = parent.$('#searchContTextS').val().split("+");
+						parent.$('#searchContTextS').val(removeDuplicateArrS(inputValue.concat(valued)).join("+"));
+					}
+					parent.layer.close(index);
+				})
+			})
+			
+//			$(document).ready(function(){
+//				$("input[type='checkbox']").live("click",function(){
+//					//$(this).parent().next().attr("checked","checked");
+//					console.log($(this).val());
+//				})
+//			})
+		</script>
+	</body>
+</html>

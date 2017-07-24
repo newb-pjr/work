@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="algorithmCont">
+			<ul class="algorithmSet">
+				<li class="currentSet">注册人中文名称</li>
+			</ul>
+			<ul class="setMainCont">
+				<li>
+					<table border="0" class="identifyTable">
+						<!--<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="rItem1" name="rItem" value="y1" />
+								<label for="rItem1">完全相同</label>
+							</td>
+						</tr>-->
+					</table>
+				</li>
+			</ul>
+			<div class="quickSetCont">
+				<table border="0" class="quickTable">
+					<tr>
+						<td style="height: 100px;">
+							<p style="line-height: 35px;">快速设置:</p>
+							<ul class="quickSet">
+								<li><input type="checkbox" class="tabCheckbox" id="save" name="quickChoose" /><label for="save">相同</label></li>
+								<li><input type="checkbox" class="tabCheckbox" id="like" name="quickChoose" /><label for="like">近似</label></li>
+								<li><input type="checkbox" class="tabCheckbox" id="back" name="quickChoose" /><label for="back">恢复默认选项</label></li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+				<div class="tabBtn" style="margin-top: 30px;margin-bottom: 15px;">
+					<a href="" style="width: 190px;" id="sureBtn">确定</a>
+					<a href="" style="width: 190px;" onclick="goBack()">取消</a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+			function goBack(){
+				window.parent.mainGoBack();
+			}
+			$(document).ready(function(){
+				$.ajax({
+					type:"post",
+					url:"Handler/algorism.ashx",
+					async:false,
+					data: {platformType:1,isWeb:1,typeCode:5},
+					success: function(data){
+						var dataObj = eval("("+data+")");
+						if(dataObj.status!=1){
+							dataStatus(dataObj);
+						}else{
+							for(var i=0; i<dataObj.type.length; i++){
+								$(".identifyTable").append('<tr><td><input type="checkbox" class="tabCheckbox" id="rItem'+i+'" name="rItem" value="'+dataObj.type[i].code+'" /><label for="rItem'+i+'">'+dataObj.type[i].name+'</label></td></tr>');
+							}
+						}
+					}
+				});
+				
+				if(typeof(parent.$('#Algorithm').val()) != "undefined"){
+					var algorithmVal = parent.$('#Algorithm').val().split(";");
+//					var jueryModeVal = parent.$('#jueryMode').val();
+					recordChoose(algorithmVal);
+				}
+				if(typeof(parent.$('#zcrzwAlgorithm').val()) != "undefined"){
+					var algorithmVal = parent.$('#zcrzwAlgorithm').val().replace('4_','').split(";");
+//					var jueryModeVal = parent.$('#zcrzwJueryMode').val().replace('4_','');
+					recordChoose(algorithmVal);
+				}
+				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+				var inputValue = [];
+//				var jueryModeValue = [];
+				$("#sureBtn").on('click', function(){
+					$(".identifyTable input[name='rItem']:checked").each(function(){
+						inputValue.push($(this).val());
+					})
+//					$(".quickSet input[type='checkbox']:checked").each(function(){
+//						jueryModeValue.push($(this).val());
+//					})
+//					$(".identifyTable input[name='rItem']:checked").each(function(){
+//						if($(this).siblings('input[type="text"]').length>0){
+//							inputVal = $(this).siblings('input[type="text"]').val();
+//							inputValue.push($(this).val()+"_"+inputVal);
+//						}else{
+//							inputValue.push($(this).val());
+//						}
+//					})
+					//var inputValue = $(".identifyTable input[name='cItem']:checked").val()
+//					if(jueryModeValue == 2 && inputValue == ""){
+//						jueryModeValue.splice(0,jueryModeValue.length);
+//						alert("请选择具体算法！");
+//						return false;
+//					}
+					var inputValueStr = inputValue.join(";");
+//					var jueryModeValueStr = jueryModeValue.join();
+					parent.$('#zcrzwAlgorithm').val("4_"+inputValueStr);
+//					parent.$('#zcrzwJueryMode').val("4_"+jueryModeValueStr);
+					parent.$('#Algorithm').val(inputValueStr);
+//					parent.$('#jueryMode').val(jueryModeValueStr);
+					parent.$("#self").attr("checked","checked");
+					parent.layer.close(index);
+				})
+				
+				$(".quickSet li input").click(function(){
+					if($(this).is(":checked")){
+						$(this).parent().siblings().children('input').removeAttr('checked');
+					}
+				})
+				
+//				$(".identifyTable input[name='rItem']").click(function(){
+//					$("#back").attr("checked","checked");
+//					$("#like").removeAttr("checked");
+//					$("#save").removeAttr("checked");
+//				})
+
+				$(".identifyTable input[name='rItem']").click(function(){
+					$(".quickSet li input").removeAttr("checked");
+				})
+				
+				var compare = ['y1'];
+				$("#back").click(function(){
+					$(".identifyTable input[name='rItem']").removeAttr("checked");
+					$(".identifyTable tr").find("input[name='rItem']").each(function(){
+						for(var i=0; i<compare.length; i++){
+							if($(this).val() == compare[i]){
+								$(this).attr("checked","checked");
+							}
+						}
+					})
+				})
+				
+				$("#save").click(function(){
+					$(".identifyTable input[name='rItem']").removeAttr("checked");
+					$(".identifyTable tr").find("input[name='rItem']").each(function(){
+						for(var i=0; i<compare.length; i++){
+							if($(this).val() == compare[i]){
+								$(this).attr("checked","checked");
+							}
+						}
+					})
+				})
+				
+				$("#like").click(function(){
+					$(".identifyTable input[name='rItem']").attr("checked","checked");
+				})
+			})
+
+		</script>
+		
+	</body>
+</html>

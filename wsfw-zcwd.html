@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body>
+		<table class="regTable" border="0">
+			<tr>
+				<td>代理机构名称：</td>
+				<td><input type="text" class="regShopText" id="shopName" /></td>
+			</tr>
+			<tr>
+				<td>绑定用户注册账号：</td>
+				<td><input type="text" class="regShopText" id="userName" /></td>
+			</tr>
+			<tr>
+				<td>注册网店的代理机构所在省市：</td>
+				<td><select id="chooseArea"><option value="">请选择</option></select><select id="chooseAreaCity"><option value="">请选择</option></select></td>
+			</tr>
+			<tr>
+				<td><input type="radio" id="usePhone" name="regShop" checked="checked" value="1" /><label for="usePhone">使用手机注册验证</label></td>
+				<td><input type="radio" id="useEmail" name="regShop" value="2" /><label for="useEmail">使用邮箱注册验证</label></td>
+			</tr>
+			<tr>
+				<td>绑定用户注册的手机号码：<br>(或绑定用户注册的邮箱)：</td>
+				<td><input type="text" class="regShopText" id="regEquipmentCode" /></td>
+			</tr>
+			<tr>
+				<td>输入验证码：</td>
+				<td><input type="text" class="codeText" /><input type="button" class="getShopCode" value="获取验证码" /></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="shopItem" checked="checked" /><label for="shopItem">我已阅读并同意<a href="">《网店服务条款》</a></label></td>
+				<td><a href="javascript:void(0)" class="uploadShopBtn" onclick="handleLayer('上传文件','wsfw-zcwd-scwj.html')">上传营业执照</a></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<a href="javascript:void(0)" class="shopRegSub">确 定</a>
+				</td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/interface/listAreaShopReg.js" ></script>
+		<script type="text/javascript" src="js/interface/getNewStoreCode.js" ></script>
+		<script type="text/javascript" src="js/interface/addStore.js" ></script>
+	</body>
+</html>

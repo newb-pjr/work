@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/easyui.css" />
+		<link rel="stylesheet" href="css/icon.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #fff;">
+		<div class="algorithmCont">
+			<ul class="algorithmSet">
+				<li class="currentSet">商标识别</li>
+				<li>中文名称</li>
+				<li>西文名称</li>
+				<li>图形要素</li>
+				<li>其他</li>
+			</ul>
+			<ul class="setMainCont">
+				<li>
+					<table border="0" class="identifyTable">
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="item1" />
+								<label for="item1">图像轮廓线相同或相近，差异范围：<input type="text" class="setInput" value="0" id="input" /><a href="javascript:void(0)" class="setBtn" onclick="addBtnFir(this)" >+</a><a href="javascript:void(0)" class="setBtn" onclick="minusBtnFir(this)">-</a></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="item2" />
+								<label for="item2">与商标中相对独立的图形相同或相近</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="item3" />
+								<label for="item3">与商标图形要素相同</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="item4" />
+								<label for="item4">轮廓线像素点数量差率小于<input type="text" class="setInput" value="0" /> %<a href="javascript:void(0)" class="setBtn">+</a><a href="javascript:void(0)" class="setBtn">-</a></label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="item5" />
+								<label for="item5">结果按图像特征信息排序</label>
+							</td>
+						</tr>
+					</table>
+				</li>
+				<li>
+					<table border="0" class="identifyTable">
+						
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="cItem2" />
+								<label for="cItem2">中文名称完全相同</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" class="tabCheckbox" id="cItem3" />
+								<label for="cItem3">（其他顶目参看另附文档）</label>
+							</td>
+						</tr>
+						
+					</table>
+				</li>
+			</ul>
+			<table border="0" class="quickTable">
+				<tr>
+					<td style="height: 100px;">
+						<p style="line-height: 35px;">快速设置:</p>
+						<ul class="quickSet">
+							<li><input type="checkbox" class="tabCheckbox" id="save" /><label for="save">相同</label></li>
+							<li><input type="checkbox" class="tabCheckbox" id="like" /><label for="like">近似</label></li>
+							<li><input type="checkbox" class="tabCheckbox" id="back" /><label for="back">恢复默认设置</label></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<div class="tabBtn" style="margin-top: 30px;">
+				<a href="" style="margin-right: 70px; width: 190px;">确定</a>
+				<a href="" style="width: 190px;" onclick="goBack()">取消</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/interface/common.js" ></script>
+		<script>
+			function goBack(){
+				window.parent.mainGoBack();
+			}
+		</script>
+		<script>
+		$(document).ready(function(){
+			$(".algorithmSet li").click(function(){
+				var index = $(this).index();
+				$(this).addClass("currentSet").siblings().removeClass("currentSet");
+				$(".setMainCont li").eq(index).show().siblings().hide();
+			})
+			$("#addBtnFir").click(function(){
+				var value = $(this).prev().val();
+				if(value>=100){
+					$(this).prev().attr("disabled","disabled")
+					$(this).prev().val(100)
+				}else{
+					$(this).prev().removeAttr("disabled")
+					value++;
+					$(this).prev().val(value);
+				}
+			})
+			$("#minusBtnFir").click(function(){
+				var value = $(this).prev().prev().val();
+				if(value<=0){
+					$(this).prev().prev().attr("disabled","disabled")
+					$(this).prev().prev().val(0)
+				}else{
+					$(this).prev().prev().removeAttr("disabled")
+					value--;
+					$(this).prev().prev().val(value);
+				}
+			})
+			$(".setInput").blur(function(){
+				var filter = /^[0-9]*$/;
+				var input = document.getElementsByClassName("setInput")[0];
+				if($(this).val()>100 || $(this).val()<0){
+					alert("请输入有效数字")
+					$(this).val(0);
+				}
+				if(!input.value.match(filter)){
+					alert("只能为数字")
+					input.value = 0;
+				}
+			})
+		})
+		function addBtnFir(obj){
+			var value = obj.previousSibling.value;
+			console.log(value)
+				if(value>=100){
+					obj.previousSibling.setAttribute("disabled","disabled");
+					obj.previousSibling.value = 100;
+				}else{
+					obj.previousSibling.removeAttribute("disabled");
+					value++;
+					obj.previousSibling.value = value;
+				}
+		}
+		function minusBtnFir(obj){
+			var value = obj.previousSibling.previousSibling.value;
+			console.log(value)
+				if(value<=0){
+					obj.previousSibling.previousSibling.setAttribute("disabled","disabled");
+					obj.previousSibling.previousSibling.value = 0;
+				}else{
+					obj.previousSibling.previousSibling.removeAttribute("disabled");
+					value--;
+					obj.previousSibling.previousSibling.value = value;
+				}
+		}
+		</script>
+	</body>
+</html>

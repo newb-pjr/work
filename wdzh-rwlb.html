@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #F3F3F3;">
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 任务列表</p>
+			<p class="accountTopSec">任务列表<span class="accountTopLine"></span></p>
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">处理完成的任务</p>
+				</div>
+				<p id="finishTips" class="finishTips">没有处理完成的任务</p>
+				<table border="0" class="missionTable" id="finishMission"></table>
+			</div>
+		</div>
+		<div class="accountMain" style="margin-bottom: 50px;">
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">正在处理的任务</p>
+				</div>
+				<p id="unFinishTips" class="finishTips">没有正在处理的任务</p>
+				<table border="0" class="missionTable" id="unFinishMission"></table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/md5.js" ></script>
+		<script type="text/javascript" src="js/interface/getTaskList.js" ></script>
+	</body>
+</html>

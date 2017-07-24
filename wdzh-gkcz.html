@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body style="background-color: #f3f3f3;">
+		<div class="accountMain">
+			<p class="accountTop">我的账户 > 购卡充值</p>
+			<p class="accountTopSec">购卡充值<span class="accountTopLine"></span></p>
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">你存入可用于购国方卡的款项余额是：1000元</p>
+				</div>
+				<table border="0" class="rechargeTable">
+					<tr>
+						<td>请选择充值付款的币种：</td>
+						<td style="padding-left: 0;"><select><option>请选择</option></select></td>
+					</tr>
+					<tr>
+						<td>请输入充值付款的金额：</td>
+						<td><input type="text" class="rechargeSum" /></td>
+					</tr>
+					<tr>
+						<td>请选择支付方式：</td>
+						<td>
+							<input type="radio" class="tabCheckbox" name="payment" id="zfb" checked="checked" />
+							<label for="zfb">支付宝</label>
+							<input type="radio" class="tabCheckbox" name="payment" id="wxzf" style="margin-left: 40px;" />
+							<label for="wxzf">微信支付</label>
+							<input type="radio" class="tabCheckbox" name="payment" id="wsyh" style="margin-left: 40px;" />
+							<label for="wsyh">网上银行</label>
+						</td>
+					</tr>
+				</table>
+				<input class="accountSub" type="submit" value="充值" />
+			</div>
+		</div>
+		<div class="accountMain" style="margin-bottom: 50px;">
+			<div class="accountCont">
+				<div class="accountHead">
+					<p class="accountTitle">你存入可用于购国方卡的款项余额是：1000元</p>
+				</div>
+				<ul class="chooseRechargeCard">
+					<li><div class="r3000"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r3000" name="chooseCard" /><label for="r3000"></label></div></li>
+					<li><div class="r1650"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r1650" name="chooseCard" /><label for="r1650"></label></div></li>
+					<li><div class="r900"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r900" name="chooseCard" /><label for="r900"></label></div></li>
+					<li><div class="r320"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r320" name="chooseCard" /><label for="r320"></label></div></li>
+					<li><div class="r190"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r190" name="chooseCard" /><label for="r190"></label></div></li>
+					<li><div class="r100"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r100" name="chooseCard" /><label for="r100"></label></div></li>
+					<li><div class="r1800"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r1800" name="chooseCard" /><label for="r1800"></label></div></li>
+					<li><div class="r950"><input type="radio" class="tabCheckbox rechargeCardChoose" id="r950" name="chooseCard" /><label for="r950"></label></div></li>
+				</ul>
+				<div class="rechargeItem">
+					<input type="checkbox" class="tabCheckbox" checked="checked" id="rechargeItem" />
+					<label for="rechargeItem">接受<a href="">《使用条款》</a></label>
+				</div>
+				<input class="accountSub" type="submit" value="购买" />				
+			</div>
+		</div>
+	</body>
+</html>

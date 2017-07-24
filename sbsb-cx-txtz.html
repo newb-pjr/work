@@ -1,0 +1,30 @@
+<li>
+	<table border="0" class="identifyTable">
+		<!--<tr>
+			<td>
+				<input type="checkbox" class="tabCheckbox" id="cItem1" name="cItem" value="0" />
+				<label for="cItem1">图像特征信息整体标准1相同</label>
+			</td>
+		</tr>-->
+	</table>
+</li>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type:"post",
+			url:"Handler/algorism.ashx",
+			async:false,
+			data: {platformType:1,isWeb:1,typeCode:0},
+			success: function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status!=1){
+					dataStatus(dataObj);
+				}else{
+					for(var i=0; i<dataObj.type.length; i++){
+						$(".identifyTable").append('<tr><td><input type="checkbox" class="tabCheckbox" id="aItem'+i+'" name="aItem" value="'+dataObj.type[i].code+'" /><label for="aItem'+i+'">'+dataObj.type[i].name+'</label></td></tr>');
+					}
+				}
+			}
+		});
+	})
+</script>

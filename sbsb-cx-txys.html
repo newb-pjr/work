@@ -1,0 +1,30 @@
+<li>
+	<table border="0" class="identifyTable">
+		<!--<tr>
+			<td>
+				<input type="checkbox" class="tabCheckbox" id="pItem1" name="pItem" value="c1" />
+				<label for="pItem1">整体商标图形要素编码相同</label>
+			</td>
+		</tr>-->
+	</table>
+</li>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type:"post",
+			url:"Handler/algorism.ashx",
+			async:false,
+			data: {platformType:1,isWeb:1,typeCode:3},
+			success: function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status!=1){
+					dataStatus(dataObj);
+				}else{
+					for(var i=0; i<dataObj.type.length; i++){
+						$(".identifyTable").append('<tr><td><input type="checkbox" class="tabCheckbox" id="pItem'+i+'" name="pItem" value="'+dataObj.type[i].code+'" /><label for="pItem'+i+'">'+dataObj.type[i].name+'</label></td></tr>');
+					}
+				}
+			}
+		});
+	})
+</script>
