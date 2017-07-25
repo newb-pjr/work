@@ -60,6 +60,19 @@ $(document).ready(function(){
 	
 
 function pageselectCallback(page_id){
+	if(getCookie("MarkKeyStr")){
+		var MarkKeyStr = getCookie("MarkKeyStr").split(";");
+	}else{
+		var MarkKeyStr = []
+	}
+	$(".searchResult table input[type=checkbox]").each(function(){
+		if($(this).is(":checked")){
+			MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
+		}
+	})
+	MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
+	document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
+	
 	var TaskID = getCookie("TaskID");
 	var html = $(".searchResult table tbody tr").first().html();
 	var SortType = getCookie("SortType");

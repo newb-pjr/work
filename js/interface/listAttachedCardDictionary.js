@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var endTime;
+	var isValid = true;
 	$.ajax({
 		type:"post",
 		url:"Handler/userInfo.ashx",
@@ -8,7 +8,9 @@ $(document).ready(function(){
 		success:function(data){
 			var dataObj = eval("("+data+")");
 			if(dataObj.status==1){
-				endTime = new Date(dataObj.userInfo.userCard.endTime.replace(/\-/g, "\/"));
+				if(dataObj.userInfo.userCard==""){
+					isValid = false;
+				}
 			}else{
 				dataStatus(dataObj);
 			}
@@ -19,8 +21,7 @@ $(document).ready(function(){
 		var parentID;
 		$("#attachedCard").html("");
 		if(!$("input[name='qika']").is(":checked")){
-			var date = new Date();
-			if(date<=endTime){
+			if(isValid){
 				$.ajax({
 					type:"post",
 					url:"Handler/listAttachedCardDictionary.ashx",

@@ -194,12 +194,17 @@
 				}
 				
 				function filter(){
-					var MarkKeyStr = [];
+					if(getCookie("MarkKeyStr")){
+						var MarkKeyStr = getCookie("MarkKeyStr").split(";");
+					}else{
+						var MarkKeyStr = []
+					}
 					$(".searchResultImg table input[type=checkbox]").each(function(){
 						if($(this).is(":checked")){
 							MarkKeyStr.push($(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html());
 						}
 					})
+					MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
 					document.cookie = "MarkKeyStr="+MarkKeyStr.join(";");
 					handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
 				}

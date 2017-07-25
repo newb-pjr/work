@@ -41,6 +41,7 @@ $(document).ready(function(){
 					parent.$(".closeDet").height(parent.$(".searchResult table").height());
 					parent.$("#searchPagination").remove();
 					window.parent.mainGoBack();
+					document.cookie = "MarkKeyStr=";
 				}else{
 					dataStatus(dataObj);
 				}

@@ -76,25 +76,29 @@
 					MarkClass: MarkClass
 				}, function(data) {
 					var dataObj = eval("(" + data + ")");
-					var getId = getCookie('MarkNo');
-					$("#registerNumD").html(dataObj.data.MarkInfo[0].MarkNo);
-					$("#markImgD").attr("src", dataObj.data.MarkInfo[0].MarkImagePath);
-					$("#markNameD").html(dataObj.data.MarkInfo[0].MarkShowName);
-					$("#markTypeD").html(dataObj.data.MarkInfo[0].MarkType);
-					$("#markClassD").html(dataObj.data.MarkInfo[0].MarkClass);
-					$("#registerDateD").html(dataObj.data.MarkInfo[0].ApplicationDate);
-					$("#publishIssueD").html("初审  " + dataObj.data.MarkInfo[0].PreliminaryPublishIssue + " 期/注册  " + dataObj.data.MarkInfo[0].RegisterPublishIssue + " 期");
-					$("#companyD").html(dataObj.data.MarkInfo[0].HolderNameCn);
-					$("#addressD").html(dataObj.data.MarkInfo[0].HolderAddrCn);
-					$("#dateD").html("自   " + dataObj.data.MarkInfo[0].StartDate + "  起  至   " + dataObj.data.MarkInfo[0].EndDate + "  止");
-					$("#institutionD").html(dataObj.data.MarkInfo[0].AgentName);
-					$("#markStatusD").html(dataObj.data.MarkInfo[0].MarkState);
-					$("#lastPublishD").html(dataObj.data.MarkInfo[0].LastPublishName);
-					$("#lastProcessD").html(dataObj.data.MarkInfo[0].LastProcessName);
-					var goods = dataObj.data.MarkInfo[0].Goods;
-					var goodsArr = goods.split(';');
-					for(var i = 0; i < goodsArr.length; i++) {
-						$(".fileContright table").append('<tr><td>' + goodsArr[i] + '</td><td>' + dataObj.data.MarkInfo[0].MarkGroup + '</td><td>' + dataObj.data.MarkInfo[0].MarkClass + '</td></tr>');
+					if(dataObj.status == 1){
+						var getId = getCookie('MarkNo');
+						$("#registerNumD").html(dataObj.data.MarkInfo[0].MarkNo);
+						$("#markImgD").attr("src", dataObj.data.MarkInfo[0].MarkImagePath);
+						$("#markNameD").html(dataObj.data.MarkInfo[0].MarkShowName);
+						$("#markTypeD").html(dataObj.data.MarkInfo[0].MarkType);
+						$("#markClassD").html(dataObj.data.MarkInfo[0].MarkClass);
+						$("#registerDateD").html(dataObj.data.MarkInfo[0].ApplicationDate);
+						$("#publishIssueD").html("初审  " + dataObj.data.MarkInfo[0].PreliminaryPublishIssue + " 期/注册  " + dataObj.data.MarkInfo[0].RegisterPublishIssue + " 期");
+						$("#companyD").html(dataObj.data.MarkInfo[0].HolderNameCn);
+						$("#addressD").html(dataObj.data.MarkInfo[0].HolderAddrCn);
+						$("#dateD").html("自   " + dataObj.data.MarkInfo[0].StartDate + "  起  至   " + dataObj.data.MarkInfo[0].EndDate + "  止");
+						$("#institutionD").html(dataObj.data.MarkInfo[0].AgentName);
+						$("#markStatusD").html(dataObj.data.MarkInfo[0].MarkState);
+						$("#lastPublishD").html(dataObj.data.MarkInfo[0].LastPublishName);
+						$("#lastProcessD").html(dataObj.data.MarkInfo[0].LastProcessName);
+						var goods = dataObj.data.MarkInfo[0].Goods;
+						var goodsArr = goods.split(';');
+						for(var i = 0; i < goodsArr.length; i++) {
+							$(".fileContright table").append('<tr><td>' + goodsArr[i] + '</td><td>' + dataObj.data.MarkInfo[0].MarkGroup + '</td><td>' + dataObj.data.MarkInfo[0].MarkClass + '</td></tr>');
+						}
+					}else{
+						dataStatus(dataObj);
 					}
 				})
 			})

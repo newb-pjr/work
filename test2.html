@@ -9,23 +9,14 @@
 	<body>
 		<a href="javascript:void(0)" onclick="abc()">aaa</a>
 		<script>
-			var beginDate='2017年06月03日';  
- var endDate='2017年05月02日';  
- var d1 = new Date(beginDate.replace(/[\u4e00-\u9fa5]/g, "\/")).getTime()/1000;  
- var d2 = new Date(endDate.replace(/[\u4e00-\u9fa5]/g, "\/")).getTime()/1000;  
-console.log(d1)
-console.log(d2)
-//if(d1 >=d2)  
-// {  
-//alert("开始时间不能大于结束时间！");  
-// }else{
-// 	alert('ok')
-// }
-var a = 123
-		function abc(){
-			console.log(a)
-		}
-		abc()
+			 MarkKeyStr = ["aaa","bbb","ccc"]
+			MarkKeyStr.splice($.inArray('ccc',MarkKeyStr),1);
+			console.log(MarkKeyStr)
+			var arrays = ['a','b','c','d'];
+
+   arrays.splice($.inArray('c',arrays),1);
+
+   console.log(arrays);
 		</script>
 	</body>
 </html>

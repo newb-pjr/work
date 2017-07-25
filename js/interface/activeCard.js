@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$("#activeCardBtn").click(function(){
-		var cardID = $("#activeCardId").val();
+		var cardID = $("#selectActiveDate").val();
 		var activeTime = new Date($("#activeTime").val().replace(/-/g,"\/"));
 		var validDate = new Date($("#validDate").html().replace(/-/g,"\/"));
 		var beginDate = $("#activeTime").val();
