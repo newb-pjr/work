@@ -8,11 +8,10 @@ $(document).ready(function(){
 			var dataObj = eval("("+data+")");
 			if(dataObj.status==1){
 				document.cookie = "username="+dataObj.userInfo.userName;
-//				var x = screen.availWidth;  
-//				var y = screen.availHeight;
-//				window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
-//				window.close();
-				location.href = "main.html";
+				var x = screen.availWidth-10;  
+				var y = screen.availHeight-60;
+				window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
+//				location.href = "main.html";
 			}else{
 				switch(dataObj.status){
 					case 0:

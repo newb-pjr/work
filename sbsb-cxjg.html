@@ -20,7 +20,7 @@
 				<a href="javascript:void(0);" class="btn exportIcon">导出word</a>
 				<a href="javascript:void(0);" class="btn switchIcon" onclick="handleTab('sbsb-cxjg-img.html','查询结果-图像显示')">切换显示</a>
 				<a href="javascript:void(0);" class="btn sortIcon" onclick="handleLayer('排序设置','sbsb-cxjg-px.html','500px','300px')">排序设置</a>
-				<a href="javascript:void(0);" class="btn filterIcon" onclick="filter()">过滤</a>
+				<a href="javascript:void(0);" class="btn filterIcon" onclick="handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px')">过滤</a>
 			</div>
 			<div class="searchResult">
 				<table border="1" bordercolor="#C6C4C4" align="center" width="100%">
@@ -87,7 +87,20 @@
 //							}
 //						})
 //					})
-					$(".searchResult table input[type=checkbox]").click(function(){
+					$(".searchResult table input[type=checkbox]").each(function(){
+						var num = $(this).parent().next().html()+"_"+$(this).siblings().val();
+						var MarkKeyStr = [];
+						if(getCookie("MarkKeyStr")){
+							MarkKeyStr = getCookie("MarkKeyStr").split(",");
+						}
+						for(var i=0; i<MarkKeyStr.length; i++){
+							if(num == MarkKeyStr[i]){
+								$(this).attr("checked","checked");
+							}
+						}
+					})
+
+					$(".searchResult table input[type=checkbox]").live("click",function(){
 						if(getCookie("MarkKeyStr")){
 							var MarkKeyStr = getCookie("MarkKeyStr").split(",");
 						}else{
@@ -101,15 +114,14 @@
 									MarkKeyStr.splice($.inArray(MarkKeyStr[i], MarkKeyStr),1);
 								}
 							}
-							console.log(MarkKeyStr)
 						}
+						MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
 						document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
 					})
 
-					$(".searchResult table tr").click(function(){
-//						console.log($(this).find('td').eq(2).html())
-						var num = $(this).find('td').eq(2).html();
-						var markClass = $(this).find('td').eq(2).prev().html();
+					$(".searchResult table tr").find('td:eq(2)').click(function(){
+						var num = $(this).html();
+						var markClass = $(this).prev().html();
 						document.cookie="MarkNo="+num;
 						document.cookie="MarkClass="+markClass;
 						$("#loadCont tr td").load('sbsb-cxjg-dayl.html');
@@ -139,21 +151,21 @@
 						$(".showDet").hide();
 					})
 				})
-				function filter(){
-					if(getCookie("MarkKeyStr")){
-						var MarkKeyStr = getCookie("MarkKeyStr").split(";");
-					}else{
-						var MarkKeyStr = []
-					}
-					$(".searchResult table input[type=checkbox]").each(function(){
-						if($(this).is(":checked")){
-							MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
-						}
-					})
-					MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
-					document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
-					handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
-				}
+//				function filter(){
+//					if(getCookie("MarkKeyStr")){
+//						var MarkKeyStr = getCookie("MarkKeyStr").split(";");
+//					}else{
+//						var MarkKeyStr = []
+//					}
+//					$(".searchResult table input[type=checkbox]").each(function(){
+//						if($(this).is(":checked")){
+//							MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
+//						}
+//					})
+//					MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
+//					document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
+//					handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
+//				}
 			</script>
 	</body>
 </html>

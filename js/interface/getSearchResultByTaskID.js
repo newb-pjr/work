@@ -60,19 +60,6 @@ $(document).ready(function(){
 	
 
 function pageselectCallback(page_id){
-	if(getCookie("MarkKeyStr")){
-		var MarkKeyStr = getCookie("MarkKeyStr").split(";");
-	}else{
-		var MarkKeyStr = []
-	}
-	$(".searchResult table input[type=checkbox]").each(function(){
-		if($(this).is(":checked")){
-			MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
-		}
-	})
-	MarkKeyStr = removeDuplicateArrS(MarkKeyStr);
-	document.cookie = "MarkKeyStr="+MarkKeyStr.join(",");
-	
 	var TaskID = getCookie("TaskID");
 	var html = $(".searchResult table tbody tr").first().html();
 	var SortType = getCookie("SortType");
@@ -84,7 +71,7 @@ function pageselectCallback(page_id){
 		type:"post",
 		url:"Handler/getSearchResultByTaskID.ashx",
 		data:{platformType:1,isWeb:1,TaskID:TaskID,SortType:SortType,BeginRow:BeginRow,EndRow:EndRow},
-		async:true,
+		async:false,
 		success:function(data){
 			var dataObj = eval("("+data+")");
 			if(dataObj.status==1){
@@ -101,4 +88,14 @@ function pageselectCallback(page_id){
 			}
 		}
 	});
+	
+	$(".searchResult table input[type=checkbox]").each(function(){
+		var num = $(this).parent().next().html()+"_"+$(this).siblings().val();
+		var MarkKeyStr = getCookie("MarkKeyStr").split(",");
+		for(var i=0; i<MarkKeyStr.length; i++){
+			if(num == MarkKeyStr[i]){
+				$(this).attr("checked","checked");
+			}
+		}
+	})
 }

@@ -19,11 +19,11 @@ $(document).ready(function(){
 							switch(dataObj.status){
 								case 1:
 									document.cookie = "username="+dataObj.userInfo.userName;
-//									var x = screen.availWidth;  
-//									var y = screen.availHeight;
-//									window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
+									var x = screen.availWidth-10;  
+									var y = screen.availHeight-60;
+									window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
 //									window.close();
-									location.href = "main.html";
+//									location.href = "main.html";
 									break;
 								case 0:
 									alert("登录失败");

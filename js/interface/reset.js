@@ -41,7 +41,6 @@ function reset(checkMethod,equipmentCodeSelector){
 	if($("#password").val() == $("#confirm").val()){
 			var md5Pwd = $.md5($("#password").val()); 
 			$.post('Handler/changePasswordCode.ashx',{platformType:1,isWeb:1,checkMethod:checkMethod,equipmentCode:$(equipmentCodeSelector).val(),validCode:$("#code").val(),password:md5Pwd,checkCode:$("#checkCode").val()},function(data){
-				console.log(data);
 				var dataObj = eval("("+data+")");
 				if(!dataObj.status){
 					alert(dataObj.err);

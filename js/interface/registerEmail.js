@@ -1,4 +1,10 @@
 $(document).ready(function(){
+	$("#password").blur(function(){
+		if(!validatePassword($(this).val())){
+			alert("只能输入6-16个字母、数字、下划线的密码！");
+			$(this).val("");
+		}
+	})
 	$(".submit").click(function(){
 		if($("#password").val() == $("#confirm").val()){
 			var md5Pwd = $.md5($("#password").val()); 

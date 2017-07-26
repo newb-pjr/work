@@ -1,6 +1,63 @@
 $(document).ready(function(){
 	$(".sureBtn").click(function(){
-		var TaskID = Date.parse(new Date())/1000;
+		var searchloading = layer.load(1, {
+		  shade: [0.5,'#000']
+		});
+		var breakGo = false;
+		var isBreak = false;
+		var validMethod;
+		var TaskID;
+		$.ajax({
+			type:"post",
+			url:"Handler/getTaskID.ashx",
+			async:false,
+			data:{platformType:1,isWeb:1},
+			success:function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status==1){
+					TaskID = dataObj.taskID+1000;
+					if(TaskID==""){
+						alert("获取TaskID出错！")
+						layer.close(searchloading);
+						breakGo = true;
+					}
+				}else{
+					dataStatus(dataObj);
+					layer.close(searchloading);
+					breakGo = true;
+				}
+			}
+		});
+		if(breakGo){
+			return false;
+		}
+		document.cookie = "TaskID="+TaskID;
+		$.ajax({
+			type:"post",
+			url:"Handler/userInfo.ashx",
+			async:false,
+			data:{platformType:1,isWeb:1},
+			success:function(data){
+				var dataObj = eval("("+data+")");
+				if(dataObj.status==1){
+					if(dataObj.userInfo.userCard==""){
+						alert("当前国方卡已过期，请购卡或激活卡再进行操作！");
+						layer.close(searchloading);
+						breakGo = true;
+					}else{
+						validMethod = dataObj.userInfo.userCard.validMethod;
+					}
+				}else{
+					dataStatus(dataObj);
+					layer.close(searchloading);
+					breakGo = true;
+				}
+			}
+		});
+		if(breakGo){
+			return false;
+		}
+		
 		var FrontCount = 16;
 		var QueryMode = $(".qureySelect").val();
 		var SrcImgID = getCookie("SrcImgID");
@@ -54,9 +111,12 @@ $(document).ready(function(){
 				var EndDate = dateSelect($("#dateInput").val())[1];
 			}
 		}
-		$.ajax({
+		var firstTry = $.ajax({
 			type:"post",
 			url:"Handler/searchByImg.ashx",
+			complete:function(){
+				isBreak = true;
+			},
 			data:{
 					platformType:1,
 					isWeb:1,
@@ -83,12 +143,12 @@ $(document).ready(function(){
 					BeginDate:BeginDate,
 					EndDate:EndDate
 			},
-			async:true,
+			async:false,
 			success:function(data){
+				var dataObj = data;
 				if(data.status == 1){
-					console.log(data.data.TaskID);
-					document.cookie = "taskId="+data.data.TaskID;
-					handleTab('sbsb-cxjg.html','查询结果');
+					window.data = dataObj.data;
+					validMethodFunc(validMethod,searchloading);
 				}else{
 					switch(dataObj.status){
 						case 0:
@@ -113,5 +173,34 @@ $(document).ready(function(){
 				}
 			}
 		});
+		
+		var n=0;
+		var timer = setInterval(function(){
+			if(n>30){
+				firstTry.abort();
+				var secondTry = taskIDAjax(validMethod,searchloading);
+			}
+			switch (n){
+				case n>35:
+					secondTry.abort();
+					var thirdTry = taskIDAjax(validMethod,searchloading);
+					break;
+				case n>40:
+					thirdTry.abort();
+					var fourthTry = taskIDAjax(validMethod,searchloading);
+					break;
+				case n>45:
+					fourthTry.abort();
+					clearInterval(timer);
+					alert("请求数据超时！");
+					break;
+				default:
+					break;
+			}
+			if(isBreak){
+				clearInterval(timer);
+			}
+			n++;
+		},1000)
 	})
 })

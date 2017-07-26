@@ -73,8 +73,10 @@
 				async:true,
 				data:{platformType:1,isWeb:1},
 				success:function(data){
-//					window.close();
-					location.href = 'login.html';
+					window.close();
+					window.open("about:blank","_self").close();
+					document.cookie = "MarkKeyStr=";
+//					location.href = 'login.html';
 				}
 			});
 		}

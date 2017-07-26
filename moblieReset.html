@@ -64,6 +64,13 @@
 			})
 			//兼容低版本IE浏览器的placeholder
 			$('input, textarea').placeholder();
+			
+			$("#password").blur(function(){
+				if(!validatePassword($(this).val())){
+					alert("只能输入6-16个字母、数字、下划线的密码！");
+					$(this).val("");
+				}
+			})
 		})
 	</script>
 </html>

@@ -1,4 +1,10 @@
 $(document).ready(function(){
+	$("#password").blur(function(){
+		if(!validatePassword($(this).val())){
+			alert("只能输入6-16个字母、数字、下划线的密码！");
+			$(this).val("");
+		}
+	})
 	$(".submit").click(function(){
 		if($("#password").val() == $("#confirm").val()){
 			var md5Pwd = $.md5($("#password").val()); 
@@ -8,7 +14,6 @@ $(document).ready(function(){
 				$("#isInstitution").val(0);
 			}
 			$.post('Handler/register.ashx',{platformType:1,isWeb:1,userName:$("#userName").val(),password:md5Pwd,checkMethod:1,mobile:$("#phoneNum").val(),name:$("#name").val(),validCode:$("#code").val(),isInstitution:$("#isInstitution").val()},function(data){
-				console.log(data);
 				var dataObj = eval("("+data+")");
 				if(!dataObj.status){
 					alert(dataObj.err);

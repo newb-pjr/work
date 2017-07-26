@@ -93,7 +93,7 @@
 			<script>
 				var MarkNo = getCookie("MarkNo");
 				var MarkClass = getCookie("MarkClass");
-				$.post(url+'Handler/getTmInfbyMarkNo.ashx',{platformType:1,isWeb:1,MarkNo:MarkNo,MarkClass:MarkClass},function(data){
+				$.post('Handler/getTmInfbyMarkNo.ashx',{platformType:1,isWeb:1,MarkNo:MarkNo,MarkClass:MarkClass},function(data){
 					var dataObj = eval("("+data+")");
 					if(dataObj.status==1){
 						var getId = getCookie('MarkNo');

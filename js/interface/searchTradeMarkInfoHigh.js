@@ -142,8 +142,10 @@ $(document).ready(function(){
 					if(dataObj.userInfo.userCard==""){
 						alert("当前国方卡已过期，请购卡或激活卡再进行操作！");
 						layer.close(searchloading);
+						breakGo = true;
+					}else{
+						validMethod = dataObj.userInfo.userCard.validMethod;
 					}
-					validMethod = dataObj.userInfo.userCard.validMethod;
 				}else{
 					dataStatus(dataObj);
 				}

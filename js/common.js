@@ -52,6 +52,10 @@ function validateNum(value){
 	var pattern = /^[0-9]*$/;
  	return pattern.test(value);
 }
+function validatePassword(value){
+	var pattern = /^(\w){6,16}$/;
+	return pattern.test(value);
+}
 function getQueryString(name) { //用于解析网址url参数
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
 	var r = window.location.search.substr(1).match(reg); 
@@ -69,6 +73,35 @@ function searchResult(url,name){
 		if($(".searchResult table input[type=checkbox]:checked").length>1){
 			alert("只能勾选一项商标进行信息查看！");
 		}else{
+			$(".searchResult table input[type=checkbox]").each(function(){
+				if($(this).is(":checked")){
+					var num =  $(this).next().val();
+					var markClass = $(this).parent().next().html();
+					document.cookie="MarkNo="+num;
+					document.cookie="MarkClass="+markClass;
+				}
+			})
+			closeTab(name);
+			handleTab(url,name);
+		}
+	}else{
+		alert("请勾选其中一项商标进行信息查看！");
+	}
+}
+function searchResultImg(url,name){
+	if($(".searchResultImg table input[type=checkbox]").is(":checked")){
+		if($(".searchResultImg table input[type=checkbox]:checked").length>1){
+			alert("只能勾选一项商标进行信息查看！");
+		}else{
+			$(".searchResultImg table input[type=checkbox]").each(function(){
+				if($(this).is(":checked")){
+					var num =  $(this).prev().find('span').last().html();
+					var markClass = $(this).prev().find('span').first().html();
+					console.log(num)
+					document.cookie="MarkNo="+num;
+					document.cookie="MarkClass="+markClass;
+				}
+			})
 			closeTab(name);
 			handleTab(url,name);
 		}
