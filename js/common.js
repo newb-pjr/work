@@ -465,7 +465,7 @@ function validMethodFunc(validMethod,searchloading){
 	}
 	if(validMethod==1){
 		layer.close(searchloading);
-		handleLayer('请输入支付验证码','sbsb-yzmzf.html','500px','380px');
+		handleLayer('请输入支付验证码','sbsb-yzmzf.html','500px','280px');
 	}
 	if(validMethod==2){
 		$.ajax({

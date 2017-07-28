@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$("#getTaskPayCode").click(function(){
+		$(this).attr("disabled","disabled");
 		$.ajax({
 			type:"post",
 			url:"Handler/getTaskPayCode.ashx",

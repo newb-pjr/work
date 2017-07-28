@@ -8,19 +8,21 @@ $(document).ready(function(){
 			var dataObj = eval("("+data+")");
 			var noActive = [];
 			if(dataObj.status==1){
-				for(var i=0; i<dataObj.data.length; i++){
-					var noActiveObj = {};
-					noActiveObj.cardNum = dataObj.data[i].cardNum;
-					noActiveObj.name = dataObj.data[i].name;
-					noActiveObj.endTime = dataObj.data[i].endTime.split(" ")[0];
-					noActiveObj.cardID = dataObj.data[i].id;
-					noActive.push(noActiveObj);
+				if(dataObj.data!=""){
+					for(var i=0; i<dataObj.data.length; i++){
+						var noActiveObj = {};
+						noActiveObj.cardNum = dataObj.data[i].cardNum;
+						noActiveObj.name = dataObj.data[i].name;
+						noActiveObj.endTime = dataObj.data[i].endTime.split(" ")[0];
+						noActiveObj.cardID = dataObj.data[i].id;
+						noActive.push(noActiveObj);
+					}
+					for(var i=0; i<noActive.length; i++){
+						$("#selectActiveDate").append('<option value="'+noActive[i].cardID+'">'+noActive[i].cardNum+'</option>');
+					}
+					$("#cardType").html(noActive[0].name);
+					$("#validDate").html(noActive[0].endTime);
 				}
-				for(var i=0; i<noActive.length; i++){
-					$("#selectActiveDate").append('<option value="'+noActive[i].cardID+'">'+noActive[i].cardNum+'</option>');
-				}
-				$("#cardType").html(noActive[0].name);
-				$("#validDate").html(noActive[0].endTime);
 			}else{
 				dataStatus(dataObj);
 			}
