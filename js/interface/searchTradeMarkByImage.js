@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	$("#addImages").click(function(){
-		likePic();
+		if($("#addImgCont").html()==""){
+			likePic();
+		}
 		var imgUrl = getCookie("imgUrl");
 		var defImage = JSON.parse(getCookie("defimage"));
 		if(getCookie("finishImg") != ""){

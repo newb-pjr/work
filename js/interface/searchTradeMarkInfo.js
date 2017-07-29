@@ -73,8 +73,8 @@ $(document).ready(function(){
 		}else{
 			Content = $(".searchContText").val();
 		}
-		var MarkClass = $("#markClass").val();
-		var MarkGroup = $("#markGroup").val();
+		var MarkClass = $("#markClass").val().replace(/,/g,";");
+		var MarkGroup = $("#markGroup").val().replace(/,/g,";");
 		var QueryMode = $("input[name='group2']:checked").val();
 		if(QueryMode == ""){
 			QueryMode = 0;

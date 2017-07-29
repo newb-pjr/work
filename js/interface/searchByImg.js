@@ -83,12 +83,8 @@ $(document).ready(function(){
 		var CnContent = $("#searchAllChinese").val();
 		var EnContent = $("#searchAllEnglish").val();
 		var ImageCode = $("#searchAllContText").val();
-		var MarkClass = $("#serviceClass").val();
-		if($("#groupNameText").val() != ""){
-			var MarkGroup = $("#groupNameText").val();
-		}else{
-			var MarkGroup = $("#proNameText").val();
-		}
+		var MarkClass = $("#markClassS").val().replace(/,/g,";");
+		var MarkGroup = $("#markGroupS").val().replace(/,/g,";");
 		var ImageQueryMode = $("#imageQueryMode").val();
 		var ImageAlgorithm = $("#imageAlgorithm").val();
 		var CnQueryMode = $("#cnQueryMode").val();
@@ -170,6 +166,7 @@ $(document).ready(function(){
 							alert("验证码不正确");
 							break;
 					}
+					layer.close(searchloading);
 				}
 			}
 		});

@@ -60,12 +60,8 @@ $(document).ready(function(){
 		var FrontCount = 16;		
 		var SrcImgID = getCookie("SrcImgID");
 		var ImgIDs = $(".imgframe img").attr("src").substring($(".imgframe img").attr("src").lastIndexOf('/')+1);
-		var MarkClass = $("#serviceClass").val();
-		if($("#groupNameTextS").val() != ""){
-			var MarkGroup = $("#groupNameTextS").val();
-		}else{
-			var MarkGroup = $("#proNameTextS").val();
-		}
+		var MarkClass = $("#markClassS").val().replace(/,/g,";");
+		var MarkGroup = $("#markGroupS").val().replace(/,/g,";");
 		var firstTry = $.ajax({
 			type:"post",
 			url:"Handler/searchByImg.ashx",
@@ -125,6 +121,7 @@ $(document).ready(function(){
 							alert("验证码不正确");
 							break;
 					}
+					layer.close(searchloading);
 				}
 			}
 		});

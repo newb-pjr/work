@@ -278,6 +278,7 @@ $(document).ready(function(){
 							alert("验证码不正确");
 							break;
 					}
+					layer.close(searchloading);
 				}
 			}
 		});
