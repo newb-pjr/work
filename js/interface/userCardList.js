@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var noActive = [];
+	var noActiveObj = {};
 	$.ajax({
 		type:"post",
 		url:"Handler/userCardList.ashx",
@@ -6,11 +8,9 @@ $(document).ready(function(){
 		data:{platformType:1,isWeb:1,activeState:2,pageSize:0,page:0},
 		success:function(data){
 			var dataObj = eval("("+data+")");
-			var noActive = [];
 			if(dataObj.status==1){
 				if(dataObj.data!=""){
 					for(var i=0; i<dataObj.data.length; i++){
-						var noActiveObj = {};
 						noActiveObj.cardNum = dataObj.data[i].cardNum;
 						noActiveObj.name = dataObj.data[i].name;
 						noActiveObj.endTime = dataObj.data[i].endTime.split(" ")[0];
@@ -18,9 +18,20 @@ $(document).ready(function(){
 						noActive.push(noActiveObj);
 					}
 					for(var i=0; i<noActive.length; i++){
-						$("#selectActiveDate").append('<option value="'+noActive[i].cardID+'">'+noActive[i].cardNum+'</option>');
+						if(noActive[i].cardID==""){
+							var id = "试用卡 - 无卡号";
+						}else{
+							var id = noActive[i].cardID;
+						}
+						$("#selectActiveDate").append('<option value="'+id+'">'+noActive[i].cardNum+'</option>');
 					}
-					$("#cardType").html(noActive[0].name);
+					if(dataObj.data[0].cardType==1){
+						$("#cardType").html("次卡-"+noActive[0].name);
+					}
+					if(dataObj.data[0].cardType==2){
+						$("#cardType").html("时卡-"+noActive[0].name);
+					}
+					
 					$("#validDate").html(noActive[0].endTime);
 				}
 			}else{
@@ -28,6 +39,10 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	$("#selectActiveDate").change(function(){
+		if($(this).val() == noActiveObj)
+	})
 	
 	$.ajax({
 		type:"post",

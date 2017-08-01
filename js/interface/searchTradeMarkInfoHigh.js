@@ -217,6 +217,7 @@ $(document).ready(function(){
 //				}
 //			}
 		})
+		var SearchMode = $("input[name='group1']:checked").val();
 		var QueryMode = $("input[name='group2']:checked").val();
 		if(QueryMode == ""){
 			QueryMode = 0;
@@ -251,7 +252,7 @@ $(document).ready(function(){
 			complete:function(){
 				isBreak = true;
 			},
-			data:{platformType:1,isWeb:1,TaskID:TaskID,FrontCount:FrontCount,SearchType:SearchType,Content:Content,MarkClass:MarkClass,MarkGroup:MarkGroup,QueryMode:QueryMode,Algorithm:Algorithm,State:State,DateType:DateType,BeginDate:BeginDate,EndDate:EndDate},
+			data:{platformType:1,isWeb:1,TaskID:TaskID,FrontCount:FrontCount,SearchMode:SearchMode,SearchType:SearchType,Content:Content,MarkClass:MarkClass,MarkGroup:MarkGroup,QueryMode:QueryMode,Algorithm:Algorithm,State:State,DateType:DateType,BeginDate:BeginDate,EndDate:EndDate},
 			success:function(data){
 				var dataObj = eval("("+data+")");
 				if(dataObj.status == 1){

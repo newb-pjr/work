@@ -38,6 +38,9 @@ $(document).ready(function(){
 		}
 		if(payWayCode==2){
 			layer.close(loading);
+			alert("支付结果将在银联支付页面操作，该页面将关闭，订单处理结果，请前往我的订单查看 。点击确认关闭订单详情")
+			closeTab("确认并支付");
+			closeTab("订单详情");
 			window.open("UnionPay/SetPay.aspx?orderId="+orderId,"_blank");
 		}
 //		$.ajax({

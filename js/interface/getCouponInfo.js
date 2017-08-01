@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	$("#getCoupon").click(function(){
+		if((!$("input[name='qika']").is(":checked")) && (($(".cardNum input").val()=="") || ($("#attachedCard").html()==""))){
+			return false;
+		}
 		$("#coupon").html("");
 		if($("input[name='qika']").is(":checked")){
 			var type = 1;

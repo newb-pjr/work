@@ -53,10 +53,17 @@
 				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
 				var inputValue = [];
 				$("#sureBtn").click(function(){
-					$(".imageCont input[type='checkbox']:checked").each(function(){
-						inputValue.push($(this).val());
+					$(".imageCont input[type='checkbox']").each(function(){
+						if($(this).is(":checked")){
+							inputValue.push($(this).val());
+						}
 					})
-					parent.$('#searchContText').val(inputValue.join("+"));
+					if(parent.$('#searchContText').val()==""){
+						parent.$('#searchContText').val(inputValue.join(";"));
+					}else{
+						inputValueStr = inputValue.join(";");
+						parent.$('#searchContText').val(parent.$('#searchContText').val()+"+"+inputValueStr);
+					}
 					parent.layer.close(index);
 				})
 			})

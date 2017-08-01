@@ -724,6 +724,8 @@
 					$("#minus").attr("checked","checked");
 					$("#same").attr("checked","checked");
 					$(".searchContText").attr("onblur", "validateChinese(this)");
+					$("#txys").hide();
+					$("#searchContText").removeAttr("disabled");
 				})
 				
 				$("#dateClassSelect").change(function(){

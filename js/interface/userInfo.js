@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	$.post(url+'Handler/userInfo.ashx',{platformType:1,isWeb:1},function(data){
-		console.log(data);
+	$.post('Handler/userInfo.ashx',{platformType:1,isWeb:1},function(data){
 		var dataObj = eval("("+data+")");
 			if(dataObj.status != 1){
 				dataStatus(dataObj);

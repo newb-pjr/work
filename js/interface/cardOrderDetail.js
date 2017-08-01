@@ -22,9 +22,15 @@ $(document).ready(function(){
 				for(var i=0; i<dataObj.attachedCard.length; i++){
 					$("#orderDet").prepend('<tr><td width="20%"><div class="cardInfo"><p class="cardName">国方卡</p><p class="cardType">（'+dataObj.attachedCard[i].name+'）</p><p class="cardPrice">'+currency+''+dataObj.attachedCard[i].price+'</p></div></td><td width="20%"><span class="payCardName">'+dataObj.attachedCard[i].name+'</span></td><td width="20%" align="center">'+dataObj.attachedCard[i].count+'</td><td width="20%" align="center">'+currency+''+dataObj.attachedCard[i].price+'</td><td width="20%" align="center" style="color: #f00;">'+currency+''+dataObj.attachedCard[i].sumPrice+'</td></tr>');
 				}
-				$("#orderDet").prepend('<tr><td width="20%"><div class="cardInfo"><p class="cardName">国方卡</p><p class="cardType">（'+dataObj.userCard.name+'）</p><p class="cardPrice">'+currency+''+dataObj.userCard.price+'</p></div></td><td width="20%"><span class="payCardName">'+dataObj.userCard.name+'</span></td><td width="20%" align="center">1</td><td width="20%" align="center">'+currency+''+dataObj.userCard.price+'</td><td width="20%" align="center" style="color: #f00;">'+currency+''+dataObj.userCard.price+'</td></tr>');
+				if(dataObj.userCard!=""){
+					$("#orderDet").prepend('<tr><td width="20%"><div class="cardInfo"><p class="cardName">国方卡</p><p class="cardType">（'+dataObj.userCard.name+'）</p><p class="cardPrice">'+currency+''+dataObj.userCard.price+'</p></div></td><td width="20%"><span class="payCardName">'+dataObj.userCard.name+'</span></td><td width="20%" align="center">1</td><td width="20%" align="center">'+currency+''+dataObj.userCard.price+'</td><td width="20%" align="center" style="color: #f00;">'+currency+''+dataObj.userCard.price+'</td></tr>');
+				}
 				$("#sumPrice").html(currency+dataObj.sumPrice);
-				$("#discount").html("-"+currency+dataObj.sumPrice*(100-dataObj.couponCard[0].discountRate)/100);
+				if(dataObj.couponCard==""){
+					$("#discount").html("0");
+				}else{
+					$("#discount").html("-"+currency+dataObj.sumPrice*(100-dataObj.couponCard[0].discountRate)/100);
+				}
 				$("#realPrice").html("实付款："+currency+dataObj.order.sumPrice);
 				$("#orderCode").html("订单编号："+dataObj.order.orderCode);
 				$("#orderTime").html("生成时间："+dataObj.order.orderTime);

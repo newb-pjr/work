@@ -618,6 +618,8 @@
 					$("#same").attr("checked","checked");
 					$("#setAlgorithm").attr("onclick", "handleLayer('查询算法设置','sbsb-sfsz-cn.html')");
 					$(".searchContText").attr("onblur", "validateChinese(this)");
+					$("#txys").hide();
+					$("#searchContText").removeAttr("disabled");
 				})
 				
 				$("#dateClassSelect").change(function(){

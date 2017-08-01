@@ -7,6 +7,7 @@ $(document).ready(function(){
 		success: function(data){
 			var dataObj = eval("("+data+")");
 			var isAuthorize;
+			var remark;
 			if(dataObj.status == 1){
 				if(dataObj.data.length != 0){
 					$(".deviceCont tr").last().hide();
@@ -16,7 +17,12 @@ $(document).ready(function(){
 						}else{
 							isAuthorize = '未授权';
 						}
-						$(".deviceCont").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataObj.data[i].id+'" /></td><td>'+isAuthorize+'</td><td><input type="text" value="'+dataObj.data[i].remark+'" disabled /></td></tr>');
+						if(dataObj.data[i].remark==""){
+							remark = "设备"+dataObj.data[i].id;
+						}else{
+							remark = dataObj.data[i].remark;
+						}
+						$(".deviceCont").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataObj.data[i].id+'" /></td><td>'+isAuthorize+'</td><td><input type="text" value="'+remark+'" disabled /></td></tr>');
 					}
 				}
 			}else{

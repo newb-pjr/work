@@ -38,6 +38,11 @@
 //	
 //})
 function reset(checkMethod,equipmentCodeSelector){
+	if(!validatePassword($("#password").val())){
+		alert("只能输入6-16个字母、数字、下划线的密码！");
+		$(this).val("");
+		return false;
+	}
 	if($("#password").val() == $("#confirm").val()){
 			var md5Pwd = $.md5($("#password").val()); 
 			$.post('Handler/changePasswordCode.ashx',{platformType:1,isWeb:1,checkMethod:checkMethod,equipmentCode:$(equipmentCodeSelector).val(),validCode:$("#code").val(),password:md5Pwd,checkCode:$("#checkCode").val()},function(data){

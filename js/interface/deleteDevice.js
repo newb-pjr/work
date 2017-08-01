@@ -20,9 +20,12 @@ $(document).ready(function(){
 					alert("设备终止授权成功！");
 					$(".deviceCont input[type='checkbox']").each(function(){
 						if($(this).is(":checked")){
-							$(this).parent().next().html("未授权");
+							$(this).parents("tr").remove();
 						}
 					})
+					if($(".deviceCont tr").length<=2){
+						$(".deviceCont tr").eq(1).show();
+					}
 				}else{
 					dataStatus(dataObj);
 				}
