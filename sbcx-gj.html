@@ -318,11 +318,11 @@
 							<p>查询内容：商标中文名称商标中文名称商标中文名称</p>
 							<p>逻辑关系：与</p>
 						</div>-->
-						<input type="hidden" id="searchType" value="" />
-						<input type="hidden" id="content" value="" />
 						<!--<input type="hidden" id="queryModeValue" value="" />
 						<input type="hidden" id="algorithmValue" value="" />-->
 					</div>
+					<input type="hidden" id="searchType" value="" />
+					<input type="hidden" id="content" value="" />
 					<table border="0" width="100%" align="center" class="highSearchContTabel">
 						<tr>
 							<th>内容种类</th>
@@ -714,6 +714,8 @@
 					$("#dateSelectHigh").attr("disabled","disabled");
 					$(".showSearchCont").html("");
 					$(".showSearchCont").hide();
+					$("#searchType").val("");
+					$("#content").val("");
 					$("#algorithmTable tr").html("");
 					var html = '<td><span class="searchContP">查询算法：</span></td><td><input type="radio" checked="checked" id="same" class="tabCheckbox" name="group2" value="0" /><label for="same"> 相同</label></td><td><input type="radio" id="like" class="tabCheckbox" name="group2" value="1" /><label for="like"> 近似</label></td><td><input type="radio" id="self" class="tabCheckbox" name="group2" value="2" /><label for="self"> 自定义</label></td>';
 					$("#algorithmTable tr").append(html);

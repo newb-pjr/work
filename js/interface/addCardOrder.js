@@ -55,11 +55,19 @@ function subOrder(payWay){
 			couponCardID = $(this).val();
 		}
 	})
+	var remark = parent.$("#remark").val();
+	if(!!attenedCardCount){
+		if(parent.$("#remark").val()==""){
+			alert("没有填写邮寄附属卡地址，将不能继续支付！");
+			window.parent.mainGoBack();
+			return false;
+		}
+	}
 	$.ajax({
 		type:"post",
 		url:"Handler/addCardOrder.ashx",
 		async:false,
-		data:{platformType:1,isWeb:1,cardID:cardID,attenedCardID:attenedCardID,attenedCardCount:attenedCardCount,needCoupon:needCoupon,payWay:payWay,couponCardNum:"",couponCardID:couponCardID},
+		data:{platformType:1,isWeb:1,cardID:cardID,attenedCardID:attenedCardID,attenedCardCount:attenedCardCount,needCoupon:needCoupon,payWay:payWay,couponCardNum:"",couponCardID:couponCardID,remark:remark},
 		success:function(data){
 			var dataObj = eval("("+data+")");
 			layer.close(loading);

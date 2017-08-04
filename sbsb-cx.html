@@ -86,7 +86,13 @@
 							})
 							
 							$("#like").click(function(){
+								cnArr = [];
 								$(".identifyTable input[name='cItem']").attr("checked","checked");
+								$(".identifyTable input[name='cItem']").each(function(){
+									if($(this).is(":checked")){
+										cnArr.push($(this).val())
+									}
+								})
 							})
 							
 //							$(".quickSet li").each(function(){
@@ -127,7 +133,13 @@
 							})
 							
 							$("#like").click(function(){
+								enArr = [];
 								$(".identifyTable input[name='eItem']").attr("checked","checked");
+								$(".identifyTable input[name='eItem']").each(function(){
+									if($(this).is(":checked")){
+										enArr.push($(this).val())
+									}
+								})
 							})
 							
 //							$(".quickSet li").each(function(){
@@ -168,7 +180,13 @@
 							})
 							
 							$("#like").click(function(){
+								imgArr = [];
 								$(".identifyTable input[name='pItem']").attr("checked","checked");
+								$(".identifyTable input[name='pItem']").each(function(){
+									if($(this).is(":checked")){
+										imgArr.push($(this).val())
+									}
+								})
 							})
 //							$(".quickSet li").each(function(){
 //								if($(this).find('input').val() == imgQueryMode){
@@ -208,13 +226,31 @@
 							})
 							
 							$("#like").click(function(){
+								picArr = [];
 								$(".identifyTable input[name='aItem']").attr("checked","checked");
+								$(".identifyTable input[name='aItem']").each(function(){
+									if($(this).is(":checked")){
+										picArr.push($(this).val())
+									}
+								})
 							})
 							$("#save").click(function(){
+								picArr = [];
 								$(".identifyTable input[name='aItem']").attr("checked","checked");
+								$(".identifyTable input[name='aItem']").each(function(){
+									if($(this).is(":checked")){
+										picArr.push($(this).val())
+									}
+								})
 							})
 							$("#back").click(function(){
+								picArr = [];
 								$(".identifyTable input[name='aItem']").attr("checked","checked");
+								$(".identifyTable input[name='aItem']").each(function(){
+									if($(this).is(":checked")){
+										picArr.push($(this).val())
+									}
+								})
 							})
 //							$(".quickSet li").each(function(){
 //								if($(this).find('input').val() == picQueryMode){
@@ -268,7 +304,7 @@
 //										}
 //									})
 //								}
-//								cnArr = parent.$("#cnAlgorithm").val().split(";");
+								cnArr = parent.$("#cnAlgorithm").val().split(";");
 	//							cnQueryMode = parent.$("#cnQueryMode").val();
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<cnArr.length; i++){
@@ -282,8 +318,15 @@
 								})
 								
 								$("#like").click(function(){
+									cnArr = [];
 									$(".identifyTable input[name='cItem']").attr("checked","checked");
+									$(".identifyTable input[name='cItem']").each(function(){
+										if($(this).is(":checked")){
+											cnArr.push($(this).val())
+										}
+									})
 								})
+								
 								
 	//							$(".quickSet li").each(function(){
 	//								if($(this).find('input').val() == cnQueryMode){
@@ -320,7 +363,7 @@
 //										}
 //									})
 //								}
-//								enArr = parent.$("#enAlgorithm").val().split(";");
+								enArr = parent.$("#enAlgorithm").val().split(";");
 	//							enQueryMode = parent.$("#enQueryMode").val();
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<enArr.length; i++){
@@ -334,7 +377,13 @@
 								})
 								
 								$("#like").click(function(){
+									enArr = [];
 									$(".identifyTable input[name='eItem']").attr("checked","checked");
+									$(".identifyTable input[name='eItem']").each(function(){
+										if($(this).is(":checked")){
+											enArr.push($(this).val())
+										}
+									})
 								})
 								
 	//							$(".quickSet li").each(function(){
@@ -365,6 +414,7 @@
 //									imgArr = parent.$("#codeAlgorithm").val().split(";");
 //									imgQueryMode = parent.$("#codeQueryMode").val();
 //								}
+								imgArr = parent.$("#codeAlgorithm").val().split(";");
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<imgArr.length; i++){
 										if($(this).find('input').val() == imgArr[i]){
@@ -377,7 +427,13 @@
 								})
 								
 								$("#like").click(function(){
+									imgArr = [];
 									$(".identifyTable input[name='pItem']").attr("checked","checked");
+									$(".identifyTable input[name='pItem']").each(function(){
+										if($(this).is(":checked")){
+											imgArr.push($(this).val())
+										}
+									})
 								})
 //								if(imgQueryMode != ""){
 //									$(".quickSet input").each(function(){
@@ -410,6 +466,7 @@
 //									picArr = parent.$("#imageAlgorithm").val().split(";");
 //									picQueryMode = parent.$("#imageQueryMode").val();
 //								}
+								picArr = parent.$("#imageAlgorithm").val().split(";");
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<picArr.length; i++){
 										if($(this).find('input').val() == picArr[i]){
@@ -418,13 +475,31 @@
 									}
 								})
 								$("#like").click(function(){
+									picArr = [];
 									$(".identifyTable input[name='aItem']").attr("checked","checked");
+									$(".identifyTable input[name='aItem']").each(function(){
+										if($(this).is(":checked")){
+											picArr.push($(this).val())
+										}
+									})
 								})
 								$("#save").click(function(){
+									picArr = [];
 									$(".identifyTable input[name='aItem']").attr("checked","checked");
+									$(".identifyTable input[name='aItem']").each(function(){
+										if($(this).is(":checked")){
+											picArr.push($(this).val())
+										}
+									})
 								})
 								$("#back").click(function(){
+									picArr = [];
 									$(".identifyTable input[name='aItem']").attr("checked","checked");
+									$(".identifyTable input[name='aItem']").each(function(){
+										if($(this).is(":checked")){
+											picArr.push($(this).val())
+										}
+									})
 								})
 //								if(picQueryMode != ""){
 //									$(".quickSet input").each(function(){
@@ -507,7 +582,6 @@
 				
 				$("#back").click(function(){
 					if($("#cn").hasClass('currentSet')){
-						console.log(123131)
 						compare = ['a1','a2','a3','a4','a5','a6','a9','g4'];
 						cnArr = [];
 						$(".identifyTable input[name='cItem']").removeAttr("checked");

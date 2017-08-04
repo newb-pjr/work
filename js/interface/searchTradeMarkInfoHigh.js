@@ -226,6 +226,11 @@ $(document).ready(function(){
 		if(QueryMode!=2){
 			var Algorithm = "";
 		}else{
+			if(algorithmArr==""){
+				alert("算法不能为空！");
+				layer.close(searchloading);
+				return false;
+			}
 			var Algorithm = algorithmArr.join("+");
 		}
 		var DateType = $("#dateClassSelect").val();
@@ -255,6 +260,11 @@ $(document).ready(function(){
 			data:{platformType:1,isWeb:1,TaskID:TaskID,FrontCount:FrontCount,SearchMode:SearchMode,SearchType:SearchType,Content:Content,MarkClass:MarkClass,MarkGroup:MarkGroup,QueryMode:QueryMode,Algorithm:Algorithm,State:State,DateType:DateType,BeginDate:BeginDate,EndDate:EndDate},
 			success:function(data){
 				var dataObj = eval("("+data+")");
+				if(dataObj.data.Result == ""){
+					alert("没有查询结果！");
+					layer.close(searchloading);
+					return false;
+				}
 				if(dataObj.status == 1){
 					window.data = dataObj.data;
 					validMethodFunc(validMethod,searchloading);

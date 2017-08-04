@@ -13,7 +13,7 @@ $(document).ready(function(){
 			  formType: 1,
 			  title: '请设置您的用卡密码',
 			}, function(first_pwd, first_index, first_elem){
-				if(first_pwd.length>=6 && validatePassword(first_pwd)){
+				if(validatePassword(first_pwd)){
 					var password = first_pwd;
 				    layer.close(first_index);
 				    layer.prompt({
@@ -28,7 +28,7 @@ $(document).ready(function(){
 						}
 					});
 				}else{
-					alert("请输入6位以上的密码！");
+					alert("请输入6位以上数字字母混合密码！");
 					first_elem.val("");
 				}
 			});

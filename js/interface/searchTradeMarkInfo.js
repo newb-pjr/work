@@ -81,6 +81,11 @@ $(document).ready(function(){
 		}
 		var State = $(".searchContTable input[name='group3']:checked").val();
 		if($("#self").is(":checked")){
+			if($("#Algorithm").val() == ""){
+				alert("算法不能为空！");
+				layer.close(searchloading);
+				return false;
+			}
 			var Algorithm = $("#contentSelect").val()+"_"+$("#Algorithm").val();
 		}else{
 			var Algorithm = "";
@@ -111,6 +116,11 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				var dataObj = eval("("+data+")");
+				if(dataObj.data.Result == ""){
+					alert("没有查询结果！");
+					layer.close(searchloading);
+					return false;
+				}
 				if(dataObj.status == 1){
 					window.data = dataObj.data;
 					validMethodFunc(validMethod,searchloading);

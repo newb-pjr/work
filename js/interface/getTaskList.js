@@ -71,6 +71,11 @@ function isPay(taskID,isAlreadyPay){
 			data:{platformType:1,isWeb:1},
 			success:function(data){
 				var dataObj = eval("("+data+")");
+				if(dataObj.data.Result == ""){
+					alert("没有查询结果！");
+					layer.close(subloading);
+					return false;
+				}
 				if(dataObj.status==1){
 					if(dataObj.userInfo.userCard==""){
 						alert("当前国方卡已过期，请购卡或激活卡再进行操作！");

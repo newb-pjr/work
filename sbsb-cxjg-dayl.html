@@ -69,7 +69,7 @@
 			$(document).ready(function() {
 				var MarkNo = getCookie("MarkNo");
 				var MarkClass = getCookie("MarkClass");
-				$.post(url + 'Handler/getTmInfbyMarkNo.ashx', {
+				$.post('Handler/getTmInfbyMarkNo.ashx', {
 					platformType: 1,
 					isWeb: 1,
 					MarkNo: MarkNo,

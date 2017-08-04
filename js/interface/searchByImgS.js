@@ -97,6 +97,11 @@ $(document).ready(function(){
 			async:false,
 			success:function(data){
 				var dataObj = data;
+				if(dataObj.data.Result == ""){
+					alert("没有查询结果！");
+					layer.close(searchloading);
+					return false;
+				}
 				if(dataObj.status == 1){
 					window.data = dataObj.data;
 					validMethodFunc(validMethod,searchloading);

@@ -22,7 +22,6 @@ $(document).ready(function(){
 					success:function(data){
 						layer.close(loading);
 						var dataObj = eval("("+data+")");
-						layer.closeAll('dialog');
 						if(dataObj.status==1){
 							alert("订单支付成功！");
 							$("#orderBtnGroup").html("<p>用户已汇款，请通知我司工作人员跟进订单</p>");

@@ -15,20 +15,16 @@ $(document).ready(function(){
 						noActiveObj.name = dataObj.data[i].name;
 						noActiveObj.endTime = dataObj.data[i].endTime.split(" ")[0];
 						noActiveObj.cardID = dataObj.data[i].id;
+						noActiveObj.cardType = dataObj.data[i].cardType;
 						noActive.push(noActiveObj);
 					}
 					for(var i=0; i<noActive.length; i++){
-						if(noActive[i].cardID==""){
-							var id = "试用卡 - 无卡号";
-						}else{
-							var id = noActive[i].cardID;
-						}
-						$("#selectActiveDate").append('<option value="'+id+'">'+noActive[i].cardNum+'</option>');
+						$("#selectActiveDate").append('<option value="'+noActive[i].cardID+'">'+noActive[i].cardNum+'</option>');
 					}
-					if(dataObj.data[0].cardType==1){
+					if(noActive[0].cardType==1){
 						$("#cardType").html("次卡-"+noActive[0].name);
 					}
-					if(dataObj.data[0].cardType==2){
+					if(noActive[0].cardType==2){
 						$("#cardType").html("时卡-"+noActive[0].name);
 					}
 					
@@ -41,7 +37,17 @@ $(document).ready(function(){
 	});
 	
 	$("#selectActiveDate").change(function(){
-		if($(this).val() == noActiveObj)
+		for(var i=0; i<noActive.length; i++){
+			if($(this).val() == noActive[i].cardID){
+				if(noActive[i].cardType==1){
+					$("#cardType").html("次卡-"+noActive[i].name);
+				}
+				if(dataObj.data[0].cardType==2){
+					$("#cardType").html("时卡-"+noActive[i].name);
+				}
+				$("#validDate").html(noActive[i].endTime);
+			}
+		}
 	})
 	
 	$.ajax({
@@ -63,7 +69,12 @@ $(document).ready(function(){
 							var endDate = new Date(dataObj.data[i].endTime).getTime()/1000;
 							var remain = parseInt((endDate-nowDate)/(60*60*24))+'天';
 						}
-						$("#cardRecord").append('<tr><td>'+dataObj.data[i].cardNum+'</td><td>已激活</td><td>'+dataObj.data[i].activeTime+'</td><td>'+dataObj.data[i].endTime+'</td><td>'+remain+'</td></tr>');
+						if(dataObj.data[i].cardNum==""){
+							var cardNum = "试用卡 - 无卡号";
+						}else{
+							var cardNum = dataObj.data[i].cardNum
+						}
+						$("#cardRecord").append('<tr><td>'+cardNum+'</td><td>已激活</td><td>'+dataObj.data[i].activeTime+'</td><td>'+dataObj.data[i].endTime+'</td><td>'+remain+'</td></tr>');
 					}
 				}
 			}else{
