@@ -53,7 +53,7 @@ function validateNum(value){
  	return pattern.test(value);
 }
 function validatePassword(value){
-	var pattern = /^(\w){6,16}$/;
+	var pattern = /^[0-9a-zA-z_]{6,16}$/;
 	return pattern.test(value);
 }
 function getQueryString(name) { //用于解析网址url参数

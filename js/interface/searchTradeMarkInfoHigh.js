@@ -114,7 +114,7 @@ $(document).ready(function(){
 			success:function(data){
 				var dataObj = eval("("+data+")");
 				if(dataObj.status==1){
-					TaskID = dataObj.taskID+1000;
+					TaskID = dataObj.taskID;
 					if(TaskID==""){
 						alert("获取TaskID出错！")
 						layer.close(searchloading);

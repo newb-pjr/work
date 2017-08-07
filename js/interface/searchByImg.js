@@ -15,7 +15,7 @@ $(document).ready(function(){
 			success:function(data){
 				var dataObj = eval("("+data+")");
 				if(dataObj.status==1){
-					TaskID = dataObj.taskID+1000;
+					TaskID = dataObj.taskID;
 					if(TaskID==""){
 						alert("获取TaskID出错！")
 						layer.close(searchloading);
@@ -85,14 +85,48 @@ $(document).ready(function(){
 		var ImageCode = $("#searchAllContText").val();
 		var MarkClass = $("#markClassS").val().replace(/,/g,";");
 		var MarkGroup = $("#markGroupS").val().replace(/,/g,";");
-		var ImageQueryMode = $("#imageQueryMode").val();
-		var ImageAlgorithm = $("#imageAlgorithm").val();
-		var CnQueryMode = $("#cnQueryMode").val();
-		var CnAlgorithm = $("#cnAlgorithm").val();
-		var EnQueryMode = $("#enQueryMode").val();
-		var EnAlgorithm = $("#enAlgorithm").val();
-		var CodeQueryMode = $("#codeQueryMode").val();
-		var CodeAlgorithm = $("#codeAlgorithm").val();
+		var ImageAlgorithm = "";
+		var CnAlgorithm = "";
+		var EnAlgorithm = "";
+		var CodeAlgorithm = "";
+		var ImageQueryMode = ""
+		var CnQueryMode = "";
+		var EnQueryMode = "";
+		var CodeQueryMode = "";
+		$("input[name='algorithm']").each(function(){
+			if($(this).is(":checked")){
+				if($(this).val() == 0){
+					ImageQueryMode = 0;
+					CnQueryMode = 0;
+					EnQueryMode = 0;
+					CodeQueryMode = 0;
+				}
+				if($(this).val() == 1){
+					ImageQueryMode = 1;
+					CnQueryMode = 1;
+					EnQueryMode = 1;
+					CodeQueryMode = 1;
+				}
+				if($(this).val() == 2){
+					ImageAlgorithm = $("#imageAlgorithm").val();
+					CnAlgorithm = $("#cnAlgorithm").val();
+					EnAlgorithm = $("#enAlgorithm").val();
+					CodeAlgorithm = $("#codeAlgorithm").val();
+					ImageQueryMode = 2;
+					CnQueryMode = 2;
+					EnQueryMode = 2;
+					CodeQueryMode = 2;
+					if(ImageAlgorithm == "" && CnAlgorithm == "" && EnAlgorithm == "" && CodeAlgorithm == ""){
+						alert("具体算法内容不能为空！");
+						layer.close(searchloading);
+						breakGo = true;
+					}
+				}
+			}
+		})
+		if(breakGo){
+			return false;
+		}
 		var State = $(".tabSearch tr td input[name='status']").val();
 		var DateType = $("#selectDateType").val();
 		if(DateType == 0){

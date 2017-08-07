@@ -40,7 +40,6 @@
 function reset(checkMethod,equipmentCodeSelector){
 	if(!validatePassword($("#password").val())){
 		alert("只能输入6-16个字母、数字、下划线的密码！");
-		$(this).val("");
 		return false;
 	}
 	if($("#password").val() == $("#confirm").val()){

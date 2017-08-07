@@ -72,7 +72,7 @@
 				switch (getDefaultId){
 					case "cn":
 						$(".setMainCont").load('sbsb-cx-cn.html',function(){
-							cnArr = parent.$("#cnAlgorithm").val().split(";");
+//							cnArr = parent.$("#cnAlgorithm").val().split(";");
 //							cnQueryMode = parent.$("#cnQueryMode").val();
 							$(".identifyTable tr").each(function(){
 								for(var i=0; i<cnArr.length; i++){
@@ -83,16 +83,6 @@
 							})
 							$(".identifyTable input[name='cItem']").click(function(){
 								$(".quickSet li input").removeAttr("checked");
-							})
-							
-							$("#like").click(function(){
-								cnArr = [];
-								$(".identifyTable input[name='cItem']").attr("checked","checked");
-								$(".identifyTable input[name='cItem']").each(function(){
-									if($(this).is(":checked")){
-										cnArr.push($(this).val())
-									}
-								})
 							})
 							
 //							$(".quickSet li").each(function(){
@@ -119,7 +109,7 @@
 						break;
 					case "en":
 						$(".setMainCont").load('sbsb-cx-en.html',function(){
-							enArr = parent.$("#enAlgorithm").val().split(";");
+//							enArr = parent.$("#enAlgorithm").val().split(";");
 //							enQueryMode = parent.$("#enQueryMode").val();
 							$(".identifyTable tr").each(function(){
 								for(var i=0; i<enArr.length; i++){
@@ -130,16 +120,6 @@
 							})
 							$(".identifyTable input[name='eItem']").click(function(){
 								$(".quickSet li input").removeAttr("checked");
-							})
-							
-							$("#like").click(function(){
-								enArr = [];
-								$(".identifyTable input[name='eItem']").attr("checked","checked");
-								$(".identifyTable input[name='eItem']").each(function(){
-									if($(this).is(":checked")){
-										enArr.push($(this).val())
-									}
-								})
 							})
 							
 //							$(".quickSet li").each(function(){
@@ -166,7 +146,7 @@
 						break;
 					case "imgElement":
 						$(".setMainCont").load('sbsb-cx-txys.html',function(){
-							imgArr = parent.$("#codeAlgorithm").val().split(";");
+//							imgArr = parent.$("#codeAlgorithm").val().split(";");
 //							imgQueryMode = parent.$("#codeQueryMode").val();
 							$(".identifyTable tr").each(function(){
 								for(var i=0; i<imgArr.length; i++){
@@ -179,15 +159,6 @@
 								$(".quickSet li input").removeAttr("checked");
 							})
 							
-							$("#like").click(function(){
-								imgArr = [];
-								$(".identifyTable input[name='pItem']").attr("checked","checked");
-								$(".identifyTable input[name='pItem']").each(function(){
-									if($(this).is(":checked")){
-										imgArr.push($(this).val())
-									}
-								})
-							})
 //							$(".quickSet li").each(function(){
 //								if($(this).find('input').val() == imgQueryMode){
 //									$(this).find('input').attr("checked","checked");
@@ -212,7 +183,7 @@
 						break;
 					case "pic":
 						$(".setMainCont").load('sbsb-cx-txtz.html',function(){
-							picArr = parent.$("#imageAlgorithm").val().split(";");
+//							picArr = parent.$("#imageAlgorithm").val().split(";");
 //							picQueryMode = parent.$("#imageQueryMode").val();
 							$(".identifyTable tr").each(function(){
 								for(var i=0; i<picArr.length; i++){
@@ -225,33 +196,6 @@
 								$(".quickSet li input").removeAttr("checked");
 							})
 							
-							$("#like").click(function(){
-								picArr = [];
-								$(".identifyTable input[name='aItem']").attr("checked","checked");
-								$(".identifyTable input[name='aItem']").each(function(){
-									if($(this).is(":checked")){
-										picArr.push($(this).val())
-									}
-								})
-							})
-							$("#save").click(function(){
-								picArr = [];
-								$(".identifyTable input[name='aItem']").attr("checked","checked");
-								$(".identifyTable input[name='aItem']").each(function(){
-									if($(this).is(":checked")){
-										picArr.push($(this).val())
-									}
-								})
-							})
-							$("#back").click(function(){
-								picArr = [];
-								$(".identifyTable input[name='aItem']").attr("checked","checked");
-								$(".identifyTable input[name='aItem']").each(function(){
-									if($(this).is(":checked")){
-										picArr.push($(this).val())
-									}
-								})
-							})
 //							$(".quickSet li").each(function(){
 //								if($(this).find('input').val() == picQueryMode){
 //									$(this).find('input').attr("checked","checked");
@@ -293,6 +237,7 @@
  					switch (getId){
 						case "cn":
 							$(".setMainCont").load('sbsb-cx-cn.html',function(){
+								
 //								if(cnQueryMode == ""){
 //									cnArr = parent.$("#cnAlgorithm").val().split(";");
 //									cnQueryMode = parent.$("#cnQueryMode").val();
@@ -304,7 +249,7 @@
 //										}
 //									})
 //								}
-								cnArr = parent.$("#cnAlgorithm").val().split(";");
+//								cnArr = parent.$("#cnAlgorithm").val().split(";");
 	//							cnQueryMode = parent.$("#cnQueryMode").val();
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<cnArr.length; i++){
@@ -316,17 +261,6 @@
 								$(".identifyTable input[name='cItem']").click(function(){
 									$(".quickSet li input").removeAttr("checked");
 								})
-								
-								$("#like").click(function(){
-									cnArr = [];
-									$(".identifyTable input[name='cItem']").attr("checked","checked");
-									$(".identifyTable input[name='cItem']").each(function(){
-										if($(this).is(":checked")){
-											cnArr.push($(this).val())
-										}
-									})
-								})
-								
 								
 	//							$(".quickSet li").each(function(){
 	//								if($(this).find('input').val() == cnQueryMode){
@@ -363,7 +297,7 @@
 //										}
 //									})
 //								}
-								enArr = parent.$("#enAlgorithm").val().split(";");
+//								enArr = parent.$("#enAlgorithm").val().split(";");
 	//							enQueryMode = parent.$("#enQueryMode").val();
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<enArr.length; i++){
@@ -374,16 +308,6 @@
 								})
 								$(".identifyTable input[name='eItem']").click(function(){
 									$(".quickSet li input").removeAttr("checked");
-								})
-								
-								$("#like").click(function(){
-									enArr = [];
-									$(".identifyTable input[name='eItem']").attr("checked","checked");
-									$(".identifyTable input[name='eItem']").each(function(){
-										if($(this).is(":checked")){
-											enArr.push($(this).val())
-										}
-									})
 								})
 								
 	//							$(".quickSet li").each(function(){
@@ -414,7 +338,7 @@
 //									imgArr = parent.$("#codeAlgorithm").val().split(";");
 //									imgQueryMode = parent.$("#codeQueryMode").val();
 //								}
-								imgArr = parent.$("#codeAlgorithm").val().split(";");
+//								imgArr = parent.$("#codeAlgorithm").val().split(";");
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<imgArr.length; i++){
 										if($(this).find('input').val() == imgArr[i]){
@@ -426,15 +350,6 @@
 									$(".quickSet li input").removeAttr("checked");
 								})
 								
-								$("#like").click(function(){
-									imgArr = [];
-									$(".identifyTable input[name='pItem']").attr("checked","checked");
-									$(".identifyTable input[name='pItem']").each(function(){
-										if($(this).is(":checked")){
-											imgArr.push($(this).val())
-										}
-									})
-								})
 //								if(imgQueryMode != ""){
 //									$(".quickSet input").each(function(){
 //										if(imgQueryMode == $(this).val()){
@@ -466,40 +381,13 @@
 //									picArr = parent.$("#imageAlgorithm").val().split(";");
 //									picQueryMode = parent.$("#imageQueryMode").val();
 //								}
-								picArr = parent.$("#imageAlgorithm").val().split(";");
+//								picArr = parent.$("#imageAlgorithm").val().split(";");
 								$(".identifyTable tr").each(function(){
 									for(var i=0; i<picArr.length; i++){
 										if($(this).find('input').val() == picArr[i]){
 											$(this).find('input').attr("checked","checked");
 										}
 									}
-								})
-								$("#like").click(function(){
-									picArr = [];
-									$(".identifyTable input[name='aItem']").attr("checked","checked");
-									$(".identifyTable input[name='aItem']").each(function(){
-										if($(this).is(":checked")){
-											picArr.push($(this).val())
-										}
-									})
-								})
-								$("#save").click(function(){
-									picArr = [];
-									$(".identifyTable input[name='aItem']").attr("checked","checked");
-									$(".identifyTable input[name='aItem']").each(function(){
-										if($(this).is(":checked")){
-											picArr.push($(this).val())
-										}
-									})
-								})
-								$("#back").click(function(){
-									picArr = [];
-									$(".identifyTable input[name='aItem']").attr("checked","checked");
-									$(".identifyTable input[name='aItem']").each(function(){
-										if($(this).is(":checked")){
-											picArr.push($(this).val())
-										}
-									})
 								})
 //								if(picQueryMode != ""){
 //									$(".quickSet input").each(function(){
@@ -578,6 +466,15 @@
 							}
 						})
 					}
+					if($("#pic").hasClass('currentSet')){
+						picArr = [];
+						$(".identifyTable input[name='aItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='aItem']").each(function(){
+							if($(this).is(":checked")){
+								picArr.push($(this).val())
+							}
+						})
+					}
 				})
 				
 				$("#back").click(function(){
@@ -620,6 +517,54 @@
 							}
 						})
 					}
+					if($("#pic").hasClass('currentSet')){
+						picArr = [];
+						$(".identifyTable input[name='aItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='aItem']").each(function(){
+							if($(this).is(":checked")){
+								picArr.push($(this).val())
+							}
+						})
+					}
+				})
+				
+				$("#like").click(function(){
+					if($("#cn").hasClass('currentSet')){
+						cnArr = [];
+						$(".identifyTable input[name='cItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='cItem']").each(function(){
+							if($(this).is(":checked")){
+								cnArr.push($(this).val())
+							}
+						})
+					}
+					if($("#en").hasClass('currentSet')){
+						enArr = [];
+						$(".identifyTable input[name='eItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='eItem']").each(function(){
+							if($(this).is(":checked")){
+								enArr.push($(this).val())
+							}
+						})
+					}
+					if($("#imgElement").hasClass('currentSet')){
+						imgArr = [];
+						$(".identifyTable input[name='pItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='pItem']").each(function(){
+							if($(this).is(":checked")){
+								imgArr.push($(this).val())
+							}
+						})
+					}
+					if($("#pic").hasClass('currentSet')){
+						picArr = [];
+						$(".identifyTable input[name='aItem']").attr("checked","checked");
+						$(".identifyTable tr").find("input[name='aItem']").each(function(){
+							if($(this).is(":checked")){
+								picArr.push($(this).val())
+							}
+						})
+					}
 				})
 //				$(".quickSet li input").click(function(){
 //					if($(".algorithmSet li#cn").hasClass('currentSet')){
@@ -650,26 +595,7 @@
 				
 				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
 				$("#sureBtn").on('click', function(){
-					if(cnQueryMode == 2 && cnArr == ""){
-						alert("已选择自定义，中文名称具体算法不能为空！");
-						return false;
-					}
-					if(enQueryMode == 2 && enArr == ""){
-						alert("已选择自定义，英文名称具体算法不能为空！");
-						return false;
-					}
-					if(imgQueryMode == 2 && imgArr == ""){
-						alert("已选择自定义，图形要素具体算法不能为空！");
-						return false;
-					}
-					if(picQueryMode == 2 && picArr == ""){
-						alert("已选择自定义，图像特征具体算法不能为空！");
-						return false;
-					}
-					cnQueryMode = cnQueryMode || 0;
-					enQueryMode = enQueryMode || 0;
-					imgQueryMode = imgQueryMode || 0;
-					picQueryMode = picQueryMode || 0;
+					
 					parent.$("#cnAlgorithm").val(cnArr.join(";"))
 					parent.$("#enAlgorithm").val(enArr.join(";"))
 					parent.$("#codeAlgorithm").val(imgArr.join(";"))
