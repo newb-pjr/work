@@ -3395,3 +3395,8 @@ a.getAttachedCard{
 	line-height: 28px;
 	padding: 0 5px;
 }
+.pointer{
+	display: block;
+	height: 100%;
+	line-height: 45px;
+}

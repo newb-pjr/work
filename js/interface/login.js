@@ -52,6 +52,7 @@ $(document).ready(function(){
 									  	success:function(data){
 											var dataObj = eval("("+data+")");
 									  		if(dataObj.status==1){
+												layer.close(index);
 									  			document.cookie = "username="+dataObj.userInfo.userName;
 												var x = screen.availWidth-10;  
 												var y = screen.availHeight-60;
