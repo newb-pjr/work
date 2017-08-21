@@ -14,21 +14,32 @@
 				<div class="accountHead" id="changeValidWay">
 					<div class="changeWay">
 						<p>登录账号：<span id="myUserName"></span></p>
-						<p style="margin-top: 8px;">更改验证方式：<label><input type="checkbox" id="phone" />手机</label><label><input type="checkbox" id="mail"/>邮箱</label></p>
+						<p style="margin-top: 8px;">当前验证方式：<span id="myValidWay"></span></p>
+						<p style="margin-top: 8px;">更改验证方式：<label><input type="checkbox" id="phone" checked="checked" />手机</label><label><input type="checkbox" id="mail"/>邮箱</label></p>
 						<input type="hidden" id="mobile" />
 						<input type="hidden" id="email" />
+						<table border="0" class="accountTable">
+							<tr id="phoneWay">
+								<td>手机号码：</td>
+								<td><input type="text" value="" class="accountTableText" id="mobileNew" /></td>
+							</tr>
+							<tr style="display: none;" id="emailWay">
+								<td>电子邮箱：</td>
+								<td><input type="text" value="" class="accountTableText" id="emailNew" /></td>
+							</tr>
+						</table>
 					</div>
 					<!--<p class="accountTitle">个人信息<a href="javascript:void(0)" class="accountHandle" id="modifyInfo">修改</a></p>-->
 				</div>
 				<table border="0" class="accountTable">
-					<tr style="display: none;" id="phoneWay">
+					<!--<tr style="display: none;" id="phoneWay">
 						<td>手机号码：</td>
 						<td><input type="text" value="" class="accountTableText" id="mobileNew" /></td>
 					</tr>
 					<tr style="display: none;" id="emailWay">
 						<td>电子邮箱：</td>
 						<td><input type="text" value="" class="accountTableText" id="emailNew" /></td>
-					</tr>
+					</tr>-->
 					<tr>
 						<td>用户真实姓名：</td>
 						<td><input type="text" value="" class="accountTableText" id="name" /></td>
@@ -66,7 +77,10 @@
 					<a href="javascript:void(0)" class="openDevice" onclick="handleLayer('授权使用的设备','wdzh-sqsb.html')">已授权使用的设备</a>
 					<a href="javascript:void(0)" class="openDevice" id="modifyMainDeviceName">修改主设备别名</a>
 				</div>
-				<input class="accountSub" type="submit" value="确 定" />
+				<div class="accountSubGroup">
+					<input class="accountSub" id="updatePersonInfo" type="submit" value="修改个人信息" />
+					<input class="accountSub" type="submit" value="修改验证方式" id="modifyValid" />
+				</div>
 			</div>
 		</div>
 		<!--<div class="accountMain" style="margin-bottom: 50px;">
@@ -138,6 +152,7 @@
 //					$(".accountTableText").css({"border-width":"0"});
 //				})
 				$("#changeValidWay input").click(function(){
+					$(this).attr("checked","checked");
 					$(this).parent().siblings().find('input').removeAttr("checked");
 					if($("#phone").is(":checked")){
 						$("#phoneWay").show();

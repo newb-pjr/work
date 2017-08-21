@@ -44,7 +44,7 @@ $(document).ready(function(){
 		}else{
 			isValid = "有效";
 		}
-		$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataResult.Result[i].MarkNo+'" /></td><td>'+dataResult.Result[i].MarkClass+'</td><td><a href="javascript" class="pointer">'+dataResult.Result[i].MarkNo+'</a></td><td><img src="'+dataResult.Result[i].MarkImagePath+'" height="32" width="96" /></td><td>'+dataResult.Result[i].HolderNameCn+'</td><td>'+dataResult.Result[i].ApplicationDate+'</td><td>'+dataResult.Result[i].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
+		$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataResult.Result[i].MarkNo+'" /></td><td>'+dataResult.Result[i].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataResult.Result[i].MarkNo+'</a></td><td><img src="'+dataResult.Result[i].MarkImagePath+'" height="32" width="96" /></td><td>'+dataResult.Result[i].HolderNameCn+'</td><td>'+dataResult.Result[i].ApplicationDate+'</td><td>'+dataResult.Result[i].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
 	}
 	// 创建分页元素
 	$("#searchPagination").pagination(dataResult.iCount, {
@@ -81,7 +81,7 @@ function pageselectCallback(page_id){
 					}else{
 						isValid = "有效";
 					}
-					$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataObj.data.Result[item].MarkNo+'" /></td><td>'+dataObj.data.Result[item].MarkClass+'</td><td><a href="javascript" class="pointer">'+dataObj.data.Result[item].MarkNo+'</a></td><td><img src="'+dataObj.data.Result[item].MarkImagePath+'" height="32" width="96" /></td><td>'+dataObj.data.Result[item].HolderNameCn+'</td><td>'+dataObj.data.Result[item].ApplicationDate+'</td><td>'+dataObj.data.Result[item].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
+					$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataObj.data.Result[item].MarkNo+'" /></td><td>'+dataObj.data.Result[item].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataObj.data.Result[item].MarkNo+'</a></td><td><img src="'+dataObj.data.Result[item].MarkImagePath+'" height="32" width="96" /></td><td>'+dataObj.data.Result[item].HolderNameCn+'</td><td>'+dataObj.data.Result[item].ApplicationDate+'</td><td>'+dataObj.data.Result[item].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
 				}
 			}else{
 				dataStatus(dataObj);

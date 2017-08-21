@@ -1,4 +1,4 @@
-.loginConthead{
+accountSub.loginConthead{
 	width: 100%;
 	height: 140px;
 	background: url(../img/loginHeaderbg.jpg) repeat-x 0 0;
@@ -2321,15 +2321,18 @@ hr{
 .accountSub{
 	width: 250px;
 	height: 45px;
-	margin: 0 auto;
 	color: #fff;
 	background-color: #098BEA;
 	border-radius: 5px;
 	border: 0;
-	display: block;
 	margin-top: 25px;
 	cursor: pointer;
 	font-size: 18px;
+	display: inline-block;
+}
+.accountSubGroup{
+	width: 515px;
+	margin: 0 auto;
 }
 #modifyInfo{
 	background: url(../img/accountIcon.png) no-repeat 15px 7px;

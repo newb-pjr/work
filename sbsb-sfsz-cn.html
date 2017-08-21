@@ -54,7 +54,7 @@
 				$.ajax({
 					type:"post",
 					url:"Handler/algorism.ashx",
-					async:true,
+					async:false,
 					data: {platformType:1,isWeb:1,typeCode:1},
 					success: function(data){
 						var dataObj = eval("("+data+")");

@@ -5,6 +5,12 @@ $(document).ready(function(){
 				dataStatus(dataObj);
 			}else{
 				$("#myUserName").html(dataObj.userInfo.userName);
+				if(dataObj.userInfo.checkMethod == 1){
+					$("#myValidWay").html(dataObj.userInfo.mobile);
+				}
+				if(dataObj.userInfo.checkMethod == 2){
+					$("#myValidWay").html(dataObj.userInfo.email);
+				}
 				$("#name").val(dataObj.userInfo.name);
 				$("#mobile").val(dataObj.userInfo.mobile);
 				$("#email").val(dataObj.userInfo.email);

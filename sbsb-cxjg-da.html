@@ -27,7 +27,7 @@
 						</tr>
 						<tr>
 							<td>类别</td>
-							<td id="markClass"></td>
+							<td id="markClassResult"></td>
 						</tr>
 						<tr>
 							<td>申请日期</td>
@@ -101,14 +101,18 @@
 						$("#markImg").attr("src",dataObj.data.MarkInfo[0].MarkImagePath);
 						$("#markName").html(dataObj.data.MarkInfo[0].MarkShowName);
 						$("#markType").html(dataObj.data.MarkInfo[0].MarkType);
-						$("#markClass").html(dataObj.data.MarkInfo[0].MarkClass);
+						$("#markClassResult").html(dataObj.data.MarkInfo[0].MarkClass);
 						$("#registerDate").html(dataObj.data.MarkInfo[0].ApplicationDate);
 						$("#publishIssue").html("初审  "+dataObj.data.MarkInfo[0].PreliminaryPublishIssue+" 期/注册  "+dataObj.data.MarkInfo[0].RegisterPublishIssue+" 期");
 						$("#company").html(dataObj.data.MarkInfo[0].HolderNameCn);
 						$("#address").html(dataObj.data.MarkInfo[0].HolderAddrCn);
 						$("#date").html("自   "+dataObj.data.MarkInfo[0].StartDate+"  起  至   "+dataObj.data.MarkInfo[0].EndDate+"  止");
 						$("#institution").html(dataObj.data.MarkInfo[0].AgentName);
-						$("#markStatus").html(dataObj.data.MarkInfo[0].MarkState);
+						if(dataObj.data.MarkInfo[0].IsValid == 0){
+							$("#markStatus").html("无效");
+						}else{
+							$("#markStatus").html("有效");
+						}
 						$("#lastPublish").html(dataObj.data.MarkInfo[0].LastPublishName);
 						$("#lastProcess").html(dataObj.data.MarkInfo[0].LastProcessName);
 						var goods = dataObj.data.MarkInfo[0].Goods;

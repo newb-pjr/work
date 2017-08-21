@@ -22,6 +22,9 @@ $(document).ready(function(){
 			success:function(data){
 				var dataObj = eval("("+data+")");
 				if(dataObj.status==1){
+					if(dataObj.data==""){
+						alert("没有优惠信息！");
+					}
 					var cardArr = dataObj.data
 					var html = "";
 					var dateCardlength = Math.floor(cardArr.length/4);

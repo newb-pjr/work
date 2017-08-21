@@ -22,6 +22,10 @@ $(document).ready(function(){
 		success:function(data){
 			var dataObj = eval("("+data+")");
 			if(dataObj.status==1){
+				if(dataObj.count==0){
+					$("#deviceNum option").first().html("你没有授权的设备");
+					$("#subMainDevice").hide();
+				}
 				for(var i=0; i<dataObj.data.length; i++){
 					if(dataObj.data[i].remark==""){
 						var remark = "设备"+dataObj.data[i].id;

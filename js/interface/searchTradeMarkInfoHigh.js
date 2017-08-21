@@ -167,6 +167,11 @@ $(document).ready(function(){
 		var algorithmArr = [];
 		var jueryModeArr = [];
 		$("#algorithmTable tr td").each(function(){
+			if($(this).find("input[name='Algorithm']").val()==""){
+				alert("算法没有选择完整！")
+				layer.close(searchloading);
+				breakGo = true;
+			}
 			if(typeof($(this).find("input[name='Algorithm']").val()) != "undefined" && $(this).find("input[name='Algorithm']").val() != ""){
 				algorithmArr.push($(this).find("input[name='Algorithm']").val());
 //				jueryModeArr.push($(this).find("input[name='jueryMode']").val());
@@ -217,6 +222,9 @@ $(document).ready(function(){
 //				}
 //			}
 		})
+		if(breakGo){
+			return false;
+		}
 		var SearchMode = $("input[name='group1']:checked").val();
 		var QueryMode = $("input[name='group2']:checked").val();
 		if(QueryMode == ""){
@@ -320,7 +328,6 @@ $(document).ready(function(){
 			if(isBreak){
 				clearInterval(timer);
 			}
-			console.log(isBreak)
 			n++;
 		},1000)
 	})

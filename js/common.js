@@ -27,15 +27,21 @@ function dateSelect(dateString){
 	return dateArr;
 }
 function validateChinese(obj){
+	if(obj.value==""){
+		return false;
+	}
 	var filterChinese = '^[\u4e00-\u9fa5]*$';
-	if(obj.value=="" || !obj.value.match(filterChinese)){
+	if(!obj.value.match(filterChinese)){
 		alert("只能输入中文字符");
 		obj.value = "";
 	}
 }
 function validateEnglish(obj){
+	if(obj.value==""){
+		return false;
+	}
 	var filterEnglish = '^[A-Za-z ]*$';
-	if(obj.value=="" || !obj.value.match(filterEnglish)){
+	if(!obj.value.match(filterEnglish)){
 		alert("只能输入西文字符");
 		obj.value = "";
 	}
@@ -205,7 +211,7 @@ function quickSet(){
 }
 
 function recordChoose(algorithmVal){
-	$(".identifyTable tr").each(function(){
+	$(".identifyTable tr td").each(function(){
 		for(var i=0; i<algorithmVal.length; i++){
 			if($(this).find('input').val() == algorithmVal[i]){
 				$(this).find('input').attr("checked","checked");

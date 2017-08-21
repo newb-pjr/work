@@ -121,7 +121,7 @@
 					})
 
 					$(".searchResult table tr").find('td:eq(2)').click(function(){
-						var num = $(this).html();
+						var num = $(this).find('a').html();
 						var markClass = $(this).prev().html();
 						document.cookie="MarkNo="+num;
 						document.cookie="MarkClass="+markClass;
