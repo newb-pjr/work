@@ -171,6 +171,7 @@ $(document).ready(function(){
 				alert("算法没有选择完整！")
 				layer.close(searchloading);
 				breakGo = true;
+				return false;
 			}
 			if(typeof($(this).find("input[name='Algorithm']").val()) != "undefined" && $(this).find("input[name='Algorithm']").val() != ""){
 				algorithmArr.push($(this).find("input[name='Algorithm']").val());

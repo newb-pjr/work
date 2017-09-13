@@ -26,5 +26,9 @@
 				}
 			}
 		});
+		if(typeof(parent.$('#imageAlgorithm').val()) != "undefined"){
+			var chooseArr = parent.$("#imageAlgorithm").val().split(";");
+			recordChoose(chooseArr);
+		}
 	})
 </script>

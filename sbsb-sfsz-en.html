@@ -50,6 +50,17 @@
 			function goBack(){
 				window.parent.mainGoBack();
 			}
+			function saveChoose(){
+				var inputValue = [];
+				$(".identifyTable input[name='eItem']:checked").each(function(){
+					inputValue.push($(this).val());
+				})
+				var inputValueStr = inputValue.join(";");
+				parent.$('#xwAlgorithm').val("1_"+inputValueStr);
+				parent.$('#Algorithm').val(inputValueStr);
+				parent.$("#self").attr("checked","checked")
+				console.log(inputValueStr)
+			}
 			$(document).ready(function(){
 				$.ajax({
 					type:"post",
@@ -67,7 +78,7 @@
 						}
 					}
 				});
-				
+				console.log(parent.$('#Algorithm').val())
 				if(typeof(parent.$('#Algorithm').val()) != "undefined"){
 					var algorithmVal = parent.$('#Algorithm').val().split(";");
 //					var jueryModeVal = parent.$('#jueryMode').val();
@@ -78,6 +89,7 @@
 //					var jueryModeVal = parent.$('#xwJueryMode').val().replace('1_','');
 					recordChoose(algorithmVal);
 				}
+				
 				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
 				var inputValue = [];
 //				var jueryModeValue = [];
@@ -85,29 +97,9 @@
 					$(".identifyTable input[name='eItem']:checked").each(function(){
 						inputValue.push($(this).val());
 					})
-//					$(".quickSet input[type='checkbox']:checked").each(function(){
-//						jueryModeValue.push($(this).val());
-//					})
-//					$(".identifyTable input[name='eItem']:checked").each(function(){
-//						if($(this).siblings('input[type="text"]').length>0){
-//							inputVal = $(this).siblings('input[type="text"]').val();
-//							inputValue.push($(this).val()+"_"+inputVal);
-//						}else{
-//							inputValue.push($(this).val());
-//						}
-//					})
-					//var inputValue = $(".identifyTable input[name='cItem']:checked").val()
-//					if(jueryModeValue == 2 && inputValue == ""){
-//						jueryModeValue.splice(0,jueryModeValue.length);
-//						alert("请选择具体算法！");
-//						return false;
-//					}
 					var inputValueStr = inputValue.join(";");
-//					var jueryModeValueStr = jueryModeValue.join();
 					parent.$('#xwAlgorithm').val("1_"+inputValueStr);
-//					parent.$('#xwJueryMode').val("1_"+jueryModeValueStr);
 					parent.$('#Algorithm').val(inputValueStr);
-//					parent.$('#jueryMode').val(jueryModeValueStr);
 					parent.$("#self").attr("checked","checked")
 					parent.layer.close(index);
 				})

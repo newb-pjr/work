@@ -11,7 +11,7 @@
 	<body style="background-color: #fff;">
 			<div class="resultFileCont">
 				<div class="fileContLeft">
-					<table border="0" width="100%" height="475" align="center">
+					<table border="1" cellspacing="0" cellpadding="0" width="100%" height="475" align="center" id="printFile">
 						<tr>
 							<td>注册号</td>
 							<td id="registerNum"></td>
@@ -65,31 +65,33 @@
 						</tr>
 					</table>
 					<div class="tabBtn" style="margin-top: 30px;">
-						<a href="" style="margin-right: 10px;">打印</a>
-						<a href="">导出</a>
+						<a href="javascript:void(0)" style="margin-right: 10px;" onclick="printFile()">打印</a>
+						<a href="javascript:void(0)" onClick ="$('#printFile').tableExport({type:'doc',escape:'true',fileName:'商标档案'});">导出</a>
 					</div>
 				</div>
 				<div class="fileContright">
-					
-					<table border="0" width="100%" height="475" align="center">
-						<tr>
-							<td colspan="3">类似群</td>
-						</tr>
-						<tr>
-							<th>商品/服务（中文）</th>
-							<th>群组</th>
-							<th>类别</th>
-						</tr>
-					</table>
+						<table border="1" cellspacing="0" cellpadding="0" width="100%" height="475" align="center" id="goodService">
+							<tr>
+								<td colspan="3">类似群</td>
+							</tr>
+							<tr>
+								<th>商品/服务（中文）</th>
+								<th>群组</th>
+								<th>类别</th>
+							</tr>
+						</table>
 					<div class="tabBtn" style="margin-top: 30px;">
-						<a href="" style="margin-right: 10px;">打印商品服务</a>
-						<a href="">导出商品服务</a>
+						<a href="javascript:void(0)" style="margin-right: 10px;" onclick="printService()">打印商品服务</a>
+						<a href="javascript:void(0)" onClick ="$('#goodService').tableExport({type:'doc',escape:'true',fileName:'商品服务'});">导出商品服务</a>
 					</div>
 				</div>
 				<div class="cls"></div>
 			</div>
+			<!--<script type="text/javascript" src="js/jquery.jPrintArea.js" ></script>-->
+			<script type="text/javascript" src="js/jquery.jqprint-0.3.js" ></script>
 			<script type="text/javascript" src="js/common.js" ></script>
 			<script type="text/javascript" src="js/interface/common.js" ></script>
+			<script type="text/javascript" src="js/tableExport.js" ></script>
 			<script>
 				var MarkNo = getCookie("MarkNo");
 				var MarkClass = getCookie("MarkClass");
@@ -124,6 +126,13 @@
 						dataStatus(dataObj);
 					}
 				})
+				
+				function printService(){
+					$(".fileContright table").jqprint();
+				}
+				function printFile(){
+					$("#printFile").jqprint();
+				}
 			</script>
 	</body>
 </html>

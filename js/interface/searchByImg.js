@@ -141,6 +141,43 @@ $(document).ready(function(){
 				var EndDate = dateSelect($("#dateInput").val())[1];
 			}
 		}
+		if($(".qureySelect").val() != 1){
+			if($(".qureySelect").val() != 2){
+				if(ImageAlgorithm==""){
+					alert("图像特征算法不能为空！");
+					layer.close(searchloading);
+					return false;
+				}
+			}
+			if($("#searchAllChinese").val() != ""){
+				if(CnAlgorithm==""){
+					alert("中文名称算法不能为空！");
+					layer.close(searchloading);
+					return false;
+				}
+			}
+			if($("#searchAllEnglish").val() != ""){
+				if(EnAlgorithm==""){
+					alert("西文名称算法不能为空！");
+					layer.close(searchloading);
+					return false;
+				}
+			}
+			if($("#searchContTextS").val() != ""){
+				if(CodeAlgorithm==""){
+					alert("图形要素算法不能为空！");
+					layer.close(searchloading);
+					return false;
+				}
+			}
+		}
+		if($(".qureySelect").val() == 1){
+			if(ImageAlgorithm==""){
+				alert("图像特征算法不能为空！");
+					layer.close(searchloading);
+				return false;
+			}
+		}
 		var firstTry = $.ajax({
 			type:"post",
 			url:"Handler/searchByImg.ashx",

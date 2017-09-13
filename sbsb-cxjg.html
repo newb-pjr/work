@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/icon.css" />
 		<link rel="stylesheet" href="css/base.css" />
 		<link rel="stylesheet" href="css/common.css" />
-
+		<link rel="stylesheet" href="css/print.css" media="print"/>
 
 	</head>
 	<body style="background-color: #fff;">
@@ -16,15 +16,15 @@
 				<a href="javascript:void(0);" class="btn noticeIcon" onclick="searchResult('sbsb-cxjg-gg.html','商标公告')">商标公告</a>
 				<a href="javascript:void(0);" class="btn serviceIcon" onclick="searchResult('sbsb-cxjg-spfw.html','商品服务')">商品服务</a>
 				<a href="javascript:void(0);" class="btn processIcon" onclick="searchResult('sbsb-cxjg-sclc.html','审查流程')">审查流程</a>
-				<a href="javascript:void(0);" class="btn printIcon">打印本表</a>
-				<a href="javascript:void(0);" class="btn exportIcon">导出word</a>
+				<a href="javascript:void(0);" class="btn printIcon print-preview" onclick="printResult()">打印本表</a>
+				<a href="javascript:void(0);" class="btn exportIcon" onclick="$('#searchResult').tableExport({type:'doc',escape:'true',fileName:'查询结果'});">导出word</a>
 				<a href="javascript:void(0);" class="btn switchIcon" onclick="handleTab('sbsb-cxjg-img.html','查询结果-图像显示')">切换显示</a>
 				<a href="javascript:void(0);" class="btn sortIcon" onclick="handleLayer('排序设置','sbsb-cxjg-px.html','500px','300px')">排序设置</a>
 				<a href="javascript:void(0);" class="btn filterIcon" onclick="filter()">过滤</a>
 				<a href="javascript:void(0);" class="btn resetfilterIcon" onclick="resetfilter()">重置过滤</a>
 			</div>
 			<div class="searchResult">
-				<table border="1" bordercolor="#C6C4C4" align="center" width="100%">
+				<table border="1" bordercolor="#C6C4C4" align="center" width="100%" id="searchResult">
 					<tr>
 						<th>选择 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
 						<th>类别 <img src="img/triangleDownIcon.png" width="10" height="6" /></th>
@@ -71,8 +71,11 @@
 			<script type="text/javascript" src="js/interface/common.js" ></script>
 			<script type="text/javascript" src="js/jquery.pagination.js" ></script>
 			<script type="text/javascript" src="js/interface/getSearchResultByTaskID.js" ></script>
+			<script type="text/javascript" src="js/jquery.jqprint-0.3.js" ></script>
+			<script type="text/javascript" src="js/tableExport.js" ></script>
 			<script>
 				$(document).ready(function(){
+					
 					$(".closeDet").height($(".searchResult table").height());
 					$(".showDet").height($(".searchResult table").height());
 					
@@ -151,6 +154,8 @@
 					$(".rightIcon").click(function(){
 						$(".showDet").hide();
 					})
+					
+					
 				})
 				
 				function filter(){
@@ -164,6 +169,10 @@
 				function resetfilter(){
 					closeTab("查询结果");
 					handleTab("sbsb-cxjg.html","查询结果");
+				}
+				
+				function printResult(){
+					$("#searchResult").jqprint();
 				}
 				
 //				function filter(){

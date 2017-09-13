@@ -60,10 +60,26 @@
 				$(".algorithmSet li:first-child").addClass("currentSet");
 
 				var getDefaultId = $(".algorithmSet li").eq(0).attr("id");
-				var cnArr = [];
-				var enArr = [];
-				var imgArr = [];
-				var picArr = [];
+				if(typeof(parent.$('#cnAlgorithm').val()) != "undefined"){
+					var cnArr = parent.$("#cnAlgorithm").val().split(";");
+				}else{
+					var cnArr = [];
+				}
+				if(typeof(parent.$('#enAlgorithm').val()) != "undefined"){
+					var enArr = parent.$("#enAlgorithm").val().split(";");
+				}else{
+					var enArr = [];
+				}
+				if(typeof(parent.$('#codeAlgorithm').val()) != "undefined"){
+					var imgArr = parent.$("#codeAlgorithm").val().split(";");
+				}else{
+					var imgArr = [];
+				}
+				if(typeof(parent.$('#imageAlgorithm').val()) != "undefined"){
+					var picArr = parent.$("#imageAlgorithm").val().split(";");
+				}else{
+					var picArr = [];
+				}
 				var id = "";
 				var cnQueryMode = "";
 				var enQueryMode = "";

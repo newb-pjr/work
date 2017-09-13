@@ -11,29 +11,38 @@
 	<body style="background-color: #fff;">
 			<div class="serviceCont">
 				<div class="serviceTitle"></div>
-				<div class="serviceContLeft" id="serviceContLeft">
-					<table border="0" width="100%">
-						<tr>
-							<th>商品/服务（中文）</th>
-							<th>群组</th>
-						</tr>
-					</table>
+				<div id="serviceCont">
+					<div class="serviceContLeft" id="serviceContLeft">
+						<table border="1" width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+								<th>商品/服务（中文）</th>
+								<th>群组</th>
+							</tr>
+						</table>
+					</div>
+					<div class="serviceContLeft serviceContRight" id="serviceContRight">
+						<table border="1" width="100%" cellpadding="0" cellspacing="0">
+							<tr>
+								<th>商品/服务（中文）</th>
+								<th>群组</th>
+						</table>
+					</div>
+					<div class="cls"></div>
 				</div>
-				<div class="serviceContLeft serviceContRight" id="serviceContRight">
-					<table border="0" width="100%">
-						<tr>
-							<th>商品/服务（中文）</th>
-							<th>群组</th>
-					</table>
-				</div>
-				<div class="cls"></div>
 				<div class="serviceBtn">
-					<a href="">打印商品服务</a>
-					<a href="">导出商品服务 </a>
+					<a href="javascript:void(0)" onclick="printServices()">打印商品服务</a>
+					<a href="javascript:void(0)" onclick="$('#serviceCont').tableExport({type:'doc',escape:'true',fileName:'商品服务'});">导出商品服务 </a>
 				</div>
 			</div>
 			<script type="text/javascript" src="js/common.js" ></script>
 			<script type="text/javascript" src="js/interface/common.js" ></script>
 			<script type="text/javascript" src="js/interface/getMarkGoods.js" ></script>
+			<script type="text/javascript" src="js/jquery.jqprint-0.3.js" ></script>
+			<script type="text/javascript" src="js/tableExport.js" ></script>
+			<script>
+				function printServices(){
+					$("#serviceCont").jqprint();
+				}
+			</script>
 	</body>
 </html>
