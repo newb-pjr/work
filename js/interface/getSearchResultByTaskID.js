@@ -37,14 +37,8 @@ $(document).ready(function(){
 //			});
 //		}
 //	});
-	var isValid;
 	for(var i=0; i<dataResult.Result.length; i++){
-		if(dataResult.Result[i].IsValid == 0){
-			isValid = "无效";
-		}else{
-			isValid = "有效";
-		}
-		$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataResult.Result[i].MarkNo+'" /></td><td>'+dataResult.Result[i].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataResult.Result[i].MarkNo+'</a></td><td><img src="'+dataResult.Result[i].MarkImagePath+'" height="32" width="96" /></td><td>'+dataResult.Result[i].HolderNameCn+'</td><td>'+dataResult.Result[i].ApplicationDate+'</td><td>'+dataResult.Result[i].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
+		$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" value="'+dataResult.Result[i].MarkNoClass+'" /><input type="hidden" value="'+dataResult.Result[i].MarkNo+'" /></td><td>'+dataResult.Result[i].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataResult.Result[i].MarkNo+'</a></td><td><img src="'+dataResult.Result[i].MarkImagePath+'" height="32" width="96" /></td><td>'+dataResult.Result[i].HolderNameCn+'</td><td>'+dataResult.Result[i].ApplicationDate+'</td><td>'+dataResult.Result[i].RegisterPublishDate+'</td><td>'+dataResult.Result[i].IsValid+'</td></tr>');
 	}
 	// 创建分页元素
 	$("#searchPagination").pagination(dataResult.iCount, {
@@ -76,12 +70,7 @@ function pageselectCallback(page_id){
 			var dataObj = eval("("+data+")");
 			if(dataObj.status==1){
 				for(item in dataObj.data.Result){
-					if(dataObj.data.Result[item].IsValid == 0){
-						isValid = "无效";
-					}else{
-						isValid = "有效";
-					}
-					$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" /><input type="hidden" value="'+dataObj.data.Result[item].MarkNo+'" /></td><td>'+dataObj.data.Result[item].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataObj.data.Result[item].MarkNo+'</a></td><td><img src="'+dataObj.data.Result[item].MarkImagePath+'" height="32" width="96" /></td><td>'+dataObj.data.Result[item].HolderNameCn+'</td><td>'+dataObj.data.Result[item].ApplicationDate+'</td><td>'+dataObj.data.Result[item].RegisterPublishDate+'</td><td>'+isValid+'</td></tr>');
+					$(".searchResult table").append('<tr><td><input type="checkbox" class="tabCheckbox" value="'+dataObj.data.Result[item].MarkNoClass+'" /><input type="hidden" value="'+dataObj.data.Result[item].MarkNo+'" /></td><td>'+dataObj.data.Result[item].MarkClass+'</td><td><a href="javascript:void(0)" class="pointer">'+dataObj.data.Result[item].MarkNo+'</a></td><td><img src="'+dataObj.data.Result[item].MarkImagePath+'" height="32" width="96" /></td><td>'+dataObj.data.Result[item].HolderNameCn+'</td><td>'+dataObj.data.Result[item].ApplicationDate+'</td><td>'+dataObj.data.Result[item].RegisterPublishDate+'</td><td>'+dataObj.data.Result[item].IsValid+'</td></tr>');
 				}
 			}else{
 				dataStatus(dataObj);
@@ -90,11 +79,13 @@ function pageselectCallback(page_id){
 	});
 	
 	$(".searchResult table input[type=checkbox]").each(function(){
-		var num = $(this).parent().next().html()+"_"+$(this).siblings().val();
-		var MarkKeyStr = getCookie("MarkKeyStr").split(",");
-		for(var i=0; i<MarkKeyStr.length; i++){
-			if(num == MarkKeyStr[i]){
-				$(this).attr("checked","checked");
+		if(getCookie("MarkKeyStr")){
+			var num = $(this).val();
+			var MarkKeyStr = getCookie("MarkKeyStr").split(",");
+			for(var i=0; i<MarkKeyStr.length; i++){
+				if(num == MarkKeyStr[i]){
+					$(this).attr("checked","checked");
+				}
 			}
 		}
 	})

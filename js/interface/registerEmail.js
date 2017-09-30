@@ -35,7 +35,10 @@ $(document).ready(function(){
 						alert("验证码不匹配 ");
 						break;
 					case -5:
-						alert("手机验证码不正确");
+						alert("电子邮箱接收到的验证码不匹配");
+						break;
+					case -6:
+						alert("设备已经被其他用户注册");
 						break;
 				}
 			})

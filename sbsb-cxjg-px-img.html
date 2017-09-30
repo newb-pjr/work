@@ -44,7 +44,7 @@
 						success:function(data){
 							var dataObj = eval("("+data+")");
 							if(dataObj.status==1){
-								window.data = dataObj.data;
+								window.parent.data = dataObj.data;
 								window.parent.mainGoBack();
 								closeTab('查询结果-图像显示');
 								handleTab('sbsb-cxjg-img.html','查询结果-图像显示');

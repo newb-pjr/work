@@ -18,10 +18,17 @@ $(document).ready(function(){
 						}else{
 							switch(dataObj.status){
 								case 1:
+									if($("#isAutoLogin").is(":checked")){
+										document.cookie = "isAutoLogin=true";
+									}else{
+										document.cookie = "isAutoLogin=false";
+									}
 									document.cookie = "username="+dataObj.userInfo.userName;
-									var x = screen.availWidth-10;  
-									var y = screen.availHeight-60;
-									window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
+									setTimeout(function(){
+										var x = screen.availWidth-10;  
+										var y = screen.availHeight-60;
+										window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
+									},500)
 //									window.close();
 //									location.href = "main.html";
 									break;
@@ -53,10 +60,17 @@ $(document).ready(function(){
 											var dataObj = eval("("+data+")");
 									  		if(dataObj.status==1){
 												layer.close(index);
+												if($("#isAutoLogin").is(":checked")){
+													document.cookie = "isAutoLogin=true";
+												}else{
+													document.cookie = "isAutoLogin=false";
+												}
 									  			document.cookie = "username="+dataObj.userInfo.userName;
-												var x = screen.availWidth-10;  
-												var y = screen.availHeight-60;
-												window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);
+												setTimeout(function(){
+													var x = screen.availWidth-10;
+													var y = screen.availHeight-60;
+													window.open("main.html","_blank",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);
+												},500)
 //												document.cookie = "username="+dataObj.userInfo.userName;
 //												location.href = "main.html";
 									  		}else{
@@ -107,7 +121,7 @@ $(document).ready(function(){
 			})
 		})
 function check(){
-	if(event.keyCode==13){
+	if(event.which==13||event.keyCode==13){
 		$("#login").click();
 	}
 }

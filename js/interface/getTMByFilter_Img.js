@@ -2,21 +2,15 @@ $(document).ready(function(){
 	$("#imgFilterBtn").click(function(){
 		var TaskID = getCookie("TaskID");
 		var State;
-		var MarkKeyStr = getCookie("MarkKeyStr").replace(/,/g,';');
-		var MarkGroup;
-		$(".filterCont input[name='product']").each(function(){
-			if($(this).is(":checked")){
-				if($(this).val()==0){
-					MarkGroup = "";
-				}
-				if($(this).val()==1){
-					MarkGroup = $("#markGroupInput").val();
-				}
-			}
-		})
+		if($(".filterCont input[name='select']").val()==""){
+			var MarkKeyStr = ""
+		}else{
+			var MarkKeyStr = getCookie("MarkKeyStr").replace(/,/g,';');
+		}
+		var MarkGroup = $("#markGroupInput").val();
 		$(".filterCont input[name='status']").each(function(){
 			if($(this).is(":checked")){
-				State = $(this).val();
+				State = $(this).val()+"";
 			}
 		})
 		$.ajax({

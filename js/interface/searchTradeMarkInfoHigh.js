@@ -167,12 +167,12 @@ $(document).ready(function(){
 		var algorithmArr = [];
 		var jueryModeArr = [];
 		$("#algorithmTable tr td").each(function(){
-			if($(this).find("input[name='Algorithm']").val()==""){
-				alert("算法没有选择完整！")
-				layer.close(searchloading);
-				breakGo = true;
-				return false;
-			}
+//			if($(this).find("input[name='Algorithm']").val()==""){
+//				alert("算法没有选择完整！")
+//				layer.close(searchloading);
+//				breakGo = true;
+//				return false;
+//			}
 			if(typeof($(this).find("input[name='Algorithm']").val()) != "undefined" && $(this).find("input[name='Algorithm']").val() != ""){
 				algorithmArr.push($(this).find("input[name='Algorithm']").val());
 //				jueryModeArr.push($(this).find("input[name='jueryMode']").val());
@@ -262,19 +262,19 @@ $(document).ready(function(){
 		var firstTry = $.ajax({
 			type:"post",
 			url:"Handler/searchTradeMarkInfo.ashx",
-			async:false,
+			async:true,
 			complete:function(){
 				isBreak = true;
 			},
 			data:{platformType:1,isWeb:1,TaskID:TaskID,FrontCount:FrontCount,SearchMode:SearchMode,SearchType:SearchType,Content:Content,MarkClass:MarkClass,MarkGroup:MarkGroup,QueryMode:QueryMode,Algorithm:Algorithm,State:State,DateType:DateType,BeginDate:BeginDate,EndDate:EndDate},
 			success:function(data){
 				var dataObj = eval("("+data+")");
-				if(dataObj.data.Result == ""){
-					alert("没有查询结果！");
-					layer.close(searchloading);
-					return false;
-				}
 				if(dataObj.status == 1){
+					if(dataObj.data.Result == ""){
+						alert("没有查询结果！");
+						layer.close(searchloading);
+						return false;
+					}
 					window.data = dataObj.data;
 					validMethodFunc(validMethod,searchloading);
 				}else{

@@ -89,11 +89,7 @@
 						$("#addressD").html(dataObj.data.MarkInfo[0].HolderAddrCn);
 						$("#dateD").html("自   " + dataObj.data.MarkInfo[0].StartDate + "  起  至   " + dataObj.data.MarkInfo[0].EndDate + "  止");
 						$("#institutionD").html(dataObj.data.MarkInfo[0].AgentName);
-						if(dataObj.data.MarkInfo[0].IsValid == 0){
-							$("#markStatusD").html("无效");
-						}else{
-							$("#markStatusD").html("有效");
-						}
+						$("#markStatusD").html(dataObj.data.MarkInfo[0].IsValid);
 						$("#lastPublishD").html(dataObj.data.MarkInfo[0].LastPublishName);
 						$("#lastProcessD").html(dataObj.data.MarkInfo[0].LastProcessName);
 					}else{

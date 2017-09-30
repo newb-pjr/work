@@ -987,6 +987,7 @@
 .searchResultImg table tr td{
 	text-align: center;
 	position: relative;
+	width: 16%;
 }
 .searchResultImg table tr td input{
 	position: absolute;
@@ -3402,4 +3403,11 @@ a.getAttachedCard{
 	display: block;
 	height: 100%;
 	line-height: 45px;
+}
+.resultLeft{
+	float: left;
+}
+.resultLeft input{
+	width: 20px;
+	height: 20px;
 }

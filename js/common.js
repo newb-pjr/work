@@ -229,12 +229,12 @@ function recordChoose(algorithmVal){
 function sResult(data){
 	return data;
 }
-(function(global) {
-	var data = window.data || "";
-	var result = sResult(data);
+(function(global,obj) {
+//	var data = window.data || "";
+	var result = sResult(obj);
     global.dataResult = result;
 
-}) (this);
+}) (this,window.data);
 
 function imgCutInit(){
 	if($("#uploadImg").val() == ""){
@@ -440,10 +440,11 @@ function validMethodFunc(validMethod,searchloading){
 					if(dataTaskPay.status==1){
 						layer.close(searchloading);
 						layer.close(index);
+						document.cookie = "SortType=";
+						document.cookie = "MarkKeyStr=";
 						closeTab('查询结果');
 						closeTab('查询结果-图像显示');
 						handleTab('sbsb-cxjg.html','查询结果');
-						document.cookie = "SortType=";
 					}else{
 						switch(dataTaskPay.status){
 							case 0:
@@ -488,10 +489,11 @@ function validMethodFunc(validMethod,searchloading){
 				var dataTaskPay = eval("("+data+")");
 				if(dataTaskPay.status==1){
 					layer.close(searchloading);
+					document.cookie = "SortType=";
+					document.cookie = "MarkKeyStr=";
 					closeTab('查询结果');
 					closeTab('查询结果-图像显示');
 					handleTab('sbsb-cxjg.html','查询结果');
-					document.cookie = "SortType=";
 				}else{
 					switch(dataTaskPay.status){
 						case 0:

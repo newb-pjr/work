@@ -329,7 +329,7 @@
                 // Row Vs Column
                 $(el).find('tbody').first().find(defaults.tbodySelector).each(function () {
                     trData = "";
-                    ForEachVisibleCell(this, 'td', rowIndex,
+                    ForEachVisibleCell(this, 'th,td', rowIndex,
                             function (cell, row, col) {
                                 if (cell != null) {
                                     trData += "<td style='";

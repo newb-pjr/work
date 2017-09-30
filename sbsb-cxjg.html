@@ -38,6 +38,10 @@
 				</table>
 				<!--<table border="1" bordercolor="#C6C4C4" align="center" width="100%" id="mainResult"></table>-->
 				<div class="result">
+					<div class="resultLeft">
+						<label><input type="radio" name="sel" value="0" id="singleSel" />单选</label>
+						<label><input type="radio" checked="checked" name="sel" value="1" />多选</label>
+					</div>
 					<div id="searchPagination" class="paginationResult"></div>
 					<br style="clear:both;" />
 				</div>
@@ -92,7 +96,7 @@
 //						})
 //					})
 					$(".searchResult table input[type=checkbox]").each(function(){
-						var num = $(this).parent().next().html()+"_"+$(this).siblings().val();
+						var num = $(this).val();
 						var MarkKeyStr = [];
 						if(getCookie("MarkKeyStr")){
 							MarkKeyStr = getCookie("MarkKeyStr").split(",");
@@ -105,16 +109,22 @@
 					})
 
 					$(".searchResult table input[type=checkbox]").live("click",function(){
+						if($(".resultLeft input#singleSel").is(":checked")){
+							$(this).parents('tr').siblings().find('input[type=checkbox]').removeAttr('checked');
+							if($(this).is(":checked")){
+								document.cookie = "MarkKeyStr="+$(this).val();
+							}
+						}
 						if(getCookie("MarkKeyStr")){
 							var MarkKeyStr = getCookie("MarkKeyStr").split(",");
 						}else{
 							var MarkKeyStr = []
 						}
 						if($(this).is(":checked")){
-							MarkKeyStr.push($(this).parent().next().html()+"_"+$(this).siblings().val());
+							MarkKeyStr.push($(this).val());
 						}else{
 							for(var i=0; i<MarkKeyStr.length; i++){
-								if(($(this).parent().next().html()+"_"+$(this).siblings().val()) == MarkKeyStr[i]){
+								if($(this).val() == MarkKeyStr[i]){
 									MarkKeyStr.splice($.inArray(MarkKeyStr[i], MarkKeyStr),1);
 								}
 							}
@@ -128,6 +138,7 @@
 						var markClass = $(this).prev().html();
 						document.cookie="MarkNo="+num;
 						document.cookie="MarkClass="+markClass;
+						$(".showDet").show();
 						$("#loadCont tr td").load('sbsb-cxjg-dayl.html');
 					})
 
@@ -159,11 +170,7 @@
 				})
 				
 				function filter(){
-					if($(".searchResult table input[type=checkbox]").is(":checked")){
-						handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
-					}else{
-						alert("请勾选其中一项商标进行过滤操作！");
-					}
+					handleLayer('过滤','sbsb-cxjg-gl.html','500px','320px');
 				}
 				
 				function resetfilter(){

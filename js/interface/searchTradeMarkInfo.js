@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	$("#search").click(function(){
-		var breakGo = false;
 		var searchloading = layer.load(1, {
 		  shade: [0.5,'#000']
 		});
+		var breakGo = false;
 		var isBreak = false;
 		var TaskID;
 		$.ajax({
@@ -61,6 +61,7 @@ $(document).ready(function(){
 		var SearchMode = 0;
 		if($("#contentSelect").val() == -1){
 			alert("请选择正确的内容种类！");
+			$(this).html('商标查询');
 			layer.close(searchloading);
 			return false;
 		}else{
@@ -68,6 +69,7 @@ $(document).ready(function(){
 		}
 		if(Content = $(".searchContText").val() == ""){
 			alert("内容不能为空！");
+			$(this).html('商标查询');
 			layer.close(searchloading);
 			return false;
 		}else{
@@ -83,6 +85,7 @@ $(document).ready(function(){
 		if($("#self").is(":checked")){
 			if($("#Algorithm").val() == ""){
 				alert("算法不能为空！");
+				$(this).html('商标查询');
 				layer.close(searchloading);
 				return false;
 			}
@@ -97,6 +100,7 @@ $(document).ready(function(){
 		}else{
 			if(dateSelectValue == ""){
 				alert("日期范围不能为空！");
+				$(this).html('商标查询');
 				layer.close(searchloading);
 				return false;
 			}else{
@@ -110,19 +114,20 @@ $(document).ready(function(){
 			type:"post",
 			url:"Handler/searchTradeMarkInfo.ashx",
 			data:{platformType:1,isWeb:1,TaskID:TaskID,FrontCount:FrontCount,SearchMode:SearchMode,SearchType:SearchType,Content:Content,MarkClass:MarkClass,MarkGroup:MarkGroup,QueryMode:QueryMode,Algorithm:Algorithm,State:State,DateType:DateType,BeginDate:BeginDate,EndDate:EndDate},
-			async:false,
+			async:true,
 			complete:function(){
 				isBreak = true;
 			},
 			success:function(data){
 				var dataObj = eval("("+data+")");
-				if(dataObj.data.Result == ""){
-					alert("没有查询结果！");
-					layer.close(searchloading);
-					return false;
-				}
 				if(dataObj.status == 1){
+					if(dataObj.data.Result == ""){
+						alert("没有查询结果！");
+						layer.close(searchloading);
+						return false;
+					}
 					window.data = dataObj.data;
+					console.log(dataObj.data)
 					validMethodFunc(validMethod,searchloading);
 				}else{
 					switch(dataObj.status){

@@ -10,15 +10,20 @@
 		<div class="filter">
 			<p>对查询结果按如下条件进行过滤：</p>
 			<div class="filterCont">
-				商标状态：<label><input type="radio" name="status" value="0" checked="checked" />有效</label>
-				<label><input type="radio" name="status" value="1" />无效</label>
-				<label><input type="radio" name="status" value="2" />期满待定</label>
-				<label><input type="radio" name="status" value="3" />无效待定</label>
-				<label><input type="radio" name="status" value="4" />全部</label>
+				过滤范围：
+				<label><input type="checkbox" name="select" value="" checked="checked" />全部</label>
+				<label><input type="checkbox" name="select" value="1" />已勾选</label>
 			</div>
 			<div class="filterCont">
-				商品范围：<label><input type="radio" name="product" value="0" checked="checked" />全部</label>
-				<label><input type="radio" name="product" value="1" />指定类似群</label>
+				商标状态：<label><input type="checkbox" name="status" value="0" />有效</label>
+				<label><input type="checkbox" name="status" value="1" />无效</label>
+				<label><input type="checkbox" name="status" value="2" />期满待定</label>
+				<label><input type="checkbox" name="status" value="3" />无效待定</label>
+				<label><input type="checkbox" name="status" value="4" />全部</label>
+			</div>
+			<div class="filterCont">
+				商品范围：
+				<label>指定类似群</label>
 				<input type="text" id="markGroupInput" />注：请使用英文“;”分隔
 			</div>
 		</div>
@@ -28,5 +33,15 @@
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
 		<script type="text/javascript" src="js/common.js" ></script>
 		<script type="text/javascript" src="js/interface/getTMByFilter_Img.js" ></script>
+		<script>
+			$(document).ready(function(){
+				$("input[name='status']").click(function(){
+					$(this).parent().siblings().find('input').removeAttr("checked");
+				})
+				$("input[name='select']").click(function(){
+					$(this).parent().siblings().find('input').removeAttr("checked");
+				})
+			})
+		</script>
 	</body>
 </html>

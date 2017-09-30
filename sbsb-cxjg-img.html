@@ -24,6 +24,10 @@
 			<div style="width: 100%;height: 10px;background-color: #F7F7F7;"></div>
 			<div class="searchResultImg">
 				<div class="result">
+					<div class="resultLeft">
+						<label><input type="radio" name="sel" value="0" id="singleSelImg" />单选</label>
+						<label><input type="radio" checked="checked" name="sel" value="1" />多选</label>
+					</div>
 					<div id="searchImgPagination" class="paginationResult"></div>
 					<br style="clear:both;" />
 				</div>
@@ -42,7 +46,7 @@
 					for(var i=0;i<s;i++){
 						str += '<tr>';
 						for(var j=0;j<6;j++){
-							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" value="'+dataResult.Result[d].MarkNoClass+'" /></lable></td>' 
 							d++;
 							str += std;
 						}
@@ -51,7 +55,7 @@
 					if(dataResult.Result.length%6 > 0){
 						str += '<tr>';
 						for(var k=0;k<dataResult.Result.length%6;k++){
-							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+							std = '<td><label><img src="'+dataResult.Result[d].MarkImagePath+'" /><p><span>'+dataResult.Result[d].MarkClass+'</span>类 <span>'+dataResult.Result[d].MarkNo+'</span></p><input type="checkbox" value="'+dataResult.Result[d].MarkNoClass+'" /></lable></td>' 
 							d++;
 							str += std;
 						}
@@ -109,7 +113,7 @@
 								for(var i=0;i<s;i++){
 									str += '<tr>';
 									for(var j=0;j<6;j++){
-										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" value="'+dataObj.data.Result[d].MarkNoClass+'" /></lable></td>' 
 										d++;
 										str += std;
 									}
@@ -118,7 +122,7 @@
 								if(dataObj.data.Result.length%6 > 0){
 									str += '<tr>';
 									for(var k=0;k<dataObj.data.Result.length%6;k++){
-										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" /></lable></td>' 
+										std = '<td><label><img src="'+dataObj.data.Result[d].MarkImagePath+'" /><p><span>'+dataObj.data.Result[d].MarkClass+'</span>类 <span>'+dataObj.data.Result[d].MarkNo+'</span></p><input type="checkbox" value="'+dataObj.data.Result[d].MarkNoClass+'" /></lable></td>' 
 										d++;
 										str += std;
 									}
@@ -151,7 +155,7 @@
 					});
 					
 					$(".searchResultImg table input[type=checkbox]").each(function(){
-						var num = $(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html();
+						var num = $(this).val();
 						var MarkKeyStr = getCookie("MarkKeyStr").split(",");
 						for(var i=0; i<MarkKeyStr.length; i++){
 							if(num == MarkKeyStr[i]){
@@ -162,7 +166,7 @@
 				}
 				
 				$(".searchResultImg table input[type=checkbox]").each(function(){
-					var num = $(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html();
+					var num = $(this).val();
 					var MarkKeyStr = [];
 					if(getCookie("MarkKeyStr")){
 						MarkKeyStr = getCookie("MarkKeyStr").split(",");
@@ -175,16 +179,23 @@
 				})
 				
 				$(".searchResultImg table input[type=checkbox]").live("click",function(){
+					if($(".resultLeft input#singleSelImg").is(":checked")){
+						$(".searchResultImg table input[type=checkbox]").removeAttr('checked');
+						$(this).attr('checked','checked');
+						if($(this).is(":checked")){
+							document.cookie = "MarkKeyStr="+$(this).val();
+						}
+					}
 					if(getCookie("MarkKeyStr")){
 						var MarkKeyStr = getCookie("MarkKeyStr").split(",");
 					}else{
 						var MarkKeyStr = []
 					}
 					if($(this).is(":checked")){
-						MarkKeyStr.push($(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html());
+						MarkKeyStr.push($(this).val());
 					}else{
 						for(var i=0; i<MarkKeyStr.length; i++){
-							if(($(this).prev().children('span').first().html()+"_"+$(this).prev().children('span').last().html()) == MarkKeyStr[i]){
+							if($(this).val() == MarkKeyStr[i]){
 								MarkKeyStr.splice($.inArray(MarkKeyStr[i], MarkKeyStr),1);
 							}
 						}
@@ -194,13 +205,8 @@
 				})
 				
 				function filterImg(){
-					if($(".searchResultImg table input[type=checkbox]").is(":checked")){
-						handleLayer('过滤','sbsb-cxjg-gl.html','500px','300px');
-					}else{
-						alert("请勾选其中一项商标进行过滤操作！");
-					}
+					handleLayer('过滤','sbsb-cxjg-gl-img.html','500px','320px');
 				}
-				
 				function resetfilterImg(){
 					closeTab("查询结果-图像显示");
 					handleTab("sbsb-cxjg-img.html","查询结果-图像显示");

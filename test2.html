@@ -10,13 +10,19 @@
     <link rel="stylesheet" href="css/print-preview.css" />
   </head>
   <body> 
-  <div>asdasdasdasdasd</div>
-  <div id="aside"><a class="print-preview">Print this page</a></div>
+  <a href="javascript:void(0)" id="aaa">aaa</a>
   <script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
-	<script type="text/javascript" src="js/jquery.print-preview.js" ></script>
+
 	<script>
-//		 $('#aside').prepend('<a class="print-preview">Print this page</a>');
-    $('a.print-preview').printPreview();
+		$("#aaa").click(function(){
+//			window.open('http://www.baidu.com')
+var x = screen.availWidth-10;  
+						var y = screen.availHeight-60;
+window.open("http://www.baidu.com","_self",'fullscreen=yes,channelmode=yes,titlebar=no,toolbar=no,scrollbars=auto,resizable=no,status=no,copyhistory=no,location=no,menubar=no,width='+x+',height='+y);  
+				
+//			setTimeout(function(){
+//			}, 500);
+		})
 	</script>
 </body> 
 
